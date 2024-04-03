@@ -32,6 +32,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <p>Ben zlatin</p>
+        <p>Christian</p>
         <a
           className="App-link"
           href="https://reactjs.org"
