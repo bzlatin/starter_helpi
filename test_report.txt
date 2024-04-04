@@ -2,22 +2,120 @@
 > starter_helpi@0.1.0 test
 > react-scripts test --coverage
 
-PASS src/App.test.tsx
-  ✓ renders learn react link (38 ms)
+FAIL src/App.test.tsx
+  ✕ renders learn react link (199 ms)
 
---------------------|---------|----------|---------|---------|-------------------
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
---------------------|---------|----------|---------|---------|-------------------
-All files           |   28.57 |    16.66 |      20 |   28.57 |                   
- App.tsx            |      60 |       50 |   33.33 |      60 | 11,19-25          
- index.tsx          |       0 |      100 |     100 |       0 | 7-19              
- reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
---------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
-Snapshots:   0 total
-Time:        2.586 s
-Ran all test suites.
+  ● renders learn react link
+
+    TestingLibraryElementError: Unable to find an element with the text: /learn react/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, script, style
+    [36m<body>[39m
+      [36m<div[39m
+        [33mdata-evergreen-toaster-container[39m=[32m""[39m
+      [36m/>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"ub-bg_wivy90  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-h_100vh ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-box-szg_border-box"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ub-bg_awzisn  ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-algn-itms_center ub-just-cnt_space-between ub-mb_20px ub-pl_16px ub-pr_16px ub-pb_12px ub-pt_12px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-box-szg_border-box"[39m
+            [33mstyle[39m=[32m"box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ub-flx_1 ub-dspl_flex ub-algn-itms_center ub-box-szg_border-box"[39m
+            [36m/>[39m
+            [36m<h2[39m
+              [33mclass[39m=[32m"ub-mt_0px ub-mb_0px ub-color_101840 ub-fnt-fam_wm9v6k ub-f-wght_600 ub-fnt-sze_18px ub-ln-ht_24px ub-ltr-spc_-0-07px ub-box-szg_border-box"[39m
+            [36m>[39m
+              [0mHome[0m
+            [36m</h2>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ub-flx_1 ub-dspl_flex ub-just-cnt_flex-end ub-box-szg_border-box"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-just-cnt_space-between ub-box-szg_border-box"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ub-bg_awzisn  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-mr_12px ub-box-szg_border-box"[39m
+              [33mstyle[39m=[32m"box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);"[39m
+            [36m>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mBasic Questions[0m
+              [36m</h2>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mGo to Basic Questions[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ub-bg_awzisn  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-ml_12px ub-box-szg_border-box"[39m
+              [33mstyle[39m=[32m"box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);"[39m
+            [36m>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mDetailed Questions[0m
+              [36m</h2>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mGo to Detailed Questions[0m
+              [36m</button>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ub-bg_awzisn  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-mt_auto ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-box-szg_border-box"[39m
+            [33mstyle[39m=[32m"box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); width: 100%; max-width: 1024px;"[39m
+          [36m>[39m
+            [36m<form[39m
+              [33mclass[39m=[32m""[39m
+            [36m>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+              [36m>[39m
+                [0mAPI Key: [0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-control"[39m
+                [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+                [33mtype[39m=[32m"password"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+              [36m<br />[39m
+            [36m</form>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-c1c4d6 ub-b-lft_1px-solid-c1c4d6 ub-b-rgt_1px-solid-c1c4d6 ub-b-top_1px-solid-c1c4d6 ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_474d66 ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_white ub-bs_13po50p_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-color_c1c4d6_yzzm16 ub-b-btm-clr_E6E8F0_yzzm16 ub-b-lft-clr_E6E8F0_yzzm16 ub-b-rgt-clr_E6E8F0_yzzm16 ub-b-top-clr_E6E8F0_yzzm16 ub-b-btm_1px-solid-8f95b2_vmhk7m ub-b-lft_1px-solid-8f95b2_vmhk7m ub-b-rgt_1px-solid-8f95b2_vmhk7m ub-b-top_1px-solid-8f95b2_vmhk7m ub-bg-clr_FAFBFF_vmhk7m ub-bg-clr_F4F5F9_hxa9p6 ub-mt_10px ub-box-szg_border-box"[39m
+            [36m>[39m
+              [0mSubmit[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+       5 | test('renders learn react link', () => {
+       6 |   render(<App />);
+    >  7 |   const linkElement = screen.getByText(/learn react/i);
+         |                              ^
+       8 |   expect(linkElement).toBeInTheDocument();
+       9 | });
+      10 |
+
+      at Object.getElementError (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/config.js:37:19)
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+      at node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+      at getByText (node_modules/@testing-library/react/node_modules/@testing-library/dom/dist/query-helpers.js:95:19)
+      at Object.<anonymous> (src/App.test.tsx:7:30)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
 declaring it in its dependencies. This is currently working because
@@ -30,3 +128,16 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
+--------------------|---------|----------|---------|---------|-------------------
+File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------|---------|----------|---------|---------|-------------------
+All files           |   28.57 |    16.66 |      20 |   28.57 |                   
+ App.tsx            |      60 |       50 |   33.33 |      60 | 11,19-25          
+ index.tsx          |       0 |      100 |     100 |       0 | 7-19              
+ reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
+--------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        3.553 s
+Ran all test suites.
