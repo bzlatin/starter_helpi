@@ -34,6 +34,7 @@ function App() {
         <p>Ben zlatin</p>
         <p>Christian Brandt</p>
         <p>Will Branam</p>
+        <p>Joshua Washington</p>
         <a
           className="App-link"
           href="https://reactjs.org"
