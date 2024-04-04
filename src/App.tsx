@@ -50,11 +50,11 @@ function App() {
         <TextInput
           onChange={changeKey}
           name="api-input"
-          placeholder="Insert API Key Here:"
+          placeholder="Insert API .Key Here:"
         />
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>
-          Submit
+          Submit Here
         </Button>
       </Form>
     </div>
