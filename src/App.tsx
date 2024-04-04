@@ -1,60 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Button, Form } from "react-bootstrap";
-
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
+import { Pane } from "evergreen-ui";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HeaderButton from "./components/HeaderButton";
 
 function App() {
-  const [key, setKey] = useState<string>(keyData); //for api key input
+  const saveKeyData = "MYKEY";
+  const [key, setKey] = useState("");
 
-  //sets the local storage item to the api key the user inputed
-  function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload(); //when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
-  }
+  // Effect to load the saved API key from local storage on component mount
+  useEffect(() => {
+    const savedKey = localStorage.getItem(saveKeyData);
+    if (savedKey !== null) {
+      setKey(JSON.parse(savedKey));
+    }
+  }, []);
 
-  //whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
+  // Handle API key change
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  // Save API key to local storage
+  function handleSubmit() {
+    localStorage.setItem(saveKeyData, JSON.stringify(key));
+    // Suggestion: Instead of reloading, consider using a state to indicate the key has been saved or triggering a re-fetch of any data using the new key
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>Ben zlatin</p>
-        <p>Christian Brandt</p>
-        <p>Will Branam</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="Insert API Key Here"
-          onChange={changeKey}
-        ></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </Form>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Pane>
+                  <HeaderButton />
+                </Pane>
+                <header className="App-header">
+                  <img src={logo} className="App-logo" alt="logo" />
+                  {/* Rest of your component */}
+                </header>
+                <Form>
+                  <Form.Label>API Key:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Insert API Key Here"
+                    value={key}
+                    onChange={changeKey}
+                  />
+                  <Button className="Submit-Button" onClick={handleSubmit}>
+                    Submit
+                  </Button>
+                </Form>
+              </>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
