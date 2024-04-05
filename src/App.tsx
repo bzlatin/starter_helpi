@@ -39,7 +39,7 @@ function App() {
       background="tint2"
     >
       {/* Header - Assuming HeaderButton is correctly implemented */}
-      <HeaderButton /> {/* This line replaces the previous placeholder for additional content */}
+       {/* This line replaces the previous placeholder for additional content */}
 
       {/* Main Content */}
       <Pane
