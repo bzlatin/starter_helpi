@@ -47,14 +47,9 @@ function App() {
         paddingY={12}
         background="white"
         borderRadius={3}
-        style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)" }}
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
       >
-        {/* Logo and title */}
-        <Pane flex={1} display="flex" alignItems="center"></Pane>
         <Heading size={600}>Home</Heading>
-        <Pane flex={1} display="flex" justifyContent="flex-end">
-          {/* Placeholder for additional content */}
-        </Pane>
       </Pane>
 
       {/* Main Content */}
@@ -73,13 +68,21 @@ function App() {
           padding={20}
           background="white"
           borderRadius={3}
-          style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)" }}
+          boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
           marginRight={12}
         >
           <Heading size={500} marginBottom={12}>
             Basic Questions
           </Heading>
           <Button appearance="primary">Go to Basic Questions</Button>
+          <Pane maxWidth="75%" fontSize="12px" marginTop={12}>
+            <p>
+              Explore answers to basic career questions: Dive into our
+              foundational guide for straightforward insights and answers to
+              your fundamental career queries. Perfect for those seeking clear,
+              concise information before delving deeper.
+            </p>
+          </Pane>
         </Pane>
 
         {/* Detailed Questions Section */}
@@ -91,41 +94,55 @@ function App() {
           padding={20}
           background="white"
           borderRadius={3}
-          style={{ boxShadow: "0 2px 4px rgba(0, 0, 0, 0.05)" }}
+          boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
           marginLeft={12}
         >
           <Heading size={500} marginBottom={12}>
             Detailed Questions
           </Heading>
           <Button appearance="primary">Go to Detailed Questions</Button>
+          <Pane maxWidth="75%" fontSize="12px" marginTop={12}>
+            <p>
+              Delve deeper with answers to detailed career questions: Our
+              comprehensive guide offers in-depth insights and answers, ideal
+              for those who have already explored basic concepts and seek
+              further clarification.
+            </p>
+          </Pane>
         </Pane>
       </Pane>
+
+      {/* API Key Input Section */}
       <Pane
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        marginTop="auto" // Ensures it sticks to the bottom
+        marginTop="auto"
         padding={20}
         background="white"
         borderRadius={3}
-        style={{
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-          width: "100%",
-          maxWidth: "1024px",
-        }}
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+        width="100%"
+        maxWidth="1024px"
       >
         <Form>
-          <Form.Label>API Key: </Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Insert API Key Here"
-            value={key} // Ensures the input reflects the state
-            onChange={changeKey}
-          />
-          <br />
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>API Key:</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Insert API Key Here"
+              value={key}
+              onChange={changeKey}
+            />
+          </Form.Group>
         </Form>
-        <Button marginTop="10px" onClick={handleSubmit}>
+        <Button
+          alignContent="center"
+          marginTop={16}
+          appearance="primary"
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
       </Pane>
