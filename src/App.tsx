@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Form } from "react-bootstrap";
-import { Pane, Heading, Button } from "evergreen-ui";
+import { TextInput, Pane, Heading, Button } from "evergreen-ui";
+import HeaderButton from "./components/HeaderButton"; // Adjust this import path
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -25,11 +28,7 @@ function App() {
     setKey(event.target.value);
   }
 
-// Removed duplicate Button import and corrected the import line
-import { TextInput, Pane, Heading, Button } from "evergreen-ui";
-import HeaderButton from "./components/HeaderButton"; // Adjust this import path
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Home";
+
 
 export default function App() {
   return (
