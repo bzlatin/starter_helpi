@@ -120,7 +120,7 @@ function Home() {
           <Button
             appearance="primary"
             onClick={() => {
-              // goToDetailedQuestionPage();
+              // goToDetailedQuestionPage(); comment out later
             }}
           >
             Go to Detailed Questions
