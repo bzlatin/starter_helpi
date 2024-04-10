@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Form } from "react-bootstrap";
-// Removed duplicate Button import and corrected the import line
-import { TextInput, Pane, Heading, Button } from "evergreen-ui";
-import HeaderButton from "./components/HeaderButton"; // Adjust this import path
+import { Pane, Heading, Button, TextInput } from "evergreen-ui";
 
-// local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData);
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
+function Home() {
+  const saveKeyData = "MYKEY";
+  const [key, setKey] = useState<string>("");
 
-function App() {
-  const [key, setKey] = useState<string>(keyData); // for api key input
+  useEffect(() => {
+    const prevKey = localStorage.getItem(saveKeyData);
+    if (prevKey !== null) {
+      setKey(prevKey);
+    }
+  }, []);
 
-  // sets the local storage item to the api key the user inputed
   function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    // Consider using a more React-friendly way to reflect changes
-    window.location.reload();
+    localStorage.setItem(saveKeyData, key);
+    // Here, instead of reloading, you might want to navigate or trigger a state update
   }
 
-  // whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
@@ -79,4 +74,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
