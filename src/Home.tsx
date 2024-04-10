@@ -87,7 +87,7 @@ function Home() {
           <Button
             appearance="primary"
             onClick={() => {
-              // goToBasicQuestionPage();
+              goToBasicQuestionPage();
             }}
           >
             Go to Basic Questions
