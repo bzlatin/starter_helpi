@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  HashRouter,
-} from "react-router-dom";
+import { Routes, Route, Navigate, HashRouter } from "react-router-dom";
 import Home from "./Home";
 import BasicQuiz from "./BasicQuiz";
 import DetailedQuiz from "./DetailedQuiz";
