@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Form } from "react-bootstrap";
-import { Pane, Button } from "evergreen-ui";
+import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 // let basicAnswers = [];
 // basicAnswers = ["", "", "", "", "", "", ""];
+const choices = [
+  { text: "Paris", value: "paris" },
+  { text: "London", value: "london" },
+  { text: "Berlin", value: "berlin" },
+  { text: "Rome", value: "rome" },
+];
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -44,8 +50,46 @@ function BasicQuiz() {
       padding={16}
       background="tint2"
     >
+      <Pane
+        width="100%"
+        maxWidth="1024px"
+        display="flex"
+        alignItems="center"
+        justifyContent="right"
+        marginBottom={20}
+        paddingX={16}
+        paddingY={12}
+        background="white"
+        borderRadius={3}
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+      >
+        <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
+      </Pane>
       <h1>Basic Question Page</h1>
-      <p>This is a basic question page.</p>
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"What's your dream city?"}
+        </Heading>
+        {choices.map((choice) => (
+          <Radio key={choice.value} label={choice.text} value={choice.value} />
+        ))}
+      </Pane>
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"What's your dream city?"}
+        </Heading>
+        {choices.map((choice) => (
+          <Radio key={choice.value} label={choice.text} value={choice.value} />
+        ))}
+      </Pane>
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"What's your dream city?"}
+        </Heading>
+        {choices.map((choice) => (
+          <Radio key={choice.value} label={choice.text} value={choice.value} />
+        ))}
+      </Pane>
       <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
         display="flex"

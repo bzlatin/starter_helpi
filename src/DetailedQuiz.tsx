@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { Pane, Button } from "evergreen-ui";
+import { Pane, Button, HomeIcon, TextInputField, Heading } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
 
@@ -41,8 +41,40 @@ function DetailedQuiz() {
       padding={16}
       background="tint2"
     >
+      <Pane
+        width="100%"
+        maxWidth="1024px"
+        display="flex"
+        alignItems="center"
+        justifyContent="right"
+        marginBottom={20}
+        paddingX={16}
+        paddingY={12}
+        background="white"
+        borderRadius={3}
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+      >
+        <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
+      </Pane>
       <h1>Detailed Question Page</h1>
-      <p>This is a detailed question page.</p>
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"Question 1?"}
+        </Heading>
+        <TextInputField placeholder="Your answer..." />
+      </Pane>{" "}
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"Question 2?"}
+        </Heading>
+        <TextInputField placeholder="Your answer..." />
+      </Pane>
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"Question 3?"}
+        </Heading>
+        <TextInputField placeholder="Your answer..." />
+      </Pane>
       <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
         display="flex"
