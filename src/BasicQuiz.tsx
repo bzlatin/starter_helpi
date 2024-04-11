@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Form } from "react-bootstrap";
-import { Pane, Heading, Button } from "evergreen-ui";
+import { Pane, Button } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let basicAnswers = [];
-basicAnswers = ["", "", "", "", "", "", ""];
+// let basicAnswers = [];
+// basicAnswers = ["", "", "", "", "", "", ""];
+
 let keyData = "";
 const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
