@@ -47,7 +47,7 @@ function BasicQuiz() {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      height="100vh"
+      height="auto"
       padding={16}
       background="tint2"
     >
@@ -106,7 +106,7 @@ function BasicQuiz() {
       </Pane>
       <Pane marginBottom={20}>
         <Heading size={600} marginBottom={10}>
-          {"When workign in on a project. I am most interested in:"}
+          {"When working in on a project. I am most interested in:"}
         </Heading>
         {choices.map((choice) => (
           <Radio key={choice.value} label={choice.text} value={choice.value} />
