@@ -18,10 +18,10 @@ function Home() {
   let navigate = useNavigate(); // Hook for navigation
 
   const goToBasicQuestionPage = () => {
-    navigate("/basicquestionpage"); // Use the navigate function
+    navigate("/basicQuestionPage"); // Use the navigate function
   };
   const goToDetailedQuestionPage = () => {
-    navigate("/detailedQuestion"); // Use the navigate function
+    navigate("/detailedQuestionPage"); // Use the navigate function
   };
 
   //sets the local storage item to the api key the user inputed
@@ -51,7 +51,7 @@ function Home() {
         maxWidth="1024px"
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="center"
         marginBottom={20}
         paddingX={16}
         paddingY={12}
@@ -120,7 +120,7 @@ function Home() {
           <Button
             appearance="primary"
             onClick={() => {
-              // goToDetailedQuestionPage(); comment out later
+              goToDetailedQuestionPage();
             }}
           >
             Go to Detailed Questions
