@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (188 ms)
+  ✕ renders learn react link (185 ms)
 
   ● renders learn react link
 
@@ -138,10 +138,10 @@ go away.[0m
 --------------------|---------|----------|---------|---------|--------------------
 File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
 --------------------|---------|----------|---------|---------|--------------------
-All files           |   31.57 |       30 |      10 |   31.57 |                    
+All files           |   30.15 |       30 |       8 |   30.15 |                    
  App.tsx            |     100 |      100 |     100 |     100 |                    
- BasicQuiz.tsx      |   28.57 |       50 |       0 |   28.57 | 15-49              
- DetailedQuiz.tsx   |   28.57 |       50 |       0 |   28.57 | 12-46              
+ BasicQuiz.tsx      |   26.31 |       50 |       0 |   26.31 | 21-93              
+ DetailedQuiz.tsx   |   26.66 |       50 |       0 |   26.66 | 12-78              
  Home.tsx           |   52.94 |       50 |   14.28 |   52.94 | 12,21,24-35,90-123 
  index.tsx          |       0 |      100 |     100 |       0 | 7-19               
  reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10               
@@ -149,5 +149,5 @@ All files           |   31.57 |       30 |      10 |   31.57 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.591 s
+Time:        3.726 s
 Ran all test suites.
