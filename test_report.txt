@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (191 ms)
+  ✕ renders learn react link (196 ms)
 
   ● renders learn react link
 
@@ -19,7 +19,7 @@ FAIL src/App.test.tsx
           [33mclass[39m=[32m"ub-bg_wivy90  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-h_100vh ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-box-szg_border-box"[39m
         [36m>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"ub-bg_awzisn ub-bs_1bodm68  ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-algn-itms_center ub-just-cnt_space-between ub-mb_20px ub-pl_16px ub-pr_16px ub-pb_12px ub-pt_12px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-box-szg_border-box"[39m
+            [33mclass[39m=[32m"ub-bg_awzisn ub-bs_1bodm68  ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-algn-itms_center ub-just-cnt_center ub-mb_20px ub-pl_16px ub-pr_16px ub-pb_12px ub-pt_12px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-box-szg_border-box"[39m
           [36m>[39m
             [36m<h2[39m
               [33mclass[39m=[32m"ub-mt_0px ub-mb_0px ub-color_101840 ub-fnt-fam_wm9v6k ub-f-wght_600 ub-fnt-sze_18px ub-ln-ht_24px ub-ltr-spc_-0-07px ub-box-szg_border-box"[39m
@@ -135,16 +135,19 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
---------------------|---------|----------|---------|---------|-------------------
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
---------------------|---------|----------|---------|---------|-------------------
-All files           |   28.57 |    16.66 |      20 |   28.57 |                   
- App.tsx            |      60 |       50 |   33.33 |      60 | 11,19-25          
- index.tsx          |       0 |      100 |     100 |       0 | 7-19              
- reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
---------------------|---------|----------|---------|---------|-------------------
+--------------------|---------|----------|---------|---------|--------------------
+File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+--------------------|---------|----------|---------|---------|--------------------
+All files           |   31.57 |       30 |      10 |   31.57 |                    
+ App.tsx            |     100 |      100 |     100 |     100 |                    
+ BasicQuiz.tsx      |   28.57 |       50 |       0 |   28.57 | 15-49              
+ DetailedQuiz.tsx   |   28.57 |       50 |       0 |   28.57 | 12-46              
+ Home.tsx           |   52.94 |       50 |   14.28 |   52.94 | 12,21,24-35,90-123 
+ index.tsx          |       0 |      100 |     100 |       0 | 7-19               
+ reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10               
+--------------------|---------|----------|---------|---------|--------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.619 s
+Time:        3.912 s
 Ran all test suites.
