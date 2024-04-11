@@ -82,14 +82,6 @@ function BasicQuiz() {
       </Pane>
       <Pane marginBottom={20}>
         <Heading size={600} marginBottom={10}>
-          {"I am passionate about helping others directly."}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
           {"I prefer to follow instructions rather than create my own path."}
         </Heading>
         {tfChoices.map((choice) => (
@@ -98,15 +90,23 @@ function BasicQuiz() {
       </Pane>
       <Pane marginBottom={20}>
         <Heading size={600} marginBottom={10}>
-          {"What's your dream city?"}
+          {"I prefer jobs that offer a clear path for advancement."}
         </Heading>
-        {choices.map((choice) => (
+        {tfChoices.map((choice) => (
           <Radio key={choice.value} label={choice.text} value={choice.value} />
         ))}
       </Pane>
       <Pane marginBottom={20}>
         <Heading size={600} marginBottom={10}>
-          {"What's your dream city?"}
+          {"I prefer to follow instructions rather than create my own path"}
+        </Heading>
+        {tfChoices.map((choice) => (
+          <Radio key={choice.value} label={choice.text} value={choice.value} />
+        ))}
+      </Pane>
+      <Pane marginBottom={20}>
+        <Heading size={600} marginBottom={10}>
+          {"When workign in on a project. I am most interested in:"}
         </Heading>
         {choices.map((choice) => (
           <Radio key={choice.value} label={choice.text} value={choice.value} />
