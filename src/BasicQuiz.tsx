@@ -22,7 +22,7 @@ const choices = [
   { text: "Berlin", value: "berlin" },
   { text: "Rome", value: "rome" },
 ];
-//let basicAnswers = ["", "", "", "", "", "", ""];
+
 let keyData = "";
 const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
@@ -34,7 +34,23 @@ function BasicQuiz() {
   let navigate = useNavigate(); // Hook for navigation
 
   const [key, setKey] = useState<string>(keyData); //for api key input
+  
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+  //Setting up for the next Button
+  const handleNext = () => {
+    if(currentQuestionIndex < questions.length-1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+  }
+  //Setting up for the back button
+  const handleBack = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex-1);
+    }
+  };
+
+  
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -77,11 +93,15 @@ function BasicQuiz() {
       <h1>Basic Question Page</h1>
       <Pane marginBottom={20}>
         <Heading size={600} marginBottom={10}>
-          {"I enjoy working in a team more than working alone."}
+          {questions[currentQuestionIndex].text}
         </Heading>
         {tfChoices.map((choice) => (
           <Radio key={choice.value} label={choice.text} value={choice.value} />
         ))}
+      </Pane>
+      <Pane display="flex" marginBottom={20}>
+        <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</Button>
+        <Button onClick={handleNext} appearance="primary" marginLeft={16}>Next</Button>
       </Pane>
       <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
