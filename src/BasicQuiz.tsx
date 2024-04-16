@@ -5,16 +5,19 @@ import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-// let basicAnswers = [];
-// basicAnswers = ["", "", "", "", "", "", ""];
-const tfChoices = [{text: "True", value: "true"}, {text: "false", value: "false"}];
-const choices = [
-  { text: "Paris", value: "paris" },
-  { text: "London", value: "london" },
-  { text: "Berlin", value: "berlin" },
-  { text: "Rome", value: "rome" },
+
+const questions = [
+  {text: "1. I enjoy working in a team more than working alone.", value: "Q1"},
+  {text: "2. When working on a project. I am most interested in: ", value: "Q2"},
+  {text: "3. I am passionate about helping others directly.", value: "Q3"},
+  {text: "4. I am drawn to tasks that are: ", value: "Q4"},
+  {text: "5. I prefer to follow instructions rather than create my own path.", value: "Q5"},
+  {text: "6. I am more interested in working: ", value: "Q6"},
+  {text: "7. I prefer jobs that offer a clear path for advancement.", value: "Q7"}
 ];
-//let basicAnswers = ["", "", "", "", "", "", ""];
+const tfChoices = [{text: "True", value: "true"}, {text: "false", value: "false"}];
+
+
 let keyData = "";
 const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
@@ -26,7 +29,23 @@ function BasicQuiz() {
   let navigate = useNavigate(); // Hook for navigation
 
   const [key, setKey] = useState<string>(keyData); //for api key input
+  
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+  //Setting up for the next Button
+  const handleNext = () => {
+    if(currentQuestionIndex < questions.length-1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+  }
+  //Setting up for the back button
+  const handleBack = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex-1);
+    }
+  };
+
+  
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -68,49 +87,16 @@ function BasicQuiz() {
       </Pane>
       <h1>Basic Question Page</h1>
       <Pane marginBottom={20}>
-        <Pane>
-          <Heading size = {1200} marginBottom = {20}>
-            {"True or False Questions"}
-          </Heading>
-        </Pane>
         <Heading size={600} marginBottom={10}>
-          {"I enjoy working in a team more than working alone."}
+          {questions[currentQuestionIndex].text}
         </Heading>
         {tfChoices.map((choice) => (
           <Radio key={choice.value} label={choice.text} value={choice.value} />
         ))}
       </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"I prefer to follow instructions rather than create my own path."}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"I prefer jobs that offer a clear path for advancement."}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"I prefer to follow instructions rather than create my own path"}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"When working in on a project. I am most interested in:"}
-        </Heading>
-        {choices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
+      <Pane display="flex" marginBottom={20}>
+        <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</Button>
+        <Button onClick={handleNext} appearance="primary" marginLeft={16}>Next</Button>
       </Pane>
       <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
