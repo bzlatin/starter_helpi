@@ -5,8 +5,16 @@ import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-// let basicAnswers = [];
-// basicAnswers = ["", "", "", "", "", "", ""];
+
+const questions = [
+  {text: "1. I enjoy working in a team more than working alone.", value: "Q1"},
+  {text: "2. When working on a project. I am most interested in: ", value: "Q2"},
+  {text: "3. I am passionate about helping others directly.", value: "Q3"},
+  {text: "4. I am drawn to tasks that are: ", value: "Q4"},
+  {text: "5. I prefer to follow instructions rather than create my own path.", value: "Q5"},
+  {text: "6. I am more interested in working: ", value: "Q6"},
+  {text: "7. I prefer jobs that offer a clear path for advancement.", value: "Q7"}
+];
 const tfChoices = [{text: "True", value: "true"}, {text: "false", value: "false"}];
 const choices = [
   { text: "Paris", value: "paris" },
@@ -68,47 +76,10 @@ function BasicQuiz() {
       </Pane>
       <h1>Basic Question Page</h1>
       <Pane marginBottom={20}>
-        <Pane>
-          <Heading size = {1200} marginBottom = {20}>
-            {"True or False Questions"}
-          </Heading>
-        </Pane>
         <Heading size={600} marginBottom={10}>
           {"I enjoy working in a team more than working alone."}
         </Heading>
         {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"I prefer to follow instructions rather than create my own path."}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"I prefer jobs that offer a clear path for advancement."}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"I prefer to follow instructions rather than create my own path"}
-        </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
-      </Pane>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {"When working in on a project. I am most interested in:"}
-        </Heading>
-        {choices.map((choice) => (
           <Radio key={choice.value} label={choice.text} value={choice.value} />
         ))}
       </Pane>
