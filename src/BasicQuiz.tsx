@@ -16,12 +16,7 @@ const questions = [
   {text: "7. I prefer jobs that offer a clear path for advancement.", value: "Q7"}
 ];
 const tfChoices = [{text: "True", value: "true"}, {text: "false", value: "false"}];
-const choices = [
-  { text: "Paris", value: "paris" },
-  { text: "London", value: "london" },
-  { text: "Berlin", value: "berlin" },
-  { text: "Rome", value: "rome" },
-];
+
 
 let keyData = "";
 const saveKeyData = "MYKEY";
