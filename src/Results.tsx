@@ -1,7 +1,6 @@
-// Results.tsx
 import React, { useState } from 'react';
-import './Results.css'; // Make sure to create a corresponding CSS file for styling
-import { Pane, Button } from 'evergreen-ui';
+import './Results.css'; // Make sure the CSS file exists and the path is correct
+import { Pane, Button, TextInput, Text } from 'evergreen-ui'; // Import necessary components
 
 const Results = () => {
   // State hooks
@@ -11,9 +10,8 @@ const Results = () => {
 
   // Event Handlers
   const handleGenerateCareer = () => {
-    // Implement career generation logic here
+    // TODO: Implement career generation logic here
     setProgress('Generating...');
-    // Simulate career generation
     setTimeout(() => {
       setCareerResult('Software Developer'); // Placeholder result
       setProgress('');
@@ -21,23 +19,21 @@ const Results = () => {
   };
 
   const handleNarrowResults = () => {
-    // Implement result narrowing logic here
+    // TODO: Implement result narrowing logic here
     setProgress('Narrowing results...');
-    // Simulate result narrowing
     setTimeout(() => {
       setCareerResult('Front-end Developer'); // Placeholder narrowed result
       setProgress('');
     }, 2000);
   };
 
-  const handleUserFeedbackChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+  const handleUserFeedbackChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserFeedback(event.target.value);
   };
 
   const handleSkip = () => {
-    // Implement skip logic here
+    // TODO: Implement skip logic here
     setProgress('Skipping feedback...');
-    // Simulate skipping feedback
     setTimeout(() => {
       setUserFeedback('');
       setProgress('');
@@ -46,7 +42,7 @@ const Results = () => {
 
   return (
     <Pane className="results-container">
-      <h1>You should work in...</h1>
+      <Text>You should work in...</Text>
       <Pane className="result-display-area">{careerResult || 'Your result will appear here'}</Pane>
       <Button onClick={handleGenerateCareer} disabled={progress !== ''}>
         GENERATE CAREER
@@ -54,7 +50,7 @@ const Results = () => {
       <Button onClick={handleNarrowResults} disabled={progress !== ''}>
         Narrow my Results
       </Button>
-      <input
+      <TextInput
         type="text"
         placeholder="Enter User Feedback"
         value={userFeedback}
