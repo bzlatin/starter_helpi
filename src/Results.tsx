@@ -50,12 +50,12 @@ const Results = () => {
       <Button onClick={handleNarrowResults} disabled={progress !== ''}>
         Narrow my Results
       </Button>
-      <TextInput
+      {/* <TextInput
         type="text"
         placeholder="Enter User Feedback"
         value={userFeedback}
         onChange={handleUserFeedbackChange}
-      />
+      /> */}
       <Button onClick={handleSkip} disabled={progress !== ''}>SKIP</Button>
       <Pane className="progress">{progress}</Pane>
     </Pane>
