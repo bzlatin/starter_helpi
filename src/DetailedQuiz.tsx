@@ -58,6 +58,58 @@ function DetailedQuiz() {
     } else {
       console.log("All questions answered:", questions);
       // Proceed with your API call or further processing here
+      console.log("All questions answered, calling API...");
+
+      callChatGPTAPI("replace with key");
+    }
+  };
+
+  const callChatGPTAPI = async (myAPIKey: string) => {
+    console.log("calling api");
+    try {
+      // Compile the user's answers into a single string
+      const userResponses = questions
+        .map((q) => `${q.text}: ${q.answer}`)
+        .join(" \n");
+
+      // Request to GPT-4 to suggest a career based on the user's answers
+      const careerSuggestion = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${myAPIKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-4",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are a bot that tells people what future career to have. You will  be given 7 short answer questions and answers below. Give them the career and one sentence about why they should have that career. Never ask follow up questions. Only give a job title, and explanation.",
+              },
+              { role: "user", content: userResponses },
+            ],
+          }),
+        }
+      ).then((res) => res.json());
+
+      // Output or use the suggested career
+      if (careerSuggestion.choices && careerSuggestion.choices.length > 0) {
+        console.log(
+          "Career suggestion:",
+          careerSuggestion.choices[0].message.content
+        );
+      } else {
+        console.log("No career suggestion found.");
+        toaster.warning(
+          "No career suggestion was generated. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error calling OpenAI API:", error);
+      toaster.danger("Failed to get career suggestions. Please try again.");
     }
   };
 
