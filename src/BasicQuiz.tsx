@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 
+
 const questions = [
   {text: "1. I enjoy working in a team more than working alone.", value: "Q1"},
   {text: "2. When working on a project. I am most interested in: ", value: "Q2"},
@@ -15,8 +16,17 @@ const questions = [
   {text: "6. I am more interested in working: ", value: "Q6"},
   {text: "7. I prefer jobs that offer a clear path for advancement.", value: "Q7"}
 ];
-const tfChoices = [{text: "True", value: "true"}, {text: "false", value: "false"}];
 
+//Scuffed way to do choices
+const choices1 = [{text: "True", value: "true"}, {text: "False", value: "false"}];
+const choices2 = [{text: "The planning and organization", value: "choice"}, {text: "The creative process", value: "choice"}, {text: "The problem solving aspects", value: "choice"}, {text: "The execution and details", value: "choice"}];
+const choices3 = [{text: "True", value: "true"}, {text: "False", value: "false"}]
+const choices4 = [{text: "Analytical and data-driven", value: "choice"}, {text: "Creative and Expressive", value: "choice"}, {text: "Technical and Hands-On", value: "choice"}, {text: "Interpersonal and Service-Oriented", value: "choice"}];
+const choices5 = [{text: "True", value: "true"}, {text: "False", value: "false"}];
+const choices6 = [{text: "Outdoors", value: "choice"}, {text: "In an office", value: "choice"}, {text: "From home", value: "choice"}, {text: "In a different places, traveling", value: "choice"}];
+const choices7 = [{text: "True", value: "true"}, {text: "False", value: "false"}];
+
+const choices = [choices1, choices2, choices3, choices4, choices5, choices6, choices7];
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -90,13 +100,13 @@ function BasicQuiz() {
         <Heading size={600} marginBottom={10}>
           {questions[currentQuestionIndex].text}
         </Heading>
-        {tfChoices.map((choice) => (
-          <Radio key={choice.value} label={choice.text} value={choice.value} />
-        ))}
+        {choices[currentQuestionIndex].map((choice, index) => (
+    <Radio key={index} label={choice.text} value={choice.value} />
+  ))}
       </Pane>
       <Pane display="flex" marginBottom={20}>
         <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</Button>
-        <Button onClick={handleNext} appearance="primary" marginLeft={16}>Next</Button>
+        <Button onClick={handleNext} appearance="primary" marginLeft={16} disabled={currentQuestionIndex === 6}>Next</Button>
       </Pane>
       <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
