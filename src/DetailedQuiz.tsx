@@ -6,6 +6,8 @@ import {
   TextInputField,
   Heading,
   toaster,
+  CrossIcon,
+  Tooltip,
 } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
@@ -47,17 +49,81 @@ function DetailedQuiz() {
     setQuestions(newQuestions);
   };
 
+  const clearAnswer = (id: number) => {
+    const newQuestions = questions.map((q) =>
+      q.id === id ? { ...q, answer: "" } : q
+    );
+    setQuestions(newQuestions);
+  };
+
   const checkQuestions = () => {
     // Check if all questions have been answered
     const allAnswered = questions.every((q) => q.answer.trim() !== "");
+    const savedKeyData = "MYKEY";
+    const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
+
     if (!allAnswered) {
       toaster.warning("Please answer all the questions before proceeding.", {
         duration: 5,
-        id: "question-warning", // Optional: add an ID if you want to manipulate or track the toast later
+        id: "question-warning",
       });
+    } else if (!apiKey) {
+      toaster.danger("API Key is missing. Please provide a valid API Key.");
     } else {
       console.log("All questions answered:", questions);
-      // Proceed with your API call or further processing here
+
+      callChatGPTAPI(apiKey);
+    }
+  };
+
+  const callChatGPTAPI = async (apiKey: string) => {
+    console.log("Calling API with Key:", apiKey);
+    try {
+      // Compile the user's answers into a single string
+      const userResponses = questions
+        .map((q) => `${q.text}: ${q.answer}`)
+        .join("\n");
+
+      // Request to OpenAI API
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-4",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are a bot that tells people what future career to have based on their responses to several questions. Give them a career and a reason for it without asking follow-up questions.",
+              },
+              {
+                role: "user",
+                content: userResponses,
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      // Output or use the suggested career
+      if (data.choices && data.choices.length > 0) {
+        console.log("Career suggestion:", data.choices[0].message.content);
+      } else {
+        console.log("No career suggestion found.");
+        toaster.warning(
+          "No career suggestion was generated. Please try again & ensure you selected the correct API Key."
+        );
+      }
+    } catch (error) {
+      console.error("Error calling OpenAI API:", error);
+      toaster.danger("Failed to get career suggestions. Please try again.");
     }
   };
 
@@ -118,13 +184,31 @@ function DetailedQuiz() {
             <Heading size={600} marginBottom={10}>
               {question.text}
             </Heading>
-            <TextInputField
-              placeholder="Your answer..."
-              value={question.answer}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                handleInputChange(question.id, e.target.value)
-              }
-            />
+            <Pane
+              display="flex"
+              flexDirection="row"
+              alignItems="center"
+              justifyContent="center"
+              width="30%"
+            >
+              <TextInputField
+                marginX="5%"
+                width="80%"
+                placeholder="Your answer..."
+                value={question.answer}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleInputChange(question.id, e.target.value)
+                }
+              />
+              <Tooltip content="Clear answer" position="right">
+                <CrossIcon
+                  marginBottom="5%"
+                  onClick={() => clearAnswer(question.id)}
+                >
+                  Clear Answer
+                </CrossIcon>
+              </Tooltip>
+            </Pane>
           </Pane>
         ))}
         <Button
