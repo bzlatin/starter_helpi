@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (185 ms)
+  ✕ renders learn react link (204 ms)
 
   ● renders learn react link
 
@@ -16,90 +16,102 @@ FAIL src/App.test.tsx
       [36m/>[39m
       [36m<div>[39m
         [36m<div[39m
-          [33mclass[39m=[32m"ub-bg_wivy90  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-h_100vh ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-box-szg_border-box"[39m
+          [33mstyle[39m=[32m"display: flex; flex-direction: column; min-height: 100vh;"[39m
         [36m>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"ub-bg_awzisn ub-bs_1bodm68  ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-algn-itms_center ub-just-cnt_center ub-mb_20px ub-pl_16px ub-pr_16px ub-pb_12px ub-pt_12px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-box-szg_border-box"[39m
-          [36m>[39m
-            [36m<h2[39m
-              [33mclass[39m=[32m"ub-mt_0px ub-mb_0px ub-color_101840 ub-fnt-fam_wm9v6k ub-f-wght_600 ub-fnt-sze_18px ub-ln-ht_24px ub-ltr-spc_-0-07px ub-box-szg_border-box"[39m
-            [36m>[39m
-              [0mHome[0m
-            [36m</h2>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-just-cnt_space-between ub-box-szg_border-box"[39m
+            [33mclass[39m=[32m"ub-bg_wivy90  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-h_auto ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-box-szg_border-box"[39m
           [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-mr_12px ub-box-szg_border-box"[39m
+              [33mclass[39m=[32m"ub-bg_awzisn ub-bs_1bodm68  ub-w_100prcnt ub-dspl_flex ub-algn-itms_center ub-just-cnt_center ub-pl_16px ub-pr_16px ub-pb_12px ub-pt_12px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-pst_fixed ub-top_0px ub-lft_0px ub-z-idx_1000 ub-box-szg_border-box"[39m
             [36m>[39m
               [36m<h2[39m
-                [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
+                [33mclass[39m=[32m"ub-mt_0px ub-mb_0px ub-color_101840 ub-fnt-fam_wm9v6k ub-f-wght_600 ub-fnt-sze_18px ub-ln-ht_24px ub-ltr-spc_-0-07px ub-box-szg_border-box"[39m
               [36m>[39m
-                [0mBasic Questions[0m
+                [0mHome[0m
               [36m</h2>[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
-              [36m>[39m
-                [0mGo to Basic Questions[0m
-              [36m</button>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"ub-max-w_75prcnt ub-fnt-sze_12px ub-mt_12px ub-box-szg_border-box"[39m
-              [36m>[39m
-                [36m<p>[39m
-                  [0mExplore answers to basic career questions: Dive into our foundational guide for straightforward insights and answers to your fundamental career queries. Perfect for those seeking clear, concise information before delving deeper.[0m
-                [36m</p>[39m
-              [36m</div>[39m
             [36m</div>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-ml_12px ub-box-szg_border-box"[39m
+              [33mclass[39m=[32m"ub-w_100prcnt ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pt_70px ub-box-szg_border-box"[39m
             [36m>[39m
-              [36m<h2[39m
-                [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
-              [36m>[39m
-                [0mDetailed Questions[0m
-              [36m</h2>[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
-              [36m>[39m
-                [0mGo to Detailed Questions[0m
-              [36m</button>[39m
               [36m<div[39m
-                [33mclass[39m=[32m"ub-max-w_75prcnt ub-fnt-sze_12px ub-mt_12px ub-box-szg_border-box"[39m
+                [33mclass[39m=[32m"ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-just-cnt_space-between ub-box-szg_border-box"[39m
               [36m>[39m
-                [36m<p>[39m
-                  [0mDelve deeper with answers to detailed career questions: Our comprehensive guide offers in-depth insights and answers, ideal for those who have already explored basic concepts and seek further clarification.[0m
-                [36m</p>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"ub-bg_awzisn ub-bs_1bodm68  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-mt_auto ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-w_100prcnt ub-max-w_1024px ub-box-szg_border-box"[39m
-          [36m>[39m
-            [36m<form[39m
-              [33mclass[39m=[32m""[39m
-            [36m>[39m
-              [36m<div>[39m
-                [36m<label[39m
-                  [33mclass[39m=[32m"form-label"[39m
-                  [33mfor[39m=[32m"formBasicEmail"[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-mr_12px ub-box-szg_border-box"[39m
                 [36m>[39m
-                  [0mAPI Key:[0m
-                [36m</label>[39m
-                [36m<input[39m
-                  [33mclass[39m=[32m"form-control"[39m
-                  [33mid[39m=[32m"formBasicEmail"[39m
-                  [33mplaceholder[39m=[32m"Insert API Key Here"[39m
-                  [33mtype[39m=[32m"password"[39m
-                  [33mvalue[39m=[32m""[39m
-                [36m/>[39m
+                  [36m<h2[39m
+                    [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [0mBasic Questions[0m
+                  [36m</h2>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [0mGo to Basic Questions[0m
+                  [36m</button>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ub-max-w_75prcnt ub-fnt-sze_12px ub-mt_12px ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [36m<p>[39m
+                      [0mExplore answers to basic career questions: Dive into our foundational guide for straightforward insights and answers to your fundamental career queries. Perfect for those seeking clear, concise information before delving deeper.[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-ml_12px ub-box-szg_border-box"[39m
+                [36m>[39m
+                  [36m<h2[39m
+                    [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [0mDetailed Questions[0m
+                  [36m</h2>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [0mGo to Detailed Questions[0m
+                  [36m</button>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ub-max-w_75prcnt ub-fnt-sze_12px ub-mt_12px ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [36m<p>[39m
+                      [0mDelve deeper with answers to detailed career questions: Our comprehensive guide offers in-depth insights and answers, ideal for those who have already explored basic concepts and seek further clarification.[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
               [36m</div>[39m
-            [36m</form>[39m
-            [36m<button[39m
-              [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-algn-cnt_center ub-mt_16px ub-box-szg_border-box"[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mstyle[39m=[32m"position: fixed; left: 0px; bottom: 0px; width: 100%; background-color: rgb(255, 255, 255); box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"ub-dspl_flex ub-algn-itms_center ub-just-cnt_center ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-w_100prcnt ub-box-szg_border-box"[39m
             [36m>[39m
-              [0mSubmit[0m
-            [36m</button>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<div>[39m
+                  [36m<label[39m
+                    [33mclass[39m=[32m"form-label"[39m
+                    [33mfor[39m=[32m"formBasicEmail"[39m
+                  [36m>[39m
+                    [0mAPI Key:[0m
+                  [36m</label>[39m
+                  [36m<input[39m
+                    [33mclass[39m=[32m"form-control"[39m
+                    [33mid[39m=[32m"formBasicEmail"[39m
+                    [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+                    [33mtype[39m=[32m"password"[39m
+                    [33mvalue[39m=[32m""[39m
+                  [36m/>[39m
+                [36m</div>[39m
+              [36m</form>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-algn-cnt_center ub-ml_10px ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mSubmit[0m
+              [36m</button>[39m
+            [36m</div>[39m
           [36m</div>[39m
         [36m</div>[39m
       [36m</div>[39m
@@ -135,19 +147,22 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
---------------------|---------|----------|---------|---------|--------------------
-File                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
---------------------|---------|----------|---------|---------|--------------------
-All files           |   28.98 |    21.42 |       8 |   28.98 |                    
- App.tsx            |     100 |      100 |     100 |     100 |                    
- BasicQuiz.tsx      |      24 |    16.66 |       0 |      24 | 25-101             
- DetailedQuiz.tsx   |   26.66 |       50 |       0 |   26.66 | 12-78              
- Home.tsx           |   52.94 |       50 |   14.28 |   52.94 | 12,21,24-35,90-123 
- index.tsx          |       0 |      100 |     100 |       0 | 7-19               
- reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10               
---------------------|---------|----------|---------|---------|--------------------
+---------------------|---------|----------|---------|---------|-------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------|---------|----------|---------|---------|-------------------
+All files            |   16.66 |     4.16 |   10.71 |   16.86 |                   
+ src                 |    9.58 |        0 |       8 |    9.72 |                   
+  App.tsx            |     100 |      100 |     100 |     100 |                   
+  BasicQuiz.tsx      |   14.28 |        0 |       0 |   14.28 | 35-102            
+  DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 22-219            
+  Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 10,13             
+  index.tsx          |       0 |      100 |     100 |       0 | 7-19              
+  reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
+ src/components      |   63.63 |       50 |   33.33 |   63.63 |                   
+  APIKey.tsx         |   63.63 |       50 |   33.33 |   63.63 | 11,18-24          
+---------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.867 s
+Time:        3.738 s
 Ran all test suites.
