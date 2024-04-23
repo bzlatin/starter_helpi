@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { Form } from "react-bootstrap";
 import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 
 const questions = [
+
   { text: "1. I enjoy working in a team more than working alone.", value: "Q1" },
   { text: "2. When working on a project. I am most interested in: ", value: "Q2" },
   { text: "3. I am passionate about helping others directly.", value: "Q3" },
@@ -59,13 +59,13 @@ function BasicQuiz() {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
-  }
-
+  };
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
+
 
   const handleAnswerChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const updatedIndices = [...selectedChoiceIndices];
@@ -86,6 +86,7 @@ function BasicQuiz() {
     setKey(event.target.value);
   }
 
+
   const goToHomePage = () => {
     navigate("/home");
   };
@@ -102,16 +103,18 @@ function BasicQuiz() {
     >
       <Pane
         width="100%"
-        maxWidth="1024px"
         display="flex"
         alignItems="center"
-        justifyContent="right"
-        marginBottom={20}
+        justifyContent="center"
         paddingX={16}
         paddingY={12}
         background="white"
         borderRadius={3}
-        boxShadow="0 2px 4px (0, 0, 0, 0.1)"
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+        position="fixed"
+        top={0}
+        left={0}
+        zIndex={1000}
       >
         <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
       </Pane>
@@ -134,39 +137,38 @@ function BasicQuiz() {
         <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</Button>
         <Button onClick={handleNext} appearance="primary" marginLeft={16} disabled={currentQuestionIndex === 6}>Next</Button>
       </Pane>
-      <Button onClick={() => goToHomePage()}>Go Back Home</Button>
+      {/* Additional top margin to prevent content overlap */}
       <Pane
+        marginTop="100px" // This should be adjusted to match the height of your header
+        width="100%"
+        maxWidth="1024px"
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        marginTop="auto"
-        padding={20}
         background="white"
-        borderRadius={3}
-        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
-        width="100%"
-        maxWidth="1024px"
       >
-        <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>API Key:</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Insert API Key Here"
-              value={key}
-              onChange={changeKey}
+        <h1>Basic Question Page</h1>
+        <Pane marginBottom={20}>
+          <Heading size={600} marginBottom={10}>
+            {questions[currentQuestionIndex].text}
+          </Heading>
+          {tfChoices.map((choice) => (
+            <Radio
+              key={choice.value}
+              label={choice.text}
+              value={choice.value}
             />
-          </Form.Group>
-        </Form>
-        <Button
-          alignContent="center"
-          marginTop={16}
-          appearance="primary"
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
+          ))}
+        </Pane>
+        <Pane display="flex" marginBottom={20}>
+          <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
+            Back
+          </Button>
+          <Button onClick={handleNext} appearance="primary" marginLeft={16}>
+            Next
+          </Button>
+        </Pane>
       </Pane>
     </Pane>
   );
