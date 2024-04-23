@@ -4,13 +4,18 @@ import BasicQuiz from "./BasicQuiz";
 import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
 import Results from "./Results";
-import DropdownMenu from "./DropdonwMenu";
+import DropdownMenu from "./DropdownMenu";
 
 function App() {
   return (
     <HashRouter>
       <div
-        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          padding: "10",
+        }}
       >
         <DropdownMenu />
         <Routes>
