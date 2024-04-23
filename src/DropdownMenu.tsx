@@ -24,7 +24,7 @@ const DropdownMenu: React.FC = () => {
         boxShadow: "0 2% 6% rgba(0, 0, 0, 0.2)",
         cursor: "pointer",
         fontFamily: "Arial, sans-serif",
-        marginTop: "5%",
+        marginTop: "10%",
         position: "relative",
       }}
     >
