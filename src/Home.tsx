@@ -21,7 +21,7 @@ function Home() {
       justifyContent="center"
       height="auto"
       padding={16}
-      background="tint2"
+      background="#F9FAFC"
     >
       {/* Header */}
       <Pane
@@ -51,6 +51,8 @@ function Home() {
         justifyContent="center"
         paddingTop="70px" // Adjust this padding to ensure it's enough to clear the fixed header
         boxSizing="border-box"
+        background="#F9FAFC
+"
       >
         <Pane
           width="100%"
