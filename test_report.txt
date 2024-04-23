@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (195 ms)
+  ✕ renders learn react link (201 ms)
 
   ● renders learn react link
 
@@ -16,7 +16,7 @@ FAIL src/App.test.tsx
       [36m/>[39m
       [36m<div>[39m
         [36m<div[39m
-          [33mstyle[39m=[32m"display: flex; flex-direction: column; min-height: 100vh;"[39m
+          [33mstyle[39m=[32m"display: flex; flex-direction: column; min-height: 100vh; background-color: rgb(249, 250, 252);"[39m
         [36m>[39m
           [36m<div[39m
             [33mclass[39m=[32m"ub-bg_wivy90  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-h_auto ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-box-szg_border-box"[39m
@@ -31,7 +31,7 @@ FAIL src/App.test.tsx
               [36m</h2>[39m
             [36m</div>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"ub-w_100prcnt ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pt_70px ub-box-szg_border-box"[39m
+              [33mclass[39m=[32m"ub-bg_1fsyoqx  ub-w_100prcnt ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pt_70px ub-box-szg_border-box"[39m
             [36m>[39m
               [36m<div[39m
                 [33mclass[39m=[32m"ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-just-cnt_space-between ub-box-szg_border-box"[39m
@@ -82,7 +82,7 @@ FAIL src/App.test.tsx
             [36m</div>[39m
           [36m</div>[39m
           [36m<div[39m
-            [33mstyle[39m=[32m"position: fixed; left: 0px; bottom: 0px; width: 100%; background-color: rgb(255, 255, 255); box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); z-index: 1000;"[39m
+            [33mstyle[39m=[32m"position: fixed; left: 0px; bottom: 0px; width: 100%; background-color: rgb(255, 255, 255); box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1); z-index: 1000;"[39m
           [36m>[39m
             [36m<div[39m
               [33mclass[39m=[32m"ub-dspl_flex ub-algn-itms_center ub-just-cnt_center ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-w_100prcnt ub-box-szg_border-box"[39m
@@ -153,7 +153,7 @@ File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #
 All files            |   16.98 |     7.69 |    8.82 |    17.3 |                   
  src                 |   11.57 |     4.16 |    6.45 |   11.82 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
-  BasicQuiz.tsx      |   16.66 |    16.66 |       0 |   17.14 | 46-137            
+  BasicQuiz.tsx      |   16.66 |    16.66 |       0 |   17.14 | 70-176            
   DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 22-219            
   Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 10,13             
   index.tsx          |       0 |      100 |     100 |       0 | 7-19              
@@ -164,5 +164,5 @@ All files            |   16.98 |     7.69 |    8.82 |    17.3 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.914 s
+Time:        3.793 s
 Ran all test suites.
