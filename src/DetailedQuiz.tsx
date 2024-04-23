@@ -8,6 +8,7 @@ import {
   toaster,
   CrossIcon,
   Tooltip,
+  RefreshIcon,
 } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
@@ -115,6 +116,7 @@ function DetailedQuiz() {
       // Output or use the suggested career
       if (data.choices && data.choices.length > 0) {
         console.log("Career suggestion:", data.choices[0].message.content);
+        // set data variable here
       } else {
         console.log("No career suggestion found.");
         toaster.warning(
@@ -124,6 +126,56 @@ function DetailedQuiz() {
     } catch (error) {
       console.error("Error calling OpenAI API:", error);
       toaster.danger("Failed to get career suggestions. Please try again.");
+    }
+  };
+
+  const fetchNewQuestion = async (
+    oldQuestionText: string,
+    id: number
+  ): Promise<void> => {
+    const apiKey = JSON.parse(localStorage.getItem("MYKEY") || "null");
+    if (!apiKey) {
+      toaster.danger("API Key is missing. Please provide a valid API Key.");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-4",
+            max_tokens: 60,
+            messages: [
+              {
+                role: "system",
+                content: `Provide a different career assessment question, but in a similar format to: "${oldQuestionText}" but not the same. Make sure the new question is different enough, but still is a good question to determine what kind of career the user would want to pursue. Answer in 100 characters or less. Do not put the answer in quotes.`,
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data.choices[0].message.content, ">>>");
+      if (data.choices && data.choices.length > 0) {
+        const newQuestionText = data.choices[0].message.content;
+        // Update the question in the state
+        const updatedQuestions = questions.map((q) =>
+          q.id === id ? { ...q, text: newQuestionText } : q
+        );
+        setQuestions(updatedQuestions);
+      } else {
+        toaster.warning("Could not fetch a new question. Please try again.");
+      }
+    } catch (error) {
+      console.error("Failed to fetch new question:", error);
+      toaster.danger("Failed to fetch new question. Please try again.");
     }
   };
 
@@ -180,10 +232,20 @@ function DetailedQuiz() {
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             padding={20}
             marginBottom={20}
+            position="relative" // Ensure parent Pane is positioned relatively for absolute positioning of children
           >
-            <Heading size={600} marginBottom={10}>
-              {question.text}
-            </Heading>
+            <Pane position="absolute" top="10%" left="96%">
+              <Tooltip content="Refresh Question" position="right">
+                <RefreshIcon
+                  onClick={() => fetchNewQuestion(question.text, question.id)}
+                ></RefreshIcon>
+              </Tooltip>
+            </Pane>
+            <Pane display="flex" flexDirection="row">
+              <Heading size={600} marginBottom={10}>
+                {question.text}
+              </Heading>
+            </Pane>
             <Pane
               display="flex"
               flexDirection="row"
@@ -211,6 +273,7 @@ function DetailedQuiz() {
             </Pane>
           </Pane>
         ))}
+
         <Button
           appearance="primary"
           marginBottom="10%"
