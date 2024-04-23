@@ -21,7 +21,7 @@ function Home() {
       justifyContent="center"
       height="auto"
       padding={16}
-      background="tint2"
+      background="gray200"
     >
       {/* Header */}
       <Pane
