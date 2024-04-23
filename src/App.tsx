@@ -3,18 +3,27 @@ import Home from "./Home";
 import BasicQuiz from "./BasicQuiz";
 import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
+import Results from "./Results";
+import DropdownMenu from "./DropdownMenu";
 
 function App() {
   return (
     <HashRouter>
+      <DropdownMenu />
       <div
-        style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          padding: "10",
+        }}
       >
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/basicQuestionPage" element={<BasicQuiz />} />
           <Route path="/detailedQuestionPage" element={<DetailedQuiz />} />
+          <Route path="/Results" element={<Results />} />
         </Routes>
         {/* Fixed footer */}
         <div
