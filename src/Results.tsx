@@ -42,28 +42,31 @@ function Results() {
   };
 
   return (
-    <Pane className="results-container">
-      <Text>You should work in...</Text>
-      <Pane className="result-display-area">
-        {careerResult || "Your result will appear here"}
+    <>
+      <Pane className="results-container">
+        <h1>Results</h1>
+        <Text>You should work in...</Text>
+        <Pane className="result-display-area">
+          {careerResult || "Your result will appear here"}
+        </Pane>
+        <Button onClick={handleGenerateCareer} disabled={progress !== ""}>
+          GENERATE CAREER
+        </Button>
+        <Button onClick={handleNarrowResults} disabled={progress !== ""}>
+          Narrow my Results
+        </Button>
+        <TextInput
+          type="text"
+          placeholder="Enter User Feedback"
+          value={userFeedback}
+          onChange={handleUserFeedbackChange}
+        />
+        <Button onClick={handleSkip} disabled={progress !== ""}>
+          SKIP
+        </Button>
+        <Pane className="progress">{progress}</Pane>
       </Pane>
-      <Button onClick={handleGenerateCareer} disabled={progress !== ""}>
-        GENERATE CAREER
-      </Button>
-      <Button onClick={handleNarrowResults} disabled={progress !== ""}>
-        Narrow my Results
-      </Button>
-      <TextInput
-        type="text"
-        placeholder="Enter User Feedback"
-        value={userFeedback}
-        onChange={handleUserFeedbackChange}
-      />
-      <Button onClick={handleSkip} disabled={progress !== ""}>
-        SKIP
-      </Button>
-      <Pane className="progress">{progress}</Pane>
-    </Pane>
+    </>
   );
 }
 

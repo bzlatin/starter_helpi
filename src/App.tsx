@@ -9,6 +9,7 @@ import DropdownMenu from "./DropdownMenu";
 function App() {
   return (
     <HashRouter>
+      <DropdownMenu />
       <div
         style={{
           display: "flex",
@@ -17,7 +18,6 @@ function App() {
           padding: "10",
         }}
       >
-        <DropdownMenu />
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
