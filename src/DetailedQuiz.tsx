@@ -5,6 +5,7 @@ import {
   HomeIcon,
   TextInputField,
   Heading,
+  Spinner,
   toaster,
   CrossIcon,
   Tooltip,
@@ -17,6 +18,8 @@ interface Question {
   id: number;
   text: string;
   answer: string;
+  loading: boolean;
+  hidden: boolean;
 }
 
 function DetailedQuiz() {
@@ -26,35 +29,67 @@ function DetailedQuiz() {
     navigate("/home"); // Use the navigate function
   };
   const [questions, setQuestions] = useState<Question[]>([
-    { id: 1, text: "What skills or talents do you have?", answer: "" },
-    { id: 2, text: "What inspires you to take action?", answer: "" },
+    {
+      id: 1,
+      text: "What skills or talents do you have?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
+    {
+      id: 2,
+      text: "What inspires you to take action?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
     {
       id: 3,
       text: "What are your favorite aspects of your current job?",
       answer: "",
+      loading: false,
+      hidden: false,
     },
-    { id: 4, text: "How do you handle stress or pressure?", answer: "" },
+    {
+      id: 4,
+      text: "How do you handle stress or pressure?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
     {
       id: 5,
       text: "What skills do you enjoy practicing or developing?",
       answer: "",
+      loading: false,
+      hidden: false,
     },
-    { id: 6, text: "What industries fascinate you the most?", answer: "" },
-    { id: 7, text: "What type of work environment do you prefer?", answer: "" },
+    {
+      id: 6,
+      text: "What industries fascinate you the most?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
+    {
+      id: 7,
+      text: "What type of work environment do you prefer?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
   ]);
 
   const handleInputChange = (id: number, value: string) => {
-    const newQuestions = questions.map((q) =>
-      q.id === id ? { ...q, answer: value } : q
+    setQuestions(
+      questions.map((q) => (q.id === id ? { ...q, answer: value } : q))
     );
-    setQuestions(newQuestions);
   };
 
   const clearAnswer = (id: number) => {
-    const newQuestions = questions.map((q) =>
-      q.id === id ? { ...q, answer: "" } : q
+    setQuestions(
+      questions.map((q) => (q.id === id ? { ...q, answer: "" } : q))
     );
-    setQuestions(newQuestions);
   };
 
   const checkQuestions = () => {
@@ -129,17 +164,23 @@ function DetailedQuiz() {
     }
   };
 
-  const fetchNewQuestion = async (
-    oldQuestionText: string,
-    id: number
-  ): Promise<void> => {
-    const apiKey = JSON.parse(localStorage.getItem("MYKEY") || "null");
-    if (!apiKey) {
-      toaster.danger("API Key is missing. Please provide a valid API Key.");
-      return;
-    }
-
+  const fetchNewQuestion = async (oldQuestionText: string, id: number) => {
+    setQuestions(
+      questions.map((q) =>
+        q.id === id ? { ...q, loading: true, hidden: true } : q
+      )
+    );
     try {
+      const apiKey = JSON.parse(localStorage.getItem("MYKEY") || "null");
+      if (!apiKey) {
+        toaster.danger("API Key is missing. Please provide a valid API Key.");
+        setQuestions(
+          questions.map((q) =>
+            q.id === id ? { ...q, loading: false, hidden: false } : q
+          )
+        );
+        return;
+      }
       const response = await fetch(
         "https://api.openai.com/v1/chat/completions",
         {
@@ -162,20 +203,31 @@ function DetailedQuiz() {
       );
 
       const data = await response.json();
-      console.log(data.choices[0].message.content, ">>>");
       if (data.choices && data.choices.length > 0) {
         const newQuestionText = data.choices[0].message.content;
-        // Update the question in the state
-        const updatedQuestions = questions.map((q) =>
-          q.id === id ? { ...q, text: newQuestionText } : q
+        setQuestions(
+          questions.map((q) =>
+            q.id === id
+              ? { ...q, text: newQuestionText, loading: false, hidden: false }
+              : q
+          )
         );
-        setQuestions(updatedQuestions);
       } else {
         toaster.warning("Could not fetch a new question. Please try again.");
+        setQuestions(
+          questions.map((q) =>
+            q.id === id ? { ...q, loading: false, hidden: false } : q
+          )
+        );
       }
     } catch (error) {
       console.error("Failed to fetch new question:", error);
       toaster.danger("Failed to fetch new question. Please try again.");
+      setQuestions(
+        questions.map((q) =>
+          q.id === id ? { ...q, loading: false, hidden: false } : q
+        )
+      );
     }
   };
 
@@ -232,19 +284,25 @@ function DetailedQuiz() {
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             padding={20}
             marginBottom={20}
-            position="relative" // Ensure parent Pane is positioned relatively for absolute positioning of children
+            position="relative"
           >
-            <Pane position="absolute" top="10%" left="96%">
+            {question.loading && <Spinner />}
+            <Pane position="absolute" top="10%" right="2%">
               <Tooltip content="Refresh Question" position="right">
                 <RefreshIcon
-                  onClick={() => fetchNewQuestion(question.text, question.id)}
+                  cursor="pointer"
+                  onClick={() => {
+                    fetchNewQuestion(question.text, question.id);
+                  }}
                 ></RefreshIcon>
               </Tooltip>
             </Pane>
             <Pane display="flex" flexDirection="row">
-              <Heading size={600} marginBottom={10}>
-                {question.text}
-              </Heading>
+              {!question.hidden && (
+                <Heading size={600} marginBottom={10}>
+                  {question.text}
+                </Heading>
+              )}
             </Pane>
             <Pane
               display="flex"
@@ -273,7 +331,6 @@ function DetailedQuiz() {
             </Pane>
           </Pane>
         ))}
-
         <Button
           appearance="primary"
           marginBottom="10%"
