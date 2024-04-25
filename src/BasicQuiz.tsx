@@ -79,8 +79,6 @@ function BasicQuiz() {
   >(new Array(questions.length).fill(null));
   let navigate = useNavigate();
 
-  const [key, setKey] = useState<string>(keyData);
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   const handleNext = () => {
