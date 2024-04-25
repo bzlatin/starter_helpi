@@ -2,6 +2,7 @@
 import "./App.css";
 import { Pane, Heading, Button } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 function Home() {
   let navigate = useNavigate(); // Hook for navigation
@@ -21,7 +22,7 @@ function Home() {
       justifyContent="center"
       height="auto"
       padding={16}
-      background="tint2"
+      background="#F9FAFC"
     >
       {/* Header */}
       <Pane
@@ -51,7 +52,13 @@ function Home() {
         justifyContent="center"
         paddingTop="70px" // Adjust this padding to ensure it's enough to clear the fixed header
         boxSizing="border-box"
+        background="#F9FAFC
+"
       >
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
+
         <Pane
           width="100%"
           maxWidth="1024px"

@@ -5,17 +5,22 @@ import {
   HomeIcon,
   TextInputField,
   Heading,
+  Spinner,
   toaster,
   CrossIcon,
   Tooltip,
+  RefreshIcon,
 } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 interface Question {
   id: number;
   text: string;
   answer: string;
+  loading: boolean;
+  hidden: boolean;
 }
 
 function DetailedQuiz() {
@@ -25,35 +30,67 @@ function DetailedQuiz() {
     navigate("/home"); // Use the navigate function
   };
   const [questions, setQuestions] = useState<Question[]>([
-    { id: 1, text: "What skills or talents do you have?", answer: "" },
-    { id: 2, text: "What inspires you to take action?", answer: "" },
+    {
+      id: 1,
+      text: "What skills or talents do you have?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
+    {
+      id: 2,
+      text: "What inspires you to take action?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
     {
       id: 3,
       text: "What are your favorite aspects of your current job?",
       answer: "",
+      loading: false,
+      hidden: false,
     },
-    { id: 4, text: "How do you handle stress or pressure?", answer: "" },
+    {
+      id: 4,
+      text: "How do you handle stress or pressure?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
     {
       id: 5,
       text: "What skills do you enjoy practicing or developing?",
       answer: "",
+      loading: false,
+      hidden: false,
     },
-    { id: 6, text: "What industries fascinate you the most?", answer: "" },
-    { id: 7, text: "What type of work environment do you prefer?", answer: "" },
+    {
+      id: 6,
+      text: "What industries fascinate you the most?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
+    {
+      id: 7,
+      text: "What type of work environment do you prefer?",
+      answer: "",
+      loading: false,
+      hidden: false,
+    },
   ]);
 
   const handleInputChange = (id: number, value: string) => {
-    const newQuestions = questions.map((q) =>
-      q.id === id ? { ...q, answer: value } : q
+    setQuestions(
+      questions.map((q) => (q.id === id ? { ...q, answer: value } : q))
     );
-    setQuestions(newQuestions);
   };
 
   const clearAnswer = (id: number) => {
-    const newQuestions = questions.map((q) =>
-      q.id === id ? { ...q, answer: "" } : q
+    setQuestions(
+      questions.map((q) => (q.id === id ? { ...q, answer: "" } : q))
     );
-    setQuestions(newQuestions);
   };
 
   const checkQuestions = () => {
@@ -115,6 +152,7 @@ function DetailedQuiz() {
       // Output or use the suggested career
       if (data.choices && data.choices.length > 0) {
         console.log("Career suggestion:", data.choices[0].message.content);
+        // set data variable here
       } else {
         console.log("No career suggestion found.");
         toaster.warning(
@@ -124,6 +162,73 @@ function DetailedQuiz() {
     } catch (error) {
       console.error("Error calling OpenAI API:", error);
       toaster.danger("Failed to get career suggestions. Please try again.");
+    }
+  };
+
+  const fetchNewQuestion = async (oldQuestionText: string, id: number) => {
+    setQuestions(
+      questions.map((q) =>
+        q.id === id ? { ...q, loading: true, hidden: true } : q
+      )
+    );
+    try {
+      const apiKey = JSON.parse(localStorage.getItem("MYKEY") || "null");
+      if (!apiKey) {
+        toaster.danger("API Key is missing. Please provide a valid API Key.");
+        setQuestions(
+          questions.map((q) =>
+            q.id === id ? { ...q, loading: false, hidden: false } : q
+          )
+        );
+        return;
+      }
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-4",
+            max_tokens: 60,
+            messages: [
+              {
+                role: "system",
+                content: `Provide a different career assessment question, but in a similar format to: "${oldQuestionText}" but not the same. Make sure the new question is different enough, but still is a good question to determine what kind of career the user would want to pursue. Answer in 100 characters or less. Do not put the answer in quotes.`,
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      if (data.choices && data.choices.length > 0) {
+        const newQuestionText = data.choices[0].message.content;
+        setQuestions(
+          questions.map((q) =>
+            q.id === id
+              ? { ...q, text: newQuestionText, loading: false, hidden: false }
+              : q
+          )
+        );
+      } else {
+        toaster.warning("Could not fetch a new question. Please try again.");
+        setQuestions(
+          questions.map((q) =>
+            q.id === id ? { ...q, loading: false, hidden: false } : q
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Failed to fetch new question:", error);
+      toaster.danger("Failed to fetch new question. Please try again.");
+      setQuestions(
+        questions.map((q) =>
+          q.id === id ? { ...q, loading: false, hidden: false } : q
+        )
+      );
     }
   };
 
@@ -151,6 +256,10 @@ function DetailedQuiz() {
         top={0}
         left={0}
       >
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
+
         <Button iconBefore={HomeIcon} onClick={goToHomePage}>
           Home
         </Button>
@@ -180,10 +289,26 @@ function DetailedQuiz() {
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             padding={20}
             marginBottom={20}
+            position="relative"
           >
-            <Heading size={600} marginBottom={10}>
-              {question.text}
-            </Heading>
+            {question.loading && <Spinner />}
+            <Pane position="absolute" top="10%" right="2%">
+              <Tooltip content="Refresh Question" position="right">
+                <RefreshIcon
+                  cursor="pointer"
+                  onClick={() => {
+                    fetchNewQuestion(question.text, question.id);
+                  }}
+                ></RefreshIcon>
+              </Tooltip>
+            </Pane>
+            <Pane display="flex" flexDirection="row">
+              {!question.hidden && (
+                <Heading size={600} marginBottom={10}>
+                  {question.text}
+                </Heading>
+              )}
+            </Pane>
             <Pane
               display="flex"
               flexDirection="row"
