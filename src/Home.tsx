@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import "./App.css";
-import { Form } from "react-bootstrap";
 import { Pane, Heading, Button } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +21,7 @@ function Home() {
       justifyContent="center"
       height="auto"
       padding={16}
-      background="tint2"
+      background="#F9FAFC"
     >
       {/* Header */}
       <Pane
@@ -52,6 +51,8 @@ function Home() {
         justifyContent="center"
         paddingTop="70px" // Adjust this padding to ensure it's enough to clear the fixed header
         boxSizing="border-box"
+        background="#F9FAFC
+"
       >
         <Pane
           width="100%"
