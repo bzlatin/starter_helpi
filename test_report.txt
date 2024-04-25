@@ -7,6 +7,18 @@
         at SelectField (/home/runner/work/starter_helpi/starter_helpi/node_modules/evergreen-ui/commonjs/select/src/SelectField.js:48:56)
         at DropdownMenu (/home/runner/work/starter_helpi/starter_helpi/src/DropdownMenu.tsx:7:31)
         at div
+        at /home/runner/work/starter_helpi/starter_helpi/node_modules/ui-box/dist/src/box.js:23:11
+        at _Pane (/home/runner/work/starter_helpi/starter_helpi/node_modules/evergreen-ui/commonjs/layers/src/Pane.js:52:5)
+        at div
+        at /home/runner/work/starter_helpi/starter_helpi/node_modules/ui-box/dist/src/box.js:23:11
+        at _Pane (/home/runner/work/starter_helpi/starter_helpi/node_modules/evergreen-ui/commonjs/layers/src/Pane.js:52:5)
+        at div
+        at /home/runner/work/starter_helpi/starter_helpi/node_modules/ui-box/dist/src/box.js:23:11
+        at _Pane (/home/runner/work/starter_helpi/starter_helpi/node_modules/evergreen-ui/commonjs/layers/src/Pane.js:52:5)
+        at Home (/home/runner/work/starter_helpi/starter_helpi/src/Home.tsx:8:29)
+        at RenderedRoute (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/hooks.tsx:657:26)
+        at Routes (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:504:3)
+        at div
         at Router (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:413:13)
         at HashRouter (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router-dom/index.tsx:808:3)
         at App
@@ -45,7 +57,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (314 ms)
+  ✕ renders learn react link (424 ms)
 
   ● renders learn react link
 
@@ -60,67 +72,6 @@ FAIL src/App.test.tsx
         [36m<div[39m
           [33mstyle[39m=[32m"display: flex; flex-direction: column; min-height: 100vh; background-color: rgb(249, 250, 252);"[39m
         [36m>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"ub-mb_24px ub-box-szg_border-box"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"ub-dspl_flex ub-flx-drct_column ub-mb_8px ub-box-szg_border-box"[39m
-            [36m>[39m
-              [36m<label[39m
-                [33mclass[39m=[32m"ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_500 ub-fnt-sze_14px ub-ln-ht_18px ub-ltr-spc_-0-05px ub-dspl_block ub-mb_0px ub-box-szg_border-box"[39m
-                [33mfor[39m=[32m"SelectField-1"[39m
-              [36m/>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33maria-label[39m=[32m"Navigate to page"[39m
-              [33mclass[39m=[32m"ub-dspl_inline-flex ub-flx_1 ub-pst_relative ub-w_100prcnt ub-h_32px ub-box-szg_border-box"[39m
-              [33mstyle[39m=[32m"margin: 5% 1% 1% 1%; background-color: rgb(248, 248, 248); border-radius: 4%; width: 10%; box-shadow: 0 2% 6% rgba(0, 0, 0, 0.2); cursor: pointer; font-family: Arial, sans-serif; position: relative;"[39m
-            [36m>[39m
-              [36m<select[39m
-                [33maria-invalid[39m=[32m"false"[39m
-                [33mclass[39m=[32m"ub-pl_10px ub-pr_30px ub-txt-trns_default ub-b-btm_1px-solid-d8dae5 ub-b-lft_1px-solid-d8dae5 ub-b-rgt_1px-solid-d8dae5 ub-b-top_1px-solid-d8dae5 ub-flx_1 ub-bg_iu2jf4 ub-w_100prcnt ub-txt-deco_none ub-otln_iu2jf4 ub-crsr_pointer ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-h_100prcnt ub-fnt-sze_12px ub-ln-ht_16px ub-bg-clr_white ub-color_474d66 ub-crsr_not-allowed_yzzm16 ub-color_c1c4d6_yzzm16 ub-b-btm-clr_E6E8F0_yzzm16 ub-b-lft-clr_E6E8F0_yzzm16 ub-b-rgt-clr_E6E8F0_yzzm16 ub-b-top-clr_E6E8F0_yzzm16 ub-b-btm-clr_8f95b2_vmhk7m ub-b-lft-clr_8f95b2_vmhk7m ub-b-rgt-clr_8f95b2_vmhk7m ub-b-top-clr_8f95b2_vmhk7m ub-bg-clr_FAFBFF_vmhk7m ub-b-btm-clr_D14343_1vnywa6 ub-b-lft-clr_D14343_1vnywa6 ub-b-rgt-clr_D14343_1vnywa6 ub-b-top-clr_D14343_1vnywa6 ub-b-btm-clr_ADC2FF_xpy5ci ub-b-lft-clr_ADC2FF_xpy5ci ub-b-rgt-clr_ADC2FF_xpy5ci ub-b-top-clr_ADC2FF_xpy5ci ub-bs_13po50p_xpy5ci ub-bg-clr_F4F5F9_kdo2ir ub-box-szg_border-box"[39m
-                [33mid[39m=[32m"SelectField-1"[39m
-              [36m>[39m
-                [36m<option[39m
-                  [33mdisabled[39m=[32m""[39m
-                  [33mselected[39m=[32m""[39m
-                  [33mvalue[39m=[32m""[39m
-                [36m>[39m
-                  [0mChoose a page[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"/home"[39m
-                [36m>[39m
-                  [0mHome[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"/basicQuestionPage"[39m
-                [36m>[39m
-                  [0mBasic Quiz[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"/detailedQuestionPage"[39m
-                [36m>[39m
-                  [0mDetailed Quiz[0m
-                [36m</option>[39m
-                [36m<option[39m
-                  [33mvalue[39m=[32m"/Results"[39m
-                [36m>[39m
-                  [0mResults[0m
-                [36m</option>[39m
-              [36m</select>[39m
-              [36m<svg[39m
-                [33mclass[39m=[32m"ub-fill_696f8c ub-pst_absolute ub-top_50prcnt ub-mt_-7px ub-rgt_8px ub-ptr-evts_none ub-w_14px ub-h_14px ub-box-szg_border-box"[39m
-                [33mdata-icon[39m=[32m"caret-down"[39m
-                [33mviewBox[39m=[32m"0 0 16 16"[39m
-              [36m>[39m
-                [36m<path[39m
-                  [33md[39m=[32m"M12 6.5c0-.28-.22-.5-.5-.5h-7a.495.495 0 00-.37.83l3.5 4c.09.1.22.17.37.17s.28-.07.37-.17l3.5-4c.08-.09.13-.2.13-.33z"[39m
-                  [33mfill-rule[39m=[32m"evenodd"[39m
-                [36m/>[39m
-              [36m</svg>[39m
-            [36m</div>[39m
-          [36m</div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"ub-bg_wivy90  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-h_auto ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-box-szg_border-box"[39m
           [36m>[39m
@@ -137,6 +88,71 @@ FAIL src/App.test.tsx
               [33mclass[39m=[32m"ub-bg_1fsyoqx  ub-w_100prcnt ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pt_70px ub-box-szg_border-box"[39m
             [36m>[39m
               [36m<div[39m
+                [33mclass[39m=[32m"ub-pst_fixed ub-top_0px ub-lft_0px ub-min-w_100prcnt ub-box-szg_border-box"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"ub-mb_24px ub-box-szg_border-box"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"ub-dspl_flex ub-flx-drct_column ub-mb_8px ub-box-szg_border-box"[39m
+                  [36m>[39m
+                    [36m<label[39m
+                      [33mclass[39m=[32m"ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_500 ub-fnt-sze_14px ub-ln-ht_18px ub-ltr-spc_-0-05px ub-dspl_block ub-mb_0px ub-box-szg_border-box"[39m
+                      [33mfor[39m=[32m"SelectField-1"[39m
+                    [36m/>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33maria-label[39m=[32m"Navigate to page"[39m
+                    [33mclass[39m=[32m"ub-dspl_inline-flex ub-flx_1 ub-pst_relative ub-w_100prcnt ub-h_32px ub-box-szg_border-box"[39m
+                    [33mstyle[39m=[32m"margin: 5% 1% 1% 1%; background-color: rgb(248, 248, 248); border-radius: 4%; width: 10%; box-shadow: 0 2% 6% rgba(0, 0, 0, 0.2); cursor: pointer; font-family: Arial, sans-serif; position: relative;"[39m
+                  [36m>[39m
+                    [36m<select[39m
+                      [33maria-invalid[39m=[32m"false"[39m
+                      [33mclass[39m=[32m"ub-pl_10px ub-pr_30px ub-txt-trns_default ub-b-btm_1px-solid-d8dae5 ub-b-lft_1px-solid-d8dae5 ub-b-rgt_1px-solid-d8dae5 ub-b-top_1px-solid-d8dae5 ub-flx_1 ub-bg_iu2jf4 ub-w_100prcnt ub-txt-deco_none ub-otln_iu2jf4 ub-crsr_pointer ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-h_100prcnt ub-fnt-sze_12px ub-ln-ht_16px ub-bg-clr_white ub-color_474d66 ub-crsr_not-allowed_yzzm16 ub-color_c1c4d6_yzzm16 ub-b-btm-clr_E6E8F0_yzzm16 ub-b-lft-clr_E6E8F0_yzzm16 ub-b-rgt-clr_E6E8F0_yzzm16 ub-b-top-clr_E6E8F0_yzzm16 ub-b-btm-clr_8f95b2_vmhk7m ub-b-lft-clr_8f95b2_vmhk7m ub-b-rgt-clr_8f95b2_vmhk7m ub-b-top-clr_8f95b2_vmhk7m ub-bg-clr_FAFBFF_vmhk7m ub-b-btm-clr_D14343_1vnywa6 ub-b-lft-clr_D14343_1vnywa6 ub-b-rgt-clr_D14343_1vnywa6 ub-b-top-clr_D14343_1vnywa6 ub-b-btm-clr_ADC2FF_xpy5ci ub-b-lft-clr_ADC2FF_xpy5ci ub-b-rgt-clr_ADC2FF_xpy5ci ub-b-top-clr_ADC2FF_xpy5ci ub-bs_13po50p_xpy5ci ub-bg-clr_F4F5F9_kdo2ir ub-box-szg_border-box"[39m
+                      [33mid[39m=[32m"SelectField-1"[39m
+                    [36m>[39m
+                      [36m<option[39m
+                        [33mdisabled[39m=[32m""[39m
+                        [33mselected[39m=[32m""[39m
+                        [33mvalue[39m=[32m""[39m
+                      [36m>[39m
+                        [0mChoose a page[0m
+                      [36m</option>[39m
+                      [36m<option[39m
+                        [33mvalue[39m=[32m"/home"[39m
+                      [36m>[39m
+                        [0mHome[0m
+                      [36m</option>[39m
+                      [36m<option[39m
+                        [33mvalue[39m=[32m"/basicQuestionPage"[39m
+                      [36m>[39m
+                        [0mBasic Quiz[0m
+                      [36m</option>[39m
+                      [36m<option[39m
+                        [33mvalue[39m=[32m"/detailedQuestionPage"[39m
+                      [36m>[39m
+                        [0mDetailed Quiz[0m
+                      [36m</option>[39m
+                      [36m<option[39m
+                        [33mvalue[39m=[32m"/Results"[39m
+                      [36m>[39m
+                        [0mResults[0m
+                      [36m</option>[39m
+                    [36m</select>[39m
+                    [36m<svg[39m
+                      [33mclass[39m=[32m"ub-fill_696f8c ub-pst_absolute ub-top_50prcnt ub-mt_-7px ub-rgt_8px ub-ptr-evts_none ub-w_14px ub-h_14px ub-box-szg_border-box"[39m
+                      [33mdata-icon[39m=[32m"caret-down"[39m
+                      [33mviewBox[39m=[32m"0 0 16 16"[39m
+                    [36m>[39m
+                      [36m<path[39m
+                        [33md[39m=[32m"M12 6.5c0-.28-.22-.5-.5-.5h-7a.495.495 0 00-.37.83l3.5 4c.09.1.22.17.37.17s.28-.07.37-.17l3.5-4c.08-.09.13-.2.13-.33z"[39m
+                        [33mfill-rule[39m=[32m"evenodd"[39m
+                      [36m/>[39m
+                    [36m</svg>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
                 [33mclass[39m=[32m"ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-just-cnt_space-between ub-box-szg_border-box"[39m
               [36m>[39m
                 [36m<div[39m
@@ -148,7 +164,7 @@ FAIL src/App.test.tsx
                     [0mBasic Questions[0m
                   [36m</h2>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_...
+                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px u...
 
        5 | test('renders learn react link', () => {
        6 |   render(<App />);
@@ -183,13 +199,13 @@ go away.[0m
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   14.74 |        4 |    7.84 |   14.93 |                   
- src                 |   11.03 |     2.08 |    6.25 |   11.18 |                   
+All files            |   13.19 |     2.08 |    8.51 |   13.38 |                   
+ src                 |    9.02 |        0 |    6.81 |    9.16 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
-  BasicQuiz.tsx      |   16.66 |    16.66 |       0 |   17.14 | 70-176            
-  DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 26-339            
+  BasicQuiz.tsx      |    8.33 |        0 |       0 |    8.69 | 67-165            
+  DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 27-344            
   DropdownMenu.tsx   |      80 |      100 |      50 |      80 | 10                
-  Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 10,13             
+  Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 11,14             
   Results.tsx        |    4.34 |        0 |       0 |    4.34 | 10-76             
   index.tsx          |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
@@ -199,5 +215,5 @@ All files            |   14.74 |        4 |    7.84 |   14.93 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        4.091 s
+Time:        3.993 s
 Ran all test suites.
