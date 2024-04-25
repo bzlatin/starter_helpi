@@ -5,11 +5,11 @@ import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
 import React from "react";
 import DropdownMenu from "./DropdownMenu";
+import Results from "./Results";
 
 function App() {
   return (
     <HashRouter>
-      <DropdownMenu />
       <div
         style={{
           display: "flex",
@@ -18,11 +18,13 @@ function App() {
           backgroundColor: "#F9FAFC",
         }}
       >
+        <DropdownMenu />
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/basicQuestionPage" element={<BasicQuiz />} />
           <Route path="/detailedQuestionPage" element={<DetailedQuiz />} />
+          <Route path="/Results" element={<Results />} />
         </Routes>
         {/* Fixed footer */}
         <div
