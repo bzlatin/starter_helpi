@@ -13,6 +13,7 @@ import {
 } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 interface Question {
   id: number;
@@ -255,6 +256,10 @@ function DetailedQuiz() {
         top={0}
         left={0}
       >
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
+
         <Button iconBefore={HomeIcon} onClick={goToHomePage}>
           Home
         </Button>
