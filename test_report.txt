@@ -2,8 +2,49 @@
 > starter_helpi@0.1.0 test
 > react-scripts test --coverage
 
+  console.error
+    Warning: Failed prop type: The prop `label` is marked as required in `ForwardRef(SelectField)`, but its value is `undefined`.
+        at SelectField (/home/runner/work/starter_helpi/starter_helpi/node_modules/evergreen-ui/commonjs/select/src/SelectField.js:48:56)
+        at DropdownMenu (/home/runner/work/starter_helpi/starter_helpi/src/DropdownMenu.tsx:7:31)
+        at Router (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:413:13)
+        at HashRouter (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router-dom/index.tsx:808:3)
+        at App
+
+      12 |
+      13 |   return (
+    > 14 |     <SelectField
+         |     ^
+      15 |       onChange={handleChange}
+      16 |       defaultValue=""
+      17 |       aria-label="Navigate to page"
+
+      at printWarning (node_modules/react/cjs/react-jsx-dev-runtime.development.js:87:30)
+      at error (node_modules/react/cjs/react-jsx-dev-runtime.development.js:61:7)
+      at checkPropTypes (node_modules/react/cjs/react-jsx-dev-runtime.development.js:631:11)
+      at validatePropTypes (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1164:7)
+      at jsxWithValidation (node_modules/react/cjs/react-jsx-dev-runtime.development.js:1284:7)
+      at DropdownMenu (src/DropdownMenu.tsx:14:5)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:16305:18)
+      at mountIndeterminateComponent (node_modules/react-dom/cjs/react-dom.development.js:20074:13)
+      at beginWork (node_modules/react-dom/cjs/react-dom.development.js:21587:16)
+      at beginWork$1 (node_modules/react-dom/cjs/react-dom.development.js:27426:14)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:26560:12)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:26466:5)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom.development.js:26434:7)
+      at performConcurrentWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:25738:74)
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at act (node_modules/react/cjs/react.development.js:2582:11)
+      at node_modules/@testing-library/react/dist/act-compat.js:63:25
+      at renderRoot (node_modules/@testing-library/react/dist/pure.js:159:26)
+      at render (node_modules/@testing-library/react/dist/pure.js:246:10)
+      at Object.<anonymous> (src/App.test.tsx:6:9)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
 FAIL src/App.test.tsx
-  ✕ renders learn react link (204 ms)
+  ✕ renders learn react link (369 ms)
 
   ● renders learn react link
 
@@ -15,6 +56,67 @@ FAIL src/App.test.tsx
         [33mdata-evergreen-toaster-container[39m=[32m""[39m
       [36m/>[39m
       [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"ub-mb_24px ub-box-szg_border-box"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"ub-dspl_flex ub-flx-drct_column ub-mb_8px ub-box-szg_border-box"[39m
+          [36m>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_500 ub-fnt-sze_14px ub-ln-ht_18px ub-ltr-spc_-0-05px ub-dspl_block ub-mb_0px ub-box-szg_border-box"[39m
+              [33mfor[39m=[32m"SelectField-1"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"Navigate to page"[39m
+            [33mclass[39m=[32m"ub-dspl_inline-flex ub-flx_1 ub-pst_relative ub-w_100prcnt ub-h_32px ub-box-szg_border-box"[39m
+            [33mstyle[39m=[32m"margin: 5% 1% 1% 1%; background-color: rgb(248, 248, 248); border-radius: 4%; width: 10%; box-shadow: 0 2% 6% rgba(0, 0, 0, 0.2); cursor: pointer; font-family: Arial, sans-serif; position: relative;"[39m
+          [36m>[39m
+            [36m<select[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mclass[39m=[32m"ub-pl_10px ub-pr_30px ub-txt-trns_default ub-b-btm_1px-solid-d8dae5 ub-b-lft_1px-solid-d8dae5 ub-b-rgt_1px-solid-d8dae5 ub-b-top_1px-solid-d8dae5 ub-flx_1 ub-bg_iu2jf4 ub-w_100prcnt ub-txt-deco_none ub-otln_iu2jf4 ub-crsr_pointer ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-h_100prcnt ub-fnt-sze_12px ub-ln-ht_16px ub-bg-clr_white ub-color_474d66 ub-crsr_not-allowed_yzzm16 ub-color_c1c4d6_yzzm16 ub-b-btm-clr_E6E8F0_yzzm16 ub-b-lft-clr_E6E8F0_yzzm16 ub-b-rgt-clr_E6E8F0_yzzm16 ub-b-top-clr_E6E8F0_yzzm16 ub-b-btm-clr_8f95b2_vmhk7m ub-b-lft-clr_8f95b2_vmhk7m ub-b-rgt-clr_8f95b2_vmhk7m ub-b-top-clr_8f95b2_vmhk7m ub-bg-clr_FAFBFF_vmhk7m ub-b-btm-clr_D14343_1vnywa6 ub-b-lft-clr_D14343_1vnywa6 ub-b-rgt-clr_D14343_1vnywa6 ub-b-top-clr_D14343_1vnywa6 ub-b-btm-clr_ADC2FF_xpy5ci ub-b-lft-clr_ADC2FF_xpy5ci ub-b-rgt-clr_ADC2FF_xpy5ci ub-b-top-clr_ADC2FF_xpy5ci ub-bs_13po50p_xpy5ci ub-bg-clr_F4F5F9_kdo2ir ub-box-szg_border-box"[39m
+              [33mid[39m=[32m"SelectField-1"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mdisabled[39m=[32m""[39m
+                [33mselected[39m=[32m""[39m
+                [33mvalue[39m=[32m""[39m
+              [36m>[39m
+                [0mChoose a page[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"/home"[39m
+              [36m>[39m
+                [0mHome[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"/basicQuestionPage"[39m
+              [36m>[39m
+                [0mBasic Quiz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"/detailedQuestionPage"[39m
+              [36m>[39m
+                [0mDetailed Quiz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"/Results"[39m
+              [36m>[39m
+                [0mResults[0m
+              [36m</option>[39m
+            [36m</select>[39m
+            [36m<svg[39m
+              [33mclass[39m=[32m"ub-fill_696f8c ub-pst_absolute ub-top_50prcnt ub-mt_-7px ub-rgt_8px ub-ptr-evts_none ub-w_14px ub-h_14px ub-box-szg_border-box"[39m
+              [33mdata-icon[39m=[32m"caret-down"[39m
+              [33mviewBox[39m=[32m"0 0 16 16"[39m
+            [36m>[39m
+              [36m<path[39m
+                [33md[39m=[32m"M12 6.5c0-.28-.22-.5-.5-.5h-7a.495.495 0 00-.37.83l3.5 4c.09.1.22.17.37.17s.28-.07.37-.17l3.5-4c.08-.09.13-.2.13-.33z"[39m
+                [33mfill-rule[39m=[32m"evenodd"[39m
+              [36m/>[39m
+            [36m</svg>[39m
+          [36m</div>[39m
+        [36m</div>[39m
         [36m<div[39m
           [33mstyle[39m=[32m"display: flex; flex-direction: column; min-height: 100vh; background-color: rgb(249, 250, 252);"[39m
         [36m>[39m
@@ -45,77 +147,7 @@ FAIL src/App.test.tsx
                     [0mBasic Questions[0m
                   [36m</h2>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
-                  [36m>[39m
-                    [0mGo to Basic Questions[0m
-                  [36m</button>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"ub-max-w_75prcnt ub-fnt-sze_12px ub-mt_12px ub-box-szg_border-box"[39m
-                  [36m>[39m
-                    [36m<p>[39m
-                      [0mExplore answers to basic career questions: Dive into our foundational guide for straightforward insights and answers to your fundamental career queries. Perfect for those seeking clear, concise information before delving deeper.[0m
-                    [36m</p>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-ml_12px ub-box-szg_border-box"[39m
-                [36m>[39m
-                  [36m<h2[39m
-                    [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
-                  [36m>[39m
-                    [0mDetailed Questions[0m
-                  [36m</h2>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-box-szg_border-box"[39m
-                  [36m>[39m
-                    [0mGo to Detailed Questions[0m
-                  [36m</button>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"ub-max-w_75prcnt ub-fnt-sze_12px ub-mt_12px ub-box-szg_border-box"[39m
-                  [36m>[39m
-                    [36m<p>[39m
-                      [0mDelve deeper with answers to detailed career questions: Our comprehensive guide offers in-depth insights and answers, ideal for those who have already explored basic concepts and seek further clarification.[0m
-                    [36m</p>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mstyle[39m=[32m"position: fixed; left: 0px; bottom: 0px; width: 100%; background-color: rgb(255, 255, 255); box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1); z-index: 1000;"[39m
-          [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"ub-dspl_flex ub-algn-itms_center ub-just-cnt_center ub-pb_16px ub-pl_16px ub-pr_16px ub-pt_16px ub-w_100prcnt ub-box-szg_border-box"[39m
-            [36m>[39m
-              [36m<form[39m
-                [33mclass[39m=[32m""[39m
-              [36m>[39m
-                [36m<div>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-label"[39m
-                    [33mfor[39m=[32m"formBasicEmail"[39m
-                  [36m>[39m
-                    [0mAPI Key:[0m
-                  [36m</label>[39m
-                  [36m<input[39m
-                    [33mclass[39m=[32m"form-control"[39m
-                    [33mid[39m=[32m"formBasicEmail"[39m
-                    [33mplaceholder[39m=[32m"Insert API Key Here"[39m
-                    [33mtype[39m=[32m"password"[39m
-                    [33mvalue[39m=[32m""[39m
-                  [36m/>[39m
-                [36m</div>[39m
-              [36m</form>[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-clr_2952CC_vmhk7m ub-bg-clr_1F3D99_hxa9p6 ub-b-btm-clr_1F3D99_hxa9p6 ub-b-lft-clr_1F3D99_hxa9p6 ub-b-rgt-clr_1F3D99_hxa9p6 ub-b-top-clr_1F3D99_hxa9p6 ub-algn-cnt_center ub-ml_10px ub-box-szg_border-box"[39m
-              [36m>[39m
-                [0mSubmit[0m
-              [36m</button>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-        [36m</div>[39m
-      [36m</div>[39m
-    [36m</body>[39m
+                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_3366FF ub-b-top-clr_3366FF ub-bs_13po50p_xpy5ci ub-bg-clr_3366FF_xpy5ci ub-b-btm-clr_3366FF_xpy5ci ub-b-lft-clr_3366FF_xpy5ci ub-b-rgt-clr_3366FF_xpy5ci ub-b-top-clr_3366FF_xpy5ci ub-crsr_not-allowed_yzzm16 ub-ptr-evts_none_yzzm16 ub-bg-clr_D6E0FF_yzzm16 ub-b-btm-clr_D6E0FF_yzzm16 ub-b-lft-clr_D6E0FF_yzzm16 ub-b-rgt-clr_D6E0FF_yzzm16 ub-b-top-clr_D6E0FF_yzzm16 ub-bg-clr_2952CC_vmhk7m ub-b-btm-clr_2952CC_vmhk7m ub-b-lft-clr_2952CC_vmhk7m ub-b-rgt-clr_2952CC_vmhk7m ub-b-top-c...
 
        5 | test('renders learn react link', () => {
        6 |   render(<App />);
@@ -150,12 +182,14 @@ go away.[0m
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   14.06 |     4.16 |    7.31 |   14.28 |                   
- src                 |     9.4 |     2.17 |    5.26 |    9.56 |                   
+All files            |    14.1 |        4 |    7.84 |   14.28 |                   
+ src                 |   10.34 |     2.08 |    6.25 |   10.48 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
   BasicQuiz.tsx      |   16.66 |    16.66 |       0 |   17.14 | 70-176            
   DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 26-339            
+  DropdownMenu.tsx   |      80 |      100 |      50 |      80 | 10                
   Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 10,13             
+  Results.tsx        |       0 |        0 |       0 |       0 | 8-76              
   index.tsx          |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
  src/components      |   63.63 |       50 |   33.33 |   63.63 |                   
@@ -164,5 +198,5 @@ All files            |   14.06 |     4.16 |    7.31 |   14.28 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.739 s
+Time:        4.345 s
 Ran all test suites.
