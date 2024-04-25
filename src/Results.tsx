@@ -1,98 +1,103 @@
 // Results.tsx
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from "react";
+import {
+  Pane,
+  Button,
+  TextInputField,
+  Heading,
+  Spinner,
+  toaster,
+} from "evergreen-ui";
 
-interface ResultsProps {
-  // Define props here if needed
-}
 
-const Results: React.FC<ResultsProps> = () => {
-  // State hooks with TypeScript types
-  const [careerResult, setCareerResult] = useState<string>('');
-  const [userFeedback, setUserFeedback] = useState<string>('');
-  const [progress, setProgress] = useState<string>('');
+const Results: React.FC = () => {
+  const [careerResult, setCareerResult] = useState<string>("");
+  const [userFeedback, setUserFeedback] = useState<string>("");
+  const [progress, setProgress] = useState<boolean>(false);
 
-  // Inline CSS styles with TypeScript type
-  const styles: { [key: string]: React.CSSProperties } = {
-    resultsContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '20px',
-    },
-    resultDisplayArea: {
-      border: '1px solid #000',
-      width: '80%',
-      height: '150px',
-      marginBottom: '20px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textAlign: 'center',
-    },
-    button: {
-      margin: '10px',
-      padding: '10px 20px',
-      cursor: 'pointer',
-    },
-    input: {
-      margin: '10px',
-      padding: '10px',
-      width: '80%',
-    },
-    progress: {
-      color: '#555',
-    },
-  };
-
-  // Event Handlers with TypeScript annotations
   const handleGenerateCareer = (): void => {
-    setProgress('Generating...');
+    setProgress(true);
     setTimeout(() => {
-      setCareerResult('Software Developer');
-      setProgress('');
+      setCareerResult("Software Developer");
+      setProgress(false);
     }, 2000);
   };
 
   const handleNarrowResults = (): void => {
-    setProgress('Narrowing results...');
+    setProgress(true);
     setTimeout(() => {
-      setCareerResult('Front-end Developer');
-      setProgress('');
+      setCareerResult("Front-end Developer");
+      setProgress(false);
     }, 2000);
   };
 
-  const handleUserFeedbackChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleUserFeedbackChange = (
+    event: ChangeEvent<HTMLInputElement>
+  ): void => {
     setUserFeedback(event.target.value);
   };
 
   const handleSkip = (): void => {
-    setProgress('Skipping feedback...');
+    setProgress(true);
     setTimeout(() => {
-      setUserFeedback('');
-      setProgress('');
+      setUserFeedback("");
+      setProgress(false);
     }, 1000);
   };
 
   return (
-    <div style={styles.resultsContainer}>
-      <h1>You should work in...</h1>
-      <div style={styles.resultDisplayArea}>{careerResult || 'Your result will appear here'}</div>
-      <button style={styles.button} onClick={handleGenerateCareer} disabled={progress !== ''}>
+    <Pane
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      padding={20}
+      background="tint2"
+    >
+      <Heading size={600} marginBottom={20}>
+        You should work in...
+      </Heading>
+      <Pane
+        border="default"
+        width="80%"
+        height={150}
+        marginBottom={20}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+      >
+        {progress ? (
+          <Spinner />
+        ) : (
+          careerResult || "Your result will appear here"
+        )}
+      </Pane>
+      <Button
+        onClick={handleGenerateCareer}
+        disabled={progress}
+        marginBottom={12}
+      >
         GENERATE CAREER
-      </button>
-      <button style={styles.button} onClick={handleNarrowResults} disabled={progress !== ''}>
+      </Button>
+      <Button
+        onClick={handleNarrowResults}
+        disabled={progress}
+        marginBottom={12}
+      >
         Narrow my Results
-      </button>
-      <input
-        style={styles.input}
-        type="text"
+      </Button>
+      <TextInputField
+        width="80%"
         placeholder="Enter User Feedback"
         value={userFeedback}
         onChange={handleUserFeedbackChange}
       />
-      <button style={styles.button} onClick={handleSkip} disabled={progress !== ''}>SKIP</button>
-      <div style={styles.progress}>{progress}</div>
-    </div>
+      <Button onClick={handleSkip} disabled={progress} marginBottom={12}>
+        SKIP
+      </Button>
+      {progress && <Spinner />}
+    </Pane>
   );
 };
 
