@@ -3,6 +3,7 @@ import "./App.css";
 import { Form } from "react-bootstrap";
 import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 const questions = [
   {
@@ -132,80 +133,76 @@ function BasicQuiz() {
     >
       <Pane
         width="100%"
-        maxWidth="1024px"
         display="flex"
         alignItems="center"
-        justifyContent="right"
-        marginBottom={20}
+        justifyContent="center"
         paddingX={16}
         paddingY={12}
         background="white"
         borderRadius={3}
-        boxShadow="0 2px 4px (0, 0, 0, 0.1)"
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+        position="fixed"
+        top={0}
+        left={0}
       >
-        <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
-      </Pane>
-      <h1>Basic Question Page</h1>
-      <Pane marginBottom={20}>
-        <Heading size={600} marginBottom={10}>
-          {questions[currentQuestionIndex].text}
-        </Heading>
-        {choices[currentQuestionIndex].map((choice, index) => (
-          <Radio
-            key={index}
-            label={choice.text}
-            value={choice.value}
-            checked={selectedChoiceIndices[currentQuestionIndex] === index}
-            onChange={handleAnswerChange(index)}
-          />
-        ))}
-      </Pane>
-      <Pane display="flex" marginBottom={20}>
-        <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
-          Back
-        </Button>
-        <Button
-          onClick={handleNext}
-          appearance="primary"
-          marginLeft={16}
-          disabled={currentQuestionIndex === 6}
-        >
-          Next
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
+
+        <Button iconBefore={HomeIcon} onClick={goToHomePage}>
+          Home
         </Button>
       </Pane>
-      <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
+        marginTop="100px"
+        width="100%"
+        maxWidth="1024px"
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        marginTop="auto"
-        padding={20}
-        background="white"
-        borderRadius={3}
-        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
-        width="100%"
-        maxWidth="1024px"
+        boxSizing="border-box"
       >
-        <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>API Key:</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Insert API Key Here"
-              value={key}
-              onChange={changeKey}
-            />
-          </Form.Group>
-        </Form>
-        <Button
-          alignContent="center"
-          marginTop={16}
-          appearance="primary"
-          onClick={handleSubmit}
+        <h1>Basic Question Page</h1>
+        <Pane
+          width="100%"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          background="white"
+          borderRadius={3}
+          boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
+          padding={20}
+          marginBottom={20}
+          position="relative"
         >
-          Submit
-        </Button>
+          <Heading size={600} marginBottom={10}>
+            {questions[currentQuestionIndex].text}
+          </Heading>
+          {choices[currentQuestionIndex].map((choice, index) => (
+            <Radio
+              key={index}
+              label={choice.text}
+              value={choice.value}
+              checked={selectedChoiceIndices[currentQuestionIndex] === index}
+              onChange={handleAnswerChange(index)}
+            />
+          ))}
+        </Pane>
+        <Pane display="flex" marginBottom={20}>
+          <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
+            Back
+          </Button>
+          <Button
+            onClick={handleNext}
+            appearance="primary"
+            marginLeft={16}
+            disabled={currentQuestionIndex === 6}
+          >
+            Next
+          </Button>
+        </Pane>
       </Pane>
     </Pane>
   );

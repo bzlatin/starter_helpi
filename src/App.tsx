@@ -18,7 +18,6 @@ function App() {
           backgroundColor: "#F9FAFC",
         }}
       >
-        <DropdownMenu />
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />

@@ -2,6 +2,7 @@
 import "./App.css";
 import { Pane, Heading, Button } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 
 function Home() {
   let navigate = useNavigate(); // Hook for navigation
@@ -54,6 +55,10 @@ function Home() {
         background="#F9FAFC
 "
       >
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
+
         <Pane
           width="100%"
           maxWidth="1024px"
