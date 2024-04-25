@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import LinearProgress, {
   LinearProgressProps,
 } from "@mui/material/LinearProgress";
-//import DropdownMenu from "./DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
 
 const questions = [
   {
@@ -158,37 +158,12 @@ function BasicQuiz() {
         top={0}
         left={0}
       >
-        <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
-      </Pane>
-      <h1>Basic Question Page</h1>
-      <Pane marginBottom={75}>
-        <Heading size={600} marginBottom={10}>
-          {questions[currentQuestionIndex].text}
-        </Heading>
-        {choices[currentQuestionIndex].map((choice, index) => (
-          <Radio
-            key={index}
-            label={choice.text}
-            value={choice.value}
-            checked={selectedChoiceIndices[currentQuestionIndex] === index}
-            onChange={handleAnswerChange(index)}
-          />
-        ))}
-      </Pane>
-      <Box sx={{ width: "70%" }}>
-        <LinearProgressWithLabel value={progress} />
-      </Box>
-      <Pane display="flex" marginBottom={20}>
-        <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
-          Back
-        </Button>
-        <Button
-          onClick={handleNext}
-          appearance="primary"
-          marginLeft={16}
-          disabled={currentQuestionIndex === 6}
-        >
-          Next
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
+
+        <Button iconBefore={HomeIcon} onClick={goToHomePage}>
+          Home
         </Button>
       </Pane>
       <Pane
@@ -228,6 +203,9 @@ function BasicQuiz() {
             />
           ))}
         </Pane>
+        <Box sx={{ width: "70%" }}>
+          <LinearProgressWithLabel value={progress} />
+        </Box>
         <Pane display="flex" marginBottom={20}>
           <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
             Back
