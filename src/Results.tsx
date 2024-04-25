@@ -1,5 +1,5 @@
 // Results.tsx
-import React, { useState, ChangeEvent } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Pane,
   Button,
@@ -9,40 +9,34 @@ import {
   toaster,
 } from "evergreen-ui";
 
+interface ResultsProps {
+  userData: any; // Prop to receive user data and responses
+}
 
-const Results: React.FC = () => {
+const Results: React.FC = ( userData ) => {
   const [careerResult, setCareerResult] = useState<string>("");
-  const [userFeedback, setUserFeedback] = useState<string>("");
-  const [progress, setProgress] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const handleGenerateCareer = (): void => {
-    setProgress(true);
-    setTimeout(() => {
-      setCareerResult("Software Developer");
-      setProgress(false);
-    }, 2000);
-  };
+  useEffect(() => {
+    if (userData) {
+      fetchCareerRecommendation(userData);
+    }
+  }, [userData]);
 
-  const handleNarrowResults = (): void => {
-    setProgress(true);
-    setTimeout(() => {
-      setCareerResult("Front-end Developer");
-      setProgress(false);
-    }, 2000);
-  };
-
-  const handleUserFeedbackChange = (
-    event: ChangeEvent<HTMLInputElement>
-  ): void => {
-    setUserFeedback(event.target.value);
-  };
-
-  const handleSkip = (): void => {
-    setProgress(true);
-    setTimeout(() => {
-      setUserFeedback("");
-      setProgress(false);
-    }, 1000);
+  const fetchCareerRecommendation = async (userData: any) => {
+    setLoading(true);
+    try {
+      setTimeout(() => {
+        // Assuming API would return
+        setCareerResult(
+          "Software Developer based on your skills in programming and problem-solving."
+        );
+        setLoading(false);
+      }, 2000);
+    } catch (error) {
+      toaster.danger("Failed to load career suggestions. Please try again.");
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,7 +49,7 @@ const Results: React.FC = () => {
       background="tint2"
     >
       <Heading size={600} marginBottom={20}>
-        You should work in...
+        Suggested Career Path
       </Heading>
       <Pane
         border="default"
@@ -67,36 +61,21 @@ const Results: React.FC = () => {
         justifyContent="center"
         textAlign="center"
       >
-        {progress ? (
+        {loading ? (
           <Spinner />
         ) : (
-          careerResult || "Your result will appear here"
+          careerResult || "Your result will appear here."
         )}
       </Pane>
       <Button
-        onClick={handleGenerateCareer}
-        disabled={progress}
+        intent="success"
+        appearance="primary"
+        onClick={() => fetchCareerRecommendation(userData)}
+        disabled={loading}
         marginBottom={12}
       >
-        GENERATE CAREER
+        Refresh Recommendation
       </Button>
-      <Button
-        onClick={handleNarrowResults}
-        disabled={progress}
-        marginBottom={12}
-      >
-        Narrow my Results
-      </Button>
-      <TextInputField
-        width="80%"
-        placeholder="Enter User Feedback"
-        value={userFeedback}
-        onChange={handleUserFeedbackChange}
-      />
-      <Button onClick={handleSkip} disabled={progress} marginBottom={12}>
-        SKIP
-      </Button>
-      {progress && <Spinner />}
     </Pane>
   );
 };
