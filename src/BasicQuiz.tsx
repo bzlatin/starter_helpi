@@ -63,13 +63,6 @@ const choices = [
   ],
 ];
 
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData);
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
-
 function BasicQuiz() {
   const [answers, setAnswers] = useState<string[]>(
     new Array(questions.length).fill("")
