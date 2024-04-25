@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Form } from "react-bootstrap";
 import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
@@ -107,15 +106,6 @@ function BasicQuiz() {
         choices[currentQuestionIndex][index].value;
       setAnswers(updatedAnswers);
     };
-
-  const handleSubmit = () => {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload();
-  };
-
-  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
-  }
 
   const goToHomePage = () => {
     navigate("/home");
