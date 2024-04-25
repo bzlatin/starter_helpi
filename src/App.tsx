@@ -5,6 +5,7 @@ import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
 import Results from "./Results";
 import DropdownMenu from "./DropdownMenu";
+import React from "react";
 
 function App() {
   return (
