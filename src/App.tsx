@@ -3,10 +3,13 @@ import Home from "./Home";
 import BasicQuiz from "./BasicQuiz";
 import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
+import React from "react";
+import DropdownMenu from "./DropdownMenu";
 
 function App() {
   return (
     <HashRouter>
+      <DropdownMenu />
       <div
         style={{
           display: "flex",
