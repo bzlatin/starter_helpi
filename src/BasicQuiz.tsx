@@ -3,6 +3,10 @@ import "./App.css";
 import { Form } from "react-bootstrap";
 import { Pane, Button, HomeIcon, Radio, Heading } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import LinearProgress, { LinearProgressProps }  from '@mui/material/LinearProgress';
+
 
 const questions = [
   { text: "1. I enjoy working in a team more than working alone.", value: "Q1" },
@@ -46,14 +50,35 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box sx={{ width: '100%', mr: 1 }}>
+        <LinearProgress variant="determinate" {...props} />
+      </Box>
+      <Box sx={{ minWidth: 35 }}>
+        <Typography variant="body2" color="text.secondary">{`${Math.round(
+          props.value,
+        )}%`}</Typography>
+      </Box>
+    </Box>
+  );
+}
+
 function BasicQuiz() {
+  const [progress, setProgress] = React.useState(0);
   const [answers, setAnswers] = useState<string[]>(new Array(questions.length).fill(""));
   const [selectedChoiceIndices, setSelectedChoiceIndices] = useState<Array<number>>(new Array(questions.length).fill(null));
   let navigate = useNavigate();
-
   const [key, setKey] = useState<string>(keyData);
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  React.useEffect(() => {
+    const answeredQuestions = selectedChoiceIndices.filter(index => index !== null).length;
+    const totalQuestions = questions.length;
+    const calculatedProgress = (answeredQuestions / totalQuestions) * 100;
+    setProgress(calculatedProgress);
+  }, [selectedChoiceIndices]);
 
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -116,7 +141,7 @@ function BasicQuiz() {
         <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
       </Pane>
       <h1>Basic Question Page</h1>
-      <Pane marginBottom={20}>
+      <Pane marginBottom={75}>
         <Heading size={600} marginBottom={10}>
           {questions[currentQuestionIndex].text}
         </Heading>
@@ -130,6 +155,9 @@ function BasicQuiz() {
           />
         ))}
       </Pane>
+      <Box sx={{ width: '70%'}}>
+        <LinearProgressWithLabel value={progress}/>
+      </Box>
       <Pane display="flex" marginBottom={20}>
         <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</Button>
         <Button onClick={handleNext} appearance="primary" marginLeft={16} disabled={currentQuestionIndex === 6}>Next</Button>
