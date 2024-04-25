@@ -4,7 +4,8 @@ import BasicQuiz from "./BasicQuiz";
 import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
 import React from "react";
-import DropdownMenu  from "./DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
+import Results from "./Results";
 
 function App() {
   return (
