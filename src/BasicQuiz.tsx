@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import LinearProgress, { LinearProgressProps }  from '@mui/material/LinearProgress';
 //work please
 
+
 const questions = [
   { text: "1. I enjoy working in a team more than working alone.", value: "Q1" },
   { text: "2. When working on a project. I am most interested in: ", value: "Q2" },
@@ -43,6 +44,7 @@ const choices = [
   [{ text: "True", value: "true" }, { text: "False", value: "false" }]
 ];
 
+
 let keyData = "";
 const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData);
@@ -51,14 +53,15 @@ if (prevKey !== null) {
 }
 
 function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
+
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Box sx={{ width: '100%', mr: 1 }}>
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ width: "100%", mr: 1 }}>
         <LinearProgress variant="determinate" {...props} />
       </Box>
       <Box sx={{ minWidth: 35 }}>
         <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value,
+          props.value
         )}%`}</Typography>
       </Box>
     </Box>
@@ -67,14 +70,21 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
 
 function BasicQuiz() {
   const [progress, setProgress] = React.useState(0);
-  const [answers, setAnswers] = useState<string[]>(new Array(questions.length).fill(""));
-  const [selectedChoiceIndices, setSelectedChoiceIndices] = useState<Array<number>>(new Array(questions.length).fill(null));
+  const [answers, setAnswers] = useState<string[]>(
+    new Array(questions.length).fill("")
+  );
+  const [selectedChoiceIndices, setSelectedChoiceIndices] = useState<
+    Array<number>
+  >(new Array(questions.length).fill(null));
   let navigate = useNavigate();
-  const [key, setKey] = useState<string>(keyData);
+
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   React.useEffect(() => {
-    const answeredQuestions = selectedChoiceIndices.filter(index => index !== null).length;
+    const answeredQuestions = selectedChoiceIndices.filter(
+      (index) => index !== null
+    ).length;
     const totalQuestions = questions.length;
     const calculatedProgress = (answeredQuestions / totalQuestions) * 100;
     setProgress(calculatedProgress);
@@ -138,6 +148,7 @@ function BasicQuiz() {
         borderRadius={3}
         boxShadow="0 2px 4px (0, 0, 0, 0.1)"
       >
+
         <Button iconBefore={HomeIcon} onClick={() => goToHomePage()}></Button>
       </Pane>
       <h1>Basic Question Page</h1>
@@ -161,6 +172,7 @@ function BasicQuiz() {
       <Pane display="flex" marginBottom={20}>
         <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>Back</Button>
         <Button onClick={handleNext} appearance="primary" marginLeft={16} disabled={currentQuestionIndex === 6}>Next</Button>
+
       </Pane>
       <Button onClick={() => goToHomePage()}>Go Back Home</Button>
       <Pane
@@ -185,6 +197,7 @@ function BasicQuiz() {
               value={key}
               onChange={changeKey}
             />
+
           </Form.Group>
         </Form>
         <Button
