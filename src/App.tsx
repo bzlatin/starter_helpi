@@ -4,10 +4,12 @@ import BasicQuiz from "./BasicQuiz";
 import DetailedQuiz from "./DetailedQuiz";
 import ApiKey from "./components/APIKey";
 import React from "react";
+import DropdownMenu  from "./DropdownMenu";
 
 function App() {
   return (
     <HashRouter>
+      <DropdownMenu />
       <div
         style={{
           display: "flex",
@@ -21,6 +23,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/basicQuestionPage" element={<BasicQuiz />} />
           <Route path="/detailedQuestionPage" element={<DetailedQuiz />} />
+          <Route path="/Results" element={<Results />} />
         </Routes>
         {/* Fixed footer */}
         <div
