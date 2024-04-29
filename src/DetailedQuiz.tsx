@@ -12,7 +12,7 @@ import {
   RefreshIcon,
 } from "evergreen-ui";
 import "./App.css";
-import LinearProgress  from '@mui/material/LinearProgress';
+import LinearProgress from "@mui/material/LinearProgress";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 
@@ -25,7 +25,6 @@ interface Question {
 }
 
 function DetailedQuiz() {
-  
   let navigate = useNavigate(); // Hook for navigation
 
   const goToHomePage = () => {
@@ -82,7 +81,9 @@ function DetailedQuiz() {
       hidden: false,
     },
   ]);
-  const answeredQuestionsCount = questions.filter(q => q.answer.trim() !== '').length;
+  const answeredQuestionsCount = questions.filter(
+    (q) => q.answer.trim() !== ""
+  ).length;
   const progress = (answeredQuestionsCount / questions.length) * 100;
 
   const handleInputChange = (id: number, value: string) => {
@@ -280,6 +281,11 @@ function DetailedQuiz() {
         boxSizing="border-box"
       >
         <h1>Detailed Question Page</h1>
+        <LinearProgress
+          variant="determinate"
+          value={progress}
+          sx={{ width: "100%", marginBottom: "20px" }}
+        />
         {questions.map((question) => (
           <Pane
             key={question.id}
@@ -340,11 +346,7 @@ function DetailedQuiz() {
             </Pane>
           </Pane>
         ))}
-        <LinearProgress
-          variant="determinate"
-          value={progress}
-          sx={{ width: '100%', marginBottom: '20px' }}
-        />
+
         <Button
           appearance="primary"
           marginBottom="10%"
