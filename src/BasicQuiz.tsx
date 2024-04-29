@@ -140,20 +140,27 @@ function BasicQuiz() {
   };
 
   const checkDone = useCallback(() => {
+    //Lets the user know when they are ready to submit
+    //Progress 100 == All questions answered
     if (progress === 100) {
       toaster.success(
-        "All questions completed. Press 'Submit' to generate responses.",
+        "All questions completed. Press 'Submit' to generate response.",
         {
           duration: 5,
           id: "question-done",
         }
       );
+    } else if (progress >= 50) {
+      toaster.success("Halfway there... you got this!", {
+        duration: 5,
+        id: "question-done",
+      });
     }
   }, [progress]); // Include 'progress' in the dependency array for useCallback
 
   useEffect(() => {
     checkDone(); // Call checkDone whenever questions change
-  }, [checkDone, questions]); // Watch for changes in the questions array
+  }, [checkDone]); // Watch for changes in the questions array
 
   return (
     <Pane
