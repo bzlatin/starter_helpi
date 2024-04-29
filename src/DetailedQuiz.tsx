@@ -30,6 +30,11 @@ function DetailedQuiz() {
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
   };
+
+  useEffect(() => {
+    checkDone(); // Call checkDone whenever questions change
+  }, [questions]); // Watch for changes in the questions array
+
   const [questions, setQuestions] = useState<Question[]>([
     {
       id: 1,
@@ -90,19 +95,21 @@ function DetailedQuiz() {
     setQuestions(
       questions.map((q) => (q.id === id ? { ...q, answer: value } : q))
     );
+    checkDone();
   };
 
   const clearAnswer = (id: number) => {
     setQuestions(
       questions.map((q) => (q.id === id ? { ...q, answer: "" } : q))
     );
+    checkDone();
   };
 
   const checkDone = () => {
     // Check if all questions have been answered
-    const allAnswered = questions.every((q) => q.answer.trim() !== "");
-    if (allAnswered) {
-      toaster.warning(
+    //const allAnswered = questions.every((q) => q.answer.trim() !== "");
+    if (progress === 100) {
+      toaster.success(
         "All questions completed. Press 'Submit' to generate responses.",
         {
           duration: 5,
