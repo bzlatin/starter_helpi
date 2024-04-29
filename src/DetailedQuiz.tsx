@@ -98,6 +98,20 @@ function DetailedQuiz() {
     );
   };
 
+  const checkDone = () => {
+    // Check if all questions have been answered
+    const allAnswered = questions.every((q) => q.answer.trim() !== "");
+    if (allAnswered) {
+      toaster.warning(
+        "All questions completed. Press 'Submit' to generate responses.",
+        {
+          duration: 5,
+          id: "question-done",
+        }
+      );
+    }
+  };
+
   const checkQuestions = () => {
     // Check if all questions have been answered
     const allAnswered = questions.every((q) => q.answer.trim() !== "");
