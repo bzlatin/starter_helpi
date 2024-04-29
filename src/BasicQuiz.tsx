@@ -93,8 +93,6 @@ function LinearProgressWithLabel(
 }
 
 function BasicQuiz() {
-  const [key, setKey] = useState<string>(keyData);
-
   const [progress, setProgress] = React.useState(0);
   const [answers, setAnswers] = useState<string[]>(
     new Array(questions.length).fill("")
@@ -143,15 +141,6 @@ function BasicQuiz() {
         choices[currentQuestionIndex][index].value;
       setAnswers(updatedAnswers);
     };
-
-  const handleSubmit = () => {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    window.location.reload();
-  };
-
-  function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-    setKey(event.target.value);
-  }
 
   const goToHomePage = () => {
     navigate("/home");
