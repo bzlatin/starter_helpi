@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Pane,
   Button,
@@ -81,6 +81,7 @@ function DetailedQuiz() {
       hidden: false,
     },
   ]);
+
   const answeredQuestionsCount = questions.filter(
     (q) => q.answer.trim() !== ""
   ).length;
@@ -97,6 +98,29 @@ function DetailedQuiz() {
       questions.map((q) => (q.id === id ? { ...q, answer: "" } : q))
     );
   };
+
+  const checkDone = useCallback(() => {
+    //Lets the user know when they are ready to submit
+    if (progress === 100) {
+      //Progress 100 == All questions answered
+      toaster.success(
+        "All questions completed. Press 'Submit' to generate response.",
+        {
+          duration: 5,
+          id: "question-done",
+        }
+      );
+    } else if (progress >= 50) {
+      toaster.success("Halfway there... you got this!", {
+        duration: 5,
+        id: "question-done",
+      });
+    }
+  }, [progress]); // Include 'progress' in the dependency array for useCallback
+
+  useEffect(() => {
+    checkDone(); // Call checkDone whenever questions change
+  }, [checkDone, questions]); // Watch for changes in the questions array
 
   const checkQuestions = () => {
     // Check if all questions have been answered

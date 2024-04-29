@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import { Pane, Button, HomeIcon, Radio, Heading, toaster } from "evergreen-ui";
 import { useNavigate } from "react-router-dom";
@@ -138,6 +138,29 @@ function BasicQuiz() {
   const goToHomePage = () => {
     navigate("/home");
   };
+
+  const checkDone = useCallback(() => {
+    //Lets the user know when they are ready to submit
+    //Progress 100 == All questions answered
+    if (progress === 100) {
+      toaster.success(
+        "All questions completed. Press 'Submit' to generate response.",
+        {
+          duration: 5,
+          id: "question-done",
+        }
+      );
+    } else if (progress >= 50) {
+      toaster.success("Halfway there... you got this!", {
+        duration: 5,
+        id: "question-done",
+      });
+    }
+  }, [progress]); // Include 'progress' in the dependency array for useCallback
+
+  useEffect(() => {
+    checkDone(); // Call checkDone whenever questions change
+  }, [checkDone]); // Watch for changes in the questions array
 
   return (
     <Pane
