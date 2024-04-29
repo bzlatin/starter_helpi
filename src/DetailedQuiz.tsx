@@ -91,14 +91,12 @@ function DetailedQuiz() {
     setQuestions(
       questions.map((q) => (q.id === id ? { ...q, answer: value } : q))
     );
-    checkDone();
   };
 
   const clearAnswer = (id: number) => {
     setQuestions(
       questions.map((q) => (q.id === id ? { ...q, answer: "" } : q))
     );
-    checkDone();
   };
 
   const checkDone = useCallback(() => {
