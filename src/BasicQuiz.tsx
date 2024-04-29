@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import LinearProgress, { LinearProgressProps }  from '@mui/material/LinearProgress';
-//work please
+
 
 
 const questions = [
@@ -69,6 +69,8 @@ function LinearProgressWithLabel(props: LinearProgressProps & { value: number })
 }
 
 function BasicQuiz() {
+  const [key, setKey] = useState<string>(keyData);
+
   const [progress, setProgress] = React.useState(0);
   const [answers, setAnswers] = useState<string[]>(
     new Array(questions.length).fill("")
