@@ -104,15 +104,15 @@ function DetailedQuiz() {
     if (progress === 100) {
       //Progress 100 == All questions answered
       toaster.success(
-        "All questions completed. Press 'Submit' to generate response.",
+        "All questions completed. Press 'Get Results' to generate response.",
         {
-          duration: 5,
+          duration: 4,
           id: "question-done",
         }
       );
     } else if (progress >= 50 && progress <= 70) {
       toaster.success("Halfway there... you got this!", {
-        duration: 3,
+        duration: 2.5,
         id: "question-done",
       });
     }
