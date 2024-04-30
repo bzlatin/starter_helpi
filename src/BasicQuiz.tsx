@@ -9,7 +9,18 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import DropdownMenu from "./DropdownMenu";
 
-const questions = [
+interface Question {
+  text: string;
+  value: string;
+}
+
+interface Answer {
+  id: number;
+  text: string;
+  answer: string;
+}
+
+const questions: Question[] = [
   {
     text: "1. I enjoy working in a team more than working alone.",
     value: "Q1",
@@ -31,41 +42,24 @@ const questions = [
   },
 ];
 
-const choices = [
+const choices: string[][] = [
+  ["True", "False"],
   [
-    { text: "True", value: "true" },
-    { text: "False", value: "false" },
+    "The planning and organization",
+    "The creative process",
+    "The problem solving aspects",
+    "The execution and details",
   ],
+  ["True", "False"],
   [
-    { text: "The planning and organization", value: "choice" },
-    { text: "The creative process", value: "choice" },
-    { text: "The problem solving aspects", value: "choice" },
-    { text: "The execution and details", value: "choice" },
+    "Analytical and data-driven",
+    "Creative and Expressive",
+    "Technical and Hands-On",
+    "Interpersonal and Service-Oriented",
   ],
-  [
-    { text: "True", value: "true" },
-    { text: "False", value: "false" },
-  ],
-  [
-    { text: "Analytical and data-driven", value: "choice" },
-    { text: "Creative and Expressive", value: "choice" },
-    { text: "Technical and Hands-On", value: "choice" },
-    { text: "Interpersonal and Service-Oriented", value: "choice" },
-  ],
-  [
-    { text: "True", value: "true" },
-    { text: "False", value: "false" },
-  ],
-  [
-    { text: "Outdoors", value: "choice" },
-    { text: "In an office", value: "choice" },
-    { text: "From home", value: "choice" },
-    { text: "In a different places, traveling", value: "choice" },
-  ],
-  [
-    { text: "True", value: "true" },
-    { text: "False", value: "false" },
-  ],
+  ["True", "False"],
+  ["Outdoors", "In an office", "From home", "In a different places, traveling"],
+  ["True", "False"],
 ];
 
 function LinearProgressWithLabel(
@@ -87,28 +81,26 @@ function LinearProgressWithLabel(
 
 function BasicQuiz() {
   const [progress, setProgress] = React.useState(0);
-  const [answers, setAnswers] = useState<string[]>(
-    new Array(questions.length).fill("")
+  const [answers, setAnswers] = useState(() =>
+    questions.map((q, index) => ({
+      id: index + 1,
+      text: q.text,
+      answer: "",
+    }))
   );
-  const [selectedChoiceIndices, setSelectedChoiceIndices] = useState<
-    Array<number>
-  >(new Array(questions.length).fill(null));
+
   let navigate = useNavigate();
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
-  React.useEffect(() => {
-    const answeredQuestions = selectedChoiceIndices.filter(
-      (index) => index !== null
-    ).length;
+  useEffect(() => {
+    const answeredQuestions = answers.filter((ans) => ans.answer !== "").length;
     const totalQuestions = questions.length;
     const calculatedProgress = (answeredQuestions / totalQuestions) * 100;
     setProgress(calculatedProgress);
-  }, [selectedChoiceIndices]);
+  }, [answers]);
 
   const handleNext = () => {
-    // Check if the current question has been answered
-    if (selectedChoiceIndices[currentQuestionIndex] === null) {
+    if (!answers[currentQuestionIndex].answer) {
       toaster.warning("You must answer the question before proceeding.", {
         duration: 5,
       });
@@ -124,24 +116,32 @@ function BasicQuiz() {
   };
 
   const handleAnswerChange =
-    (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      const updatedIndices = [...selectedChoiceIndices];
-      updatedIndices[currentQuestionIndex] = index;
-      setSelectedChoiceIndices(updatedIndices);
-
-      const updatedAnswers = [...answers];
-      updatedAnswers[currentQuestionIndex] =
-        choices[currentQuestionIndex][index].value;
-      setAnswers(updatedAnswers);
+    (index: number): React.ChangeEventHandler<HTMLInputElement> =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newAnswers: Answer[] = answers.map((answer, idx) => {
+        if (idx === currentQuestionIndex) {
+          return { ...answer, answer: choices[currentQuestionIndex][index] };
+        }
+        return answer;
+      });
+      setAnswers(newAnswers);
     };
 
   const goToHomePage = () => {
     navigate("/home");
   };
 
+  const handleClearAnswer = () => {
+    const newAnswers = answers.map((answer, idx) => {
+      if (idx === currentQuestionIndex) {
+        return { ...answer, answer: "" };
+      }
+      return answer;
+    });
+    setAnswers(newAnswers);
+  };
+
   const checkDone = useCallback(() => {
-    //Lets the user know when they are ready to submit
-    //Progress 100 == All questions answered
     if (progress === 100) {
       toaster.success(
         "All questions completed. Press 'Submit' to generate response.",
@@ -156,11 +156,11 @@ function BasicQuiz() {
         id: "question-done",
       });
     }
-  }, [progress]); // Include 'progress' in the dependency array for useCallback
+  }, [progress]);
 
   useEffect(() => {
-    checkDone(); // Call checkDone whenever questions change
-  }, [checkDone]); // Watch for changes in the questions array
+    checkDone();
+  }, [checkDone]);
 
   return (
     <Pane
@@ -224,12 +224,15 @@ function BasicQuiz() {
           {choices[currentQuestionIndex].map((choice, index) => (
             <Radio
               key={index}
-              label={choice.text}
-              value={choice.value}
-              checked={selectedChoiceIndices[currentQuestionIndex] === index}
+              label={choice}
+              value={choice}
+              checked={answers[currentQuestionIndex].answer === choice}
               onChange={handleAnswerChange(index)}
             />
           ))}
+          <Button size="medium" marginTop="15px" onClick={handleClearAnswer}>
+            Clear Answer
+          </Button>
         </Pane>
         <Box sx={{ width: "70%" }}>
           <LinearProgressWithLabel value={progress} />
@@ -238,11 +241,12 @@ function BasicQuiz() {
           <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
             Back
           </Button>
+
           <Button
             onClick={handleNext}
             appearance="primary"
             marginLeft={16}
-            disabled={currentQuestionIndex === 6}
+            disabled={currentQuestionIndex === questions.length - 1}
           >
             Next
           </Button>
