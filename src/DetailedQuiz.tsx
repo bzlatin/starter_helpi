@@ -305,11 +305,7 @@ function DetailedQuiz() {
         boxSizing="border-box"
       >
         <h1>Detailed Question Page</h1>
-        <LinearProgress
-          variant="determinate"
-          value={progress}
-          sx={{ width: "100%", marginBottom: "20px" }}
-        />
+
         {questions.map((question) => (
           <Pane
             key={question.id}
@@ -383,6 +379,15 @@ function DetailedQuiz() {
         >
           Get Results
         </Button>
+      </Pane>
+      <Pane
+        backgroundColor="white"
+        width="100%"
+        position="sticky"
+        bottom="4rem"
+        padding="10px"
+      >
+        <LinearProgress variant="determinate" value={progress} />
       </Pane>
     </Pane>
   );
