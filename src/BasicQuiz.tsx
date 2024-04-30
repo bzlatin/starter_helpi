@@ -146,11 +146,11 @@ function BasicQuiz() {
       toaster.success(
         "All questions completed. Press 'Submit' to generate response.",
         {
-          duration: 5,
+          duration: 3,
           id: "question-done",
         }
       );
-    } else if (progress >= 50) {
+    } else if (progress >= 50 && progress <= 70) {
       toaster.success("Halfway there... you got this!", {
         duration: 5,
         id: "question-done",
