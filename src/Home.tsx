@@ -37,9 +37,12 @@ function Home() {
         boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         position="fixed"
         top={0}
+        zIndex={999}
         left={0}
-        zIndex={1000}
       >
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
         <Heading size={600}>Home</Heading>
       </Pane>
 
@@ -55,10 +58,6 @@ function Home() {
         background="#F9FAFC
 "
       >
-        <Pane position="fixed" top="0px" left="0" minWidth="100%">
-          <DropdownMenu />
-        </Pane>
-
         <Pane
           width="100%"
           maxWidth="1024px"
