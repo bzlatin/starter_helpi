@@ -16,17 +16,15 @@ const DropdownMenu: React.FC = () => {
       defaultValue=""
       aria-label="Navigate to page"
       style={{
-        margin: "1%",
         backgroundColor: "#f8f8f8",
+        marginLeft: "1%",
         border: "2% solid #ccc",
         borderRadius: "4%",
         width: "10%",
         boxShadow: "0 2% 6% rgba(0, 0, 0, 0.2)",
         cursor: "pointer",
         fontFamily: "Arial, sans-serif",
-        marginTop: "5%",
-        position: "relative",
-        justifyContent: 'left',
+        justifyContent: "left",
       }}
     >
       <option value="" disabled>
@@ -35,7 +33,7 @@ const DropdownMenu: React.FC = () => {
       <option value="/home">Home</option>
       <option value="/basicQuestionPage">Basic Quiz</option>
       <option value="/detailedQuestionPage">Detailed Quiz</option>
-      <option value="/Results">Results</option>
+      <option value="/resultsPage">Results</option>
     </SelectField>
   );
 };
