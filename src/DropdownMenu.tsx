@@ -26,6 +26,7 @@ const DropdownMenu: React.FC = () => {
         fontFamily: "Arial, sans-serif",
         marginTop: "5%",
         position: "relative",
+        justifyContent: 'left',
       }}
     >
       <option value="" disabled>
