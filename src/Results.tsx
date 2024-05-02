@@ -1,5 +1,4 @@
 // Results.tsx
-import React, { useState, ChangeEvent, useEffect } from "react";
 import { Button, Pane } from "evergreen-ui";
 import React, { useState, ChangeEvent } from "react";
 import DropdownMenu from "./DropdownMenu";
@@ -12,15 +11,6 @@ const Results: React.FC<ResultsProps> = () => {
   // State hooks with TypeScript types
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
-
-  const careerResultData = JSON.parse(
-    localStorage.getItem("MYRESULTSKEY") || "null"
-  );
-
-  useEffect(() => {
-    setCareerResult(careerResultData);
-  }, []);
-
   const [progress, setProgress] = useState<string>("");
 
   // Inline CSS styles with TypeScript type
@@ -29,14 +19,6 @@ const Results: React.FC<ResultsProps> = () => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      padding: "20px",
-    },
-    resultDisplayArea: {
-      border: "1px solid #000",
-      width: "80%",
-      height: "150px",
-      marginBottom: "20px",
-
       padding: "2%",
     },
     resultDisplayArea: {
@@ -55,27 +37,6 @@ const Results: React.FC<ResultsProps> = () => {
       cursor: "pointer",
     },
     input: {
-      margin: "10px",
-      padding: "10px",
-      width: "80%",
-    },
-  };
-
-  return (
-    <div style={styles.resultsContainer}>
-      <h1>Your career</h1>
-      <div style={styles.resultDisplayArea}>
-        {careerResult || "Your result will appear here"}
-      </div>
-
-      <button style={styles.button}>Narrow my Results</button>
-      <input
-        style={styles.input}
-        type="text"
-        placeholder="Enter User Feedback"
-        value={userFeedback}
-      />
-    </div>
       margin: "10%",
       padding: "10%",
       width: "90%",

@@ -22,7 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/basicQuestionPage" element={<BasicQuiz />} />
           <Route path="/detailedQuestionPage" element={<DetailedQuiz />} />
-          <Route path="/resultsPage" element={<Results />} />
+          <Route path="/Results" element={<Results />} />
         </Routes>
         {/* Fixed footer */}
         <div
