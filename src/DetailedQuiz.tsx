@@ -35,8 +35,6 @@ function DetailedQuiz() {
     resultData = JSON.parse(prevKey);
   }
 
-  const [careerResultsData, setCareerResultsData] = useState(resultData);
-
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
   };
@@ -193,7 +191,6 @@ function DetailedQuiz() {
 
       // Output or use the suggested career
       if (data.choices && data.choices.length > 0) {
-        setCareerResultsData(data.choices[0].message.content); // Update state
         localStorage.setItem(
           saveResultsData,
           JSON.stringify(data.choices[0].message.content)
