@@ -57,7 +57,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (347 ms)
+  ✕ renders learn react link (489 ms)
 
   ● renders learn react link
 
@@ -104,7 +104,7 @@ FAIL src/App.test.tsx
                   [36m<div[39m
                     [33maria-label[39m=[32m"Navigate to page"[39m
                     [33mclass[39m=[32m"ub-dspl_inline-flex ub-flx_1 ub-pst_relative ub-w_100prcnt ub-h_32px ub-box-szg_border-box"[39m
-                    [33mstyle[39m=[32m"margin: 5% 1% 1% 1%; background-color: rgb(248, 248, 248); border-radius: 4%; width: 10%; box-shadow: 0 2% 6% rgba(0, 0, 0, 0.2); cursor: pointer; font-family: Arial, sans-serif; position: relative;"[39m
+                    [33mstyle[39m=[32m"margin: 5% 1% 1% 1%; background-color: rgb(248, 248, 248); border-radius: 4%; width: 10%; box-shadow: 0 2% 6% rgba(0, 0, 0, 0.2); cursor: pointer; font-family: Arial, sans-serif; position: relative; justify-content: left;"[39m
                   [36m>[39m
                     [36m<select[39m
                       [33maria-invalid[39m=[32m"false"[39m
@@ -164,7 +164,7 @@ FAIL src/App.test.tsx
                     [0mBasic Questions[0m
                   [36m</h2>[39m
                   [36m<button[39m
-                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px u...
+                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub...
 
        5 | test('renders learn react link', () => {
        6 |   render(<App />);
@@ -194,7 +194,7 @@ All files            |   10.73 |     1.51 |    6.66 |   10.91 |
   DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 28-375            
   DropdownMenu.tsx   |      80 |      100 |      50 |      80 | 10                
   Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 11,14             
-  Results.tsx        |    4.34 |        0 |       0 |    4.34 | 10-76             
+  Results.tsx        |    4.34 |        0 |       0 |    4.34 | 12-87             
   index.tsx          |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
  src/components      |   63.63 |       50 |   33.33 |   63.63 |                   
@@ -203,5 +203,5 @@ All files            |   10.73 |     1.51 |    6.66 |   10.91 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.833 s
+Time:        3.849 s
 Ran all test suites.
