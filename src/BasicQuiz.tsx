@@ -149,7 +149,6 @@ function BasicQuiz() {
           duration: 4,
           id: "question-done",
         }
-        callChatGPTAPI(apiKey);
       );
     } else if (progress >= 50 && progress <= 70) {
       toaster.success("Halfway there... you got this!", {
@@ -163,11 +162,31 @@ function BasicQuiz() {
     checkDone();
   }, [checkDone]);
 
+  const checkQuestions = () => {
+    // Check if all questions have been answered
+    const allAnswered = answers.every((q) => q.answer.trim() !== "");
+    const savedKeyData = "MYKEY";
+    const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
+
+    if (!allAnswered) {
+      toaster.warning("Please answer all the questions before proceeding.", {
+        duration: 5,
+        id: "question-warning",
+      });
+    } else if (!apiKey) {
+      toaster.danger("API Key is missing. Please provide a valid API Key.");
+    } else {
+      console.log("All questions answered:", questions);
+
+      callChatGPTAPI(apiKey);
+    }
+  };
+
   const callChatGPTAPI = async (apiKey: string) => {
     console.log("Calling API with Key:", apiKey);
     try {
       // Compile the user's answers into a single string
-      const userResponses = questions
+      const userResponses = answers
         .map((q) => `${q.text}: ${q.answer}`)
         .join("\n");
 
@@ -214,7 +233,6 @@ function BasicQuiz() {
       toaster.danger("Failed to get career suggestions. Please try again.");
     }
   };
-
 
   return (
     <Pane
