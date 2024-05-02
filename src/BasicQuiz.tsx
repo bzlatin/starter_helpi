@@ -328,7 +328,7 @@ function BasicQuiz() {
           marginBottom="10%"
           marginTop="10px"
           onClick={() => {
-            checkDone();
+            checkQuestions();
             // function that calls API
             // function to navigate to results page
           }}
