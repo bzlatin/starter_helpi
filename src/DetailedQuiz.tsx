@@ -27,8 +27,21 @@ interface Question {
 function DetailedQuiz() {
   let navigate = useNavigate(); // Hook for navigation
 
+  const saveResultsData = "MYRESULTSKEY";
+  let resultData = "";
+
+  const prevKey = localStorage.getItem(saveResultsData);
+  if (prevKey !== null) {
+    resultData = JSON.parse(prevKey);
+  }
+
+  const [careerResultsData, setCareerResultsData] = useState(resultData);
+
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
+  };
+  const goToResultsPage = () => {
+    navigate("/resultsPage"); // Use the navigate function
   };
   const [questions, setQuestions] = useState<Question[]>([
     {
@@ -180,8 +193,11 @@ function DetailedQuiz() {
 
       // Output or use the suggested career
       if (data.choices && data.choices.length > 0) {
-        console.log("Career suggestion:", data.choices[0].message.content);
-        // set data variable here
+        setCareerResultsData(data.choices[0].message.content); // Update state
+        localStorage.setItem(
+          saveResultsData,
+          JSON.stringify(data.choices[0].message.content)
+        ); // Save to localStorage
       } else {
         console.log("No career suggestion found.");
         toaster.warning(
@@ -373,8 +389,7 @@ function DetailedQuiz() {
           marginTop="10px"
           onClick={() => {
             checkQuestions();
-            // function that calls API
-            // function to navigate to results page
+            goToResultsPage();
           }}
         >
           Get Results
