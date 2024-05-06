@@ -18,7 +18,7 @@ const Results: React.FC<ResultsProps> = () => {
 
   useEffect(() => {
     setCareerResult(careerResultData);
-  }, [careerResult]);
+  }, [careerResult, careerResultData]);
 
   // Inline CSS styles with TypeScript type
   const styles: { [key: string]: React.CSSProperties } = {
