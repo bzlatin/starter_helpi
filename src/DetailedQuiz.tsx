@@ -15,7 +15,6 @@ import "./App.css";
 import LinearProgress from "@mui/material/LinearProgress";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
-import zIndex from "@mui/material/styles/zIndex";
 
 interface Question {
   id: number;
