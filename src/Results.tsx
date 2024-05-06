@@ -10,7 +10,7 @@ interface ResultsProps {
 const Results: React.FC<ResultsProps> = () => {
   // State hooks with TypeScript types
   const [careerResult, setCareerResult] = useState<string>("");
-  const [userFeedback, setUserFeedback] = useState<string>("");
+  // const [userFeedback, setUserFeedback] = useState<string>("");
 
   const careerResultData = JSON.parse(
     localStorage.getItem("MYRESULTSKEY") || "null"
@@ -18,7 +18,7 @@ const Results: React.FC<ResultsProps> = () => {
 
   useEffect(() => {
     setCareerResult(careerResultData);
-  }, []);
+  }, [careerResult]);
 
   // Inline CSS styles with TypeScript type
   const styles: { [key: string]: React.CSSProperties } = {
@@ -65,7 +65,7 @@ const Results: React.FC<ResultsProps> = () => {
         style={styles.input}
         type="text"
         placeholder="Enter User Feedback"
-        value={userFeedback}
+        // value={userFeedback}
       />
     </div>
   );
