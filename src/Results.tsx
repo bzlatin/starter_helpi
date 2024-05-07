@@ -7,6 +7,7 @@ import {
   toaster,
   Text,
   Spinner,
+  HomeIcon,
 } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
@@ -26,13 +27,17 @@ const Results: React.FC<ResultsProps> = () => {
   );
 
   useEffect(() => {
-    if (careerResultData) {
-      setCareerResult(careerResultData);
-      setIsLoading(false); // Set loading to false when data is loaded
-    } else {
-      setIsLoading(true); // Keep or set loading to true if data is not yet available
+    try {
+      const resultData = localStorage.getItem("MYRESULTSKEY");
+      if (resultData) {
+        const careerResultData = JSON.parse(resultData);
+        setCareerResult(careerResultData);
+      }
+    } catch (error) {
+      console.error("Failed to parse career results from localStorage:", error);
+      toaster.danger("Error retrieving your career results.");
     }
-  }, [careerResultData]);
+  }, []);
 
   let navigate = useNavigate();
 
@@ -77,7 +82,10 @@ const Results: React.FC<ResultsProps> = () => {
         <Pane position="fixed" top="0px" left="0" minWidth="100%">
           <DropdownMenu />
         </Pane>
-        <Button onClick={goToHomePage}>Home</Button>
+
+        <Button iconBefore={HomeIcon} onClick={goToHomePage}>
+          Home
+        </Button>
       </Pane>
 
       <Pane
