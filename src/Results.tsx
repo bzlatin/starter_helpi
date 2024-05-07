@@ -29,14 +29,14 @@ const Results: React.FC<ResultsProps> = () => {
     }
   }, [careerResultData]);
 
-  let navigate = useNavigate(); // Hook for navigation
+  let navigate = useNavigate(); 
 
   const handleNarrowResults = (): void => {
     toaster.notify('Narrowing results...');
   };
 
   const goToHomePage = () => {
-    navigate("/home"); // Use the navigate function
+    navigate("/home"); 
   };
 
   return (
@@ -45,8 +45,8 @@ const Results: React.FC<ResultsProps> = () => {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      height="100vh"  // Use the full height of the viewport
-      padding="2%"    // Use percentage for padding
+      height="100vh" 
+      padding="2%"    
       background="#F9FAFC"
     >
       <Pane
@@ -54,8 +54,8 @@ const Results: React.FC<ResultsProps> = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        paddingX="2%"  // Use percentage for horizontal padding
-        paddingY="1.5%"  // Use percentage for vertical padding
+        paddingX="2%"  
+        paddingY="1.5%" 
         background="white"
         borderRadius={3}
         boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
@@ -71,9 +71,9 @@ const Results: React.FC<ResultsProps> = () => {
       </Pane>
 
       <Pane
-        marginTop="5%"  // Use percentage for margin-top to avoid overlap
-        width="90%"  // Use percentage for width to scale with screen size
-        maxWidth="600px"  // Use max-width to limit the size on large screens
+        marginTop="5%"  
+        width="90%" 
+        maxWidth="600px"
         display="flex"
         flexDirection="column"
         alignItems="center"
