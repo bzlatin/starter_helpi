@@ -22,6 +22,7 @@ interface Question {
   answer: string;
   loading: boolean;
   hidden: boolean;
+  disabled?: boolean;
 }
 
 function DetailedQuiz() {
@@ -102,6 +103,28 @@ function DetailedQuiz() {
       hidden: false,
     },
   ]);
+  
+  const [skippedQuestions, setSkippedQuestions] = useState<number[]>([]);
+
+  const skipQuestion = (id: number) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((q) =>
+        q.id === id ? { ...q, answer: "unsure of" } : q
+      )
+    );
+    setSkippedQuestions((prevSkipped) => [...prevSkipped, id]);
+  };
+
+  const comeBackToQuestion = (id: number) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((q) =>
+        q.id === id ? { ...q, answer: "" } : q
+      )
+    );
+    setSkippedQuestions((prevSkipped) =>
+      prevSkipped.filter((skippedId) => skippedId !== id)
+    );
+  };
 
   const answeredQuestionsCount = questions.filter(
     (q) => q.answer.trim() !== ""
@@ -369,7 +392,7 @@ function DetailedQuiz() {
               alignItems="center"
               justifyContent="center"
               width="30%"
-            >
+              >
               <TextInputField
                 marginX="5%"
                 width="80%"
@@ -378,15 +401,37 @@ function DetailedQuiz() {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleInputChange(question.id, e.target.value)
                 }
+                disabled={question.answer === "unsure of"}
               />
-              <Tooltip content="Clear answer" position="right">
-                <CrossIcon
-                  marginBottom="5%"
-                  onClick={() => clearAnswer(question.id)}
+              {!(skippedQuestions.includes(question.id)) && (
+                <>
+                  <Tooltip content="Clear answer" position="right">
+                    <CrossIcon
+                      marginBottom="5%"
+                      onClick={() => clearAnswer(question.id)}
+                    >
+                      Clear Answer
+                    </CrossIcon>
+                  </Tooltip>
+                  <Button
+                    appearance="minimal"
+                    intent="none"
+                    onClick={() => skipQuestion(question.id)}
+                    marginRight={8}
+                  >
+                    Skip
+                  </Button>
+                </>
+              )}
+              {skippedQuestions.includes(question.id) && (
+                <Button
+                  appearance="minimal"
+                  intent="none"
+                  onClick={() => comeBackToQuestion(question.id)}
                 >
-                  Clear Answer
-                </CrossIcon>
-              </Tooltip>
+                  Unskip
+                </Button>
+              )}
             </Pane>
           </Pane>
         ))}
