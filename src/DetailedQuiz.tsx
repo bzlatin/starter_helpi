@@ -22,10 +22,15 @@ interface Question {
   answer: string;
   loading: boolean;
   hidden: boolean;
+  disabled?: boolean;
 }
 
 function DetailedQuiz() {
   let navigate = useNavigate(); // Hook for navigation
+
+  const goToResultsPage = () => {
+    navigate("/resultsPage");
+  };
 
   const saveResultsData = "MYRESULTSKEY";
   let resultData = "";
@@ -46,9 +51,7 @@ function DetailedQuiz() {
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
   };
-  const goToResultsPage = () => {
-    navigate("/resultsPage"); // Use the navigate function
-  };
+
   const [questions, setQuestions] = useState<Question[]>([
     {
       id: 1,
@@ -100,6 +103,28 @@ function DetailedQuiz() {
       hidden: false,
     },
   ]);
+  
+  const [skippedQuestions, setSkippedQuestions] = useState<number[]>([]);
+
+  const skipQuestion = (id: number) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((q) =>
+        q.id === id ? { ...q, answer: "unsure of" } : q
+      )
+    );
+    setSkippedQuestions((prevSkipped) => [...prevSkipped, id]);
+  };
+
+  const comeBackToQuestion = (id: number) => {
+    setQuestions((prevQuestions) =>
+      prevQuestions.map((q) =>
+        q.id === id ? { ...q, answer: "" } : q
+      )
+    );
+    setSkippedQuestions((prevSkipped) =>
+      prevSkipped.filter((skippedId) => skippedId !== id)
+    );
+  };
 
   const answeredQuestionsCount = questions.filter(
     (q) => q.answer.trim() !== ""
@@ -142,7 +167,6 @@ function DetailedQuiz() {
   }, [checkDone, questions]); // Watch for changes in the questions array
 
   const checkQuestions = () => {
-    // Check if all questions have been answered
     const allAnswered = questions.every((q) => q.answer.trim() !== "");
     const savedKeyData = "MYKEY";
     const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
@@ -155,8 +179,8 @@ function DetailedQuiz() {
     } else if (!apiKey) {
       toaster.danger("API Key is missing. Please provide a valid API Key.");
     } else {
-      console.log("All questions answered:", questions);
-
+      // Clear the previous results data before setting new data
+      localStorage.removeItem(saveResultsData);
       callChatGPTAPI(apiKey);
     }
   };
@@ -198,15 +222,16 @@ function DetailedQuiz() {
       const data = await response.json();
 
       // Output or use the suggested career
-      if (data.choices && data.choices.length > 0) {
+      if (response.ok && data.choices && data.choices.length > 0) {
         localStorage.setItem(
           saveResultsData,
           JSON.stringify(data.choices[0].message.content)
-        ); // Save to localStorage
+        );
+        window.dispatchEvent(new Event("storageUpdated"));
+        goToResultsPage();
       } else {
-        console.log("No career suggestion found.");
         toaster.warning(
-          "No career suggestion was generated. Please try again & ensure you selected the correct API Key."
+          "No career suggestion was generated. Please try again."
         );
       }
     } catch (error) {
@@ -367,7 +392,7 @@ function DetailedQuiz() {
               alignItems="center"
               justifyContent="center"
               width="30%"
-            >
+              >
               <TextInputField
                 marginX="5%"
                 width="80%"
@@ -376,15 +401,37 @@ function DetailedQuiz() {
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   handleInputChange(question.id, e.target.value)
                 }
+                disabled={question.answer === "unsure of"}
               />
-              <Tooltip content="Clear answer" position="right">
-                <CrossIcon
-                  marginBottom="5%"
-                  onClick={() => clearAnswer(question.id)}
+              {!(skippedQuestions.includes(question.id)) && (
+                <>
+                  <Tooltip content="Clear answer" position="right">
+                    <CrossIcon
+                      marginBottom="5%"
+                      onClick={() => clearAnswer(question.id)}
+                    >
+                      Clear Answer
+                    </CrossIcon>
+                  </Tooltip>
+                  <Button
+                    appearance="minimal"
+                    intent="none"
+                    onClick={() => skipQuestion(question.id)}
+                    marginRight={8}
+                  >
+                    Skip
+                  </Button>
+                </>
+              )}
+              {skippedQuestions.includes(question.id) && (
+                <Button
+                  appearance="minimal"
+                  intent="none"
+                  onClick={() => comeBackToQuestion(question.id)}
                 >
-                  Clear Answer
-                </CrossIcon>
-              </Tooltip>
+                  Unskip
+                </Button>
+              )}
             </Pane>
           </Pane>
         ))}
