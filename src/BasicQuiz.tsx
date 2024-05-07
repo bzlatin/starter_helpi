@@ -130,6 +130,9 @@ function BasicQuiz() {
   const goToHomePage = () => {
     navigate("/home");
   };
+  const goToResultsPage = () => {
+    navigate("/resultsPage"); // Use the navigate function
+  };
 
   const handleClearAnswer = () => {
     const newAnswers = answers.map((answer, idx) => {
@@ -179,6 +182,7 @@ function BasicQuiz() {
       console.log("All questions answered:", questions);
 
       callChatGPTAPI(apiKey);
+      goToResultsPage();
     }
   };
 
