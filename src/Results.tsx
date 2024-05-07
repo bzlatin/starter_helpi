@@ -7,6 +7,7 @@ import {
   toaster,
   Text,
   HomeIcon,
+  Spinner,
 } from "evergreen-ui";
 import "./App.css";
 import { useNavigate } from "react-router-dom";
@@ -19,18 +20,34 @@ interface ResultsProps {
 const Results: React.FC<ResultsProps> = () => {
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
+  const [loading, setLoading] = useState(true); // State to handle loading
 
   useEffect(() => {
-    try {
-      const resultData = localStorage.getItem("MYRESULTSKEY");
-      if (resultData) {
-        const careerResultData = JSON.parse(resultData);
-        setCareerResult(careerResultData);
+    const updateResult = () => {
+      try {
+        const resultData = localStorage.getItem("MYRESULTSKEY");
+        if (resultData) {
+          const careerResultData = JSON.parse(resultData);
+          setCareerResult(careerResultData);
+          setLoading(false); // Set loading to false after data is loaded
+        } else {
+          setLoading(true); // Ensure loading is true if data is not yet available
+        }
+      } catch (error) {
+        console.error(
+          "Failed to parse career results from localStorage:",
+          error
+        );
+        toaster.danger("Error retrieving your career results.");
+        setLoading(false); // Also set loading to false here after an error
       }
-    } catch (error) {
-      console.error("Failed to parse career results from localStorage:", error);
-      toaster.danger("Error retrieving your career results.");
-    }
+    };
+
+    window.addEventListener("storageUpdated", updateResult);
+
+    return () => {
+      window.removeEventListener("storageUpdated", updateResult);
+    };
   }, []);
 
   let navigate = useNavigate(); // Hook for navigation
@@ -42,6 +59,20 @@ const Results: React.FC<ResultsProps> = () => {
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
   };
+
+  if (loading) {
+    return (
+      <Pane
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height="100vh"
+        background="#F9FAFC"
+      >
+        <Spinner />
+      </Pane>
+    );
+  }
 
   return (
     <Pane

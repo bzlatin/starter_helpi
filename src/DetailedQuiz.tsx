@@ -27,6 +27,10 @@ interface Question {
 function DetailedQuiz() {
   let navigate = useNavigate(); // Hook for navigation
 
+  const goToResultsPage = () => {
+    navigate("/resultsPage");
+  };
+
   const saveResultsData = "MYRESULTSKEY";
   let resultData = "";
   console.log(resultData);
@@ -46,9 +50,7 @@ function DetailedQuiz() {
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
   };
-  const goToResultsPage = () => {
-    navigate("/resultsPage"); // Use the navigate function
-  };
+
   const [questions, setQuestions] = useState<Question[]>([
     {
       id: 1,
@@ -142,7 +144,6 @@ function DetailedQuiz() {
   }, [checkDone, questions]); // Watch for changes in the questions array
 
   const checkQuestions = () => {
-    // Check if all questions have been answered
     const allAnswered = questions.every((q) => q.answer.trim() !== "");
     const savedKeyData = "MYKEY";
     const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
@@ -155,8 +156,8 @@ function DetailedQuiz() {
     } else if (!apiKey) {
       toaster.danger("API Key is missing. Please provide a valid API Key.");
     } else {
-      console.log("All questions answered:", questions);
-
+      // Clear the previous results data before setting new data
+      localStorage.removeItem(saveResultsData);
       callChatGPTAPI(apiKey);
     }
   };
@@ -198,15 +199,16 @@ function DetailedQuiz() {
       const data = await response.json();
 
       // Output or use the suggested career
-      if (data.choices && data.choices.length > 0) {
+      if (response.ok && data.choices && data.choices.length > 0) {
         localStorage.setItem(
           saveResultsData,
           JSON.stringify(data.choices[0].message.content)
-        ); // Save to localStorage
+        );
+        window.dispatchEvent(new Event("storageUpdated"));
+        goToResultsPage();
       } else {
-        console.log("No career suggestion found.");
         toaster.warning(
-          "No career suggestion was generated. Please try again & ensure you selected the correct API Key."
+          "No career suggestion was generated. Please try again."
         );
       }
     } catch (error) {
