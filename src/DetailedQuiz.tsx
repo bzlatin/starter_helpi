@@ -29,13 +29,12 @@ function DetailedQuiz() {
 
   const saveResultsData = "MYRESULTSKEY";
   let resultData = "";
+  console.log(resultData);
 
   const prevKey = localStorage.getItem(saveResultsData);
   if (prevKey !== null) {
     resultData = JSON.parse(prevKey);
   }
-
-  const [careerResultsData, setCareerResultsData] = useState(resultData);
 
   const goToHomePage = () => {
     navigate("/home"); // Use the navigate function
@@ -193,7 +192,6 @@ function DetailedQuiz() {
 
       // Output or use the suggested career
       if (data.choices && data.choices.length > 0) {
-        setCareerResultsData(data.choices[0].message.content); // Update state
         localStorage.setItem(
           saveResultsData,
           JSON.stringify(data.choices[0].message.content)
@@ -299,6 +297,7 @@ function DetailedQuiz() {
         boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         position="fixed"
         top={0}
+        zIndex={999}
         left={0}
       >
         <Pane position="fixed" top="0px" left="0" minWidth="100%">

@@ -11,10 +11,13 @@ const Results: React.FC<ResultsProps> = () => {
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
 
+  const careerResultData = JSON.parse(
+    localStorage.getItem("MYRESULTSKEY") || "null"
+  );
+
   useEffect(() => {
-    const careerResultData = JSON.parse(localStorage.getItem("MYRESULTSKEY") || "null");
     setCareerResult(careerResultData);
-  }, []);
+  }, [careerResult, careerResultData]);
 
   const handleNarrowResults = (): void => {
     // Add functionality or toast here
