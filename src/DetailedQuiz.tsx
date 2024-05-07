@@ -32,8 +32,15 @@ function DetailedQuiz() {
   console.log(resultData);
 
   const prevKey = localStorage.getItem(saveResultsData);
-  if (prevKey !== null) {
-    resultData = JSON.parse(prevKey);
+  try {
+    if (prevKey !== null) {
+      resultData = JSON.parse(prevKey);
+    }
+  } catch (error) {
+    console.error(
+      "Failed to parse previous results data from localStorage:",
+      error
+    );
   }
 
   const goToHomePage = () => {
