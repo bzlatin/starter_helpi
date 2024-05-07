@@ -1,73 +1,94 @@
 // Results.tsx
 import React, { useState, useEffect } from "react";
+import { Pane, Button, Text, TextInputField, toaster } from "evergreen-ui";
 import DropdownMenu from "./DropdownMenu";
-import { Pane, Button } from "evergreen-ui";
 
 interface ResultsProps {
   // Define props here if needed
 }
 
 const Results: React.FC<ResultsProps> = () => {
-  // State hooks with TypeScript types
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
 
-  const careerResultData = JSON.parse(
-    localStorage.getItem("MYRESULTSKEY") || "null"
-  );
-
   useEffect(() => {
+    const careerResultData = JSON.parse(localStorage.getItem("MYRESULTSKEY") || "null");
     setCareerResult(careerResultData);
   }, []);
 
-  // Inline CSS styles with TypeScript type
-  const styles: { [key: string]: React.CSSProperties } = {
-    resultsContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      padding: "20px",
-    },
-    resultDisplayArea: {
-      border: "1px solid #000",
-      width: "80%",
-      height: "150px",
-      marginBottom: "20px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      textAlign: "center",
-    },
-    button: {
-      margin: "10px",
-      padding: "10px 20px",
-      cursor: "pointer",
-    },
-    input: {
-      margin: "10px",
-      padding: "10px",
-      width: "80%",
-    },
+  const handleNarrowResults = (): void => {
+    // Add functionality or toast here
+    toaster.notify('Narrowing results...');
   };
 
   return (
-    <div style={styles.resultsContainer}>
-      <Pane position="fixed" top="0px" left="0" minWidth="100%">
-        <DropdownMenu />
+    <Pane
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      padding={16}
+      background="tint2"
+      width="100%"
+    >
+      <Pane
+        position="fixed"
+        top={0}
+        left={0}
+        width="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        paddingX={16}
+        paddingY={12}
+        background="white"
+        borderRadius={3}
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+      >
+        <Pane position="fixed" top="0px" left="0" minWidth="100%">
+          <DropdownMenu />
+        </Pane>
       </Pane>
-      <h1>Your career</h1>
-      <div style={styles.resultDisplayArea}>
-        {careerResult || "Your result will appear here"}
-      </div>
 
-      <Button style={styles.button}>Narrow my Results</Button>
-      <input
-        style={styles.input}
-        type="text"
-        placeholder="Enter User Feedback"
-        value={userFeedback}
-      />
-    </div>
+      <Pane
+        marginTop="100px"
+        width="100%"
+        maxWidth="600px"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        background="white"
+        borderRadius={3}
+        boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
+        padding={20}
+      >
+        <Text size={600} marginBottom={20}>Your Career</Text>
+        <Pane
+          width="100%"
+          minHeight="150px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          border="1px solid #000"
+          marginBottom={20}
+        >
+          {careerResult || 'Your result will appear here'}
+        </Pane>
+
+        <Button onClick={handleNarrowResults} width="100%" marginBottom={20}>
+          Narrow My Results
+        </Button>
+        
+        <TextInputField
+          width="100%"
+          placeholder="Enter User Feedback"
+          value={userFeedback}
+          onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setUserFeedback(e.target.value)}
+        />
+      </Pane>
+    </Pane>
   );
 };
 
