@@ -20,11 +20,7 @@ interface ResultsProps {
 const Results: React.FC<ResultsProps> = () => {
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(true); // State to manage loading status
-
-  const careerResultData = JSON.parse(
-    localStorage.getItem("MYRESULTSKEY") || "null"
-  );
+  const [isLoading, setIsLoading] = useState<boolean>(false); // State to manage loading status
 
   useEffect(() => {
     try {
