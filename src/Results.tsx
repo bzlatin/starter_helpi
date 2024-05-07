@@ -39,7 +39,7 @@ const Results: React.FC<ResultsProps> = () => {
 
   const handleNarrowResults = (): void => {
     setIsLoading(true); // Set loading to true when starting to narrow results
-    toaster.notify("Narrowing results...");
+    toaster.notify("Refreshing results...");
     // Simulate fetching/narrowing results
     setTimeout(() => {
       setIsLoading(false); // Set loading to false once results are narrowed
