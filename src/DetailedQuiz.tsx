@@ -103,23 +103,19 @@ function DetailedQuiz() {
       hidden: false,
     },
   ]);
-  
+
   const [skippedQuestions, setSkippedQuestions] = useState<number[]>([]);
 
   const skipQuestion = (id: number) => {
     setQuestions((prevQuestions) =>
-      prevQuestions.map((q) =>
-        q.id === id ? { ...q, answer: "unsure of" } : q
-      )
+      prevQuestions.map((q) => (q.id === id ? { ...q, answer: "N/A" } : q))
     );
     setSkippedQuestions((prevSkipped) => [...prevSkipped, id]);
   };
 
   const comeBackToQuestion = (id: number) => {
     setQuestions((prevQuestions) =>
-      prevQuestions.map((q) =>
-        q.id === id ? { ...q, answer: "" } : q
-      )
+      prevQuestions.map((q) => (q.id === id ? { ...q, answer: "" } : q))
     );
     setSkippedQuestions((prevSkipped) =>
       prevSkipped.filter((skippedId) => skippedId !== id)
@@ -392,7 +388,7 @@ function DetailedQuiz() {
               alignItems="center"
               justifyContent="center"
               width="30%"
-              >
+            >
               <TextInputField
                 marginX="5%"
                 width="80%"
@@ -403,7 +399,7 @@ function DetailedQuiz() {
                 }
                 disabled={question.answer === "unsure of"}
               />
-              {!(skippedQuestions.includes(question.id)) && (
+              {!skippedQuestions.includes(question.id) && (
                 <>
                   <Tooltip content="Clear answer" position="right">
                     <CrossIcon
