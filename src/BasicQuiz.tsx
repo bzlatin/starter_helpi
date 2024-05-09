@@ -133,6 +133,21 @@ function BasicQuiz() {
   const goToResultsPage = () => {
     navigate("/resultsPage"); // Use the navigate function
   };
+  const saveResultsData = "MYRESULTSKEY";
+  let resultData = "";
+  console.log(resultData);
+
+  const prevKey = localStorage.getItem(saveResultsData);
+  try {
+    if (prevKey !== null) {
+      resultData = JSON.parse(prevKey);
+    }
+  } catch (error) {
+    console.error(
+      "Failed to parse previous results data from localStorage:",
+      error
+    );
+  }
 
   const handleClearAnswer = () => {
     const newAnswers = answers.map((answer, idx) => {
@@ -180,7 +195,7 @@ function BasicQuiz() {
       toaster.danger("API Key is missing. Please provide a valid API Key.");
     } else {
       console.log("All questions answered:", questions);
-
+      localStorage.removeItem(saveResultsData);
       callChatGPTAPI(apiKey);
       goToResultsPage();
     }
@@ -226,6 +241,12 @@ function BasicQuiz() {
       if (data.choices && data.choices.length > 0) {
         console.log("Career suggestion:", data.choices[0].message.content);
         // set data variable here
+        localStorage.setItem(
+          saveResultsData,
+          JSON.stringify(data.choices[0].message.content)
+        );
+        window.dispatchEvent(new Event("storageUpdated"));
+        //goToResultsPage();
       } else {
         console.log("No career suggestion found.");
         toaster.warning(
