@@ -20,7 +20,7 @@ interface ResultsProps {
 const Results: React.FC<ResultsProps> = () => {
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
-  const [loading, setLoading] = useState(false); // State to handle loading
+  const [loading, setLoading] = useState(true); // State to handle loading
 
   useEffect(() => {
     const updateResult = () => {
@@ -142,7 +142,7 @@ const Results: React.FC<ResultsProps> = () => {
           marginBottom="20px"
         />
         <Button onClick={handleNarrowResults} width="100%">
-          Narrow My Results
+          Refresh My Results
         </Button>
       </Pane>
     </Pane>
