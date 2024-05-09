@@ -101,7 +101,7 @@ const Results: React.FC<ResultsProps> = () => {
         boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         position="fixed"
         top={0}
-        zIndex={999}
+        zIndex={5}
         left={0}
       >
         <Pane position="fixed" top="0px" left="0" minWidth="100%">
