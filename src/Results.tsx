@@ -53,7 +53,12 @@ const Results: React.FC<ResultsProps> = () => {
   let navigate = useNavigate(); // Hook for navigation
 
   const handleNarrowResults = (): void => {
-    toaster.notify("Narrowing results...");
+    setLoading(true); // Set loading to true when starting to narrow results
+    toaster.notify("Refreshing results...");
+    // Simulate fetching/narrowing results
+    setTimeout(() => {
+      setLoading(false); // Set loading to false once results are narrowed
+    }, 2000);
   };
 
   const goToHomePage = () => {
@@ -137,7 +142,7 @@ const Results: React.FC<ResultsProps> = () => {
           marginBottom="20px"
         />
         <Button onClick={handleNarrowResults} width="100%">
-          Narrow My Results
+          Refresh My Results
         </Button>
       </Pane>
     </Pane>
