@@ -216,7 +216,7 @@ function DetailedQuiz() {
       );
 
       const data = await response.json();
-
+      console.log(data);
       // Output or use the suggested career
       if (response.ok && data.choices && data.choices.length > 0) {
         localStorage.setItem(
@@ -325,7 +325,7 @@ function DetailedQuiz() {
         boxShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         position="fixed"
         top={0}
-        zIndex={999}
+        zIndex={5}
         left={0}
       >
         <Pane position="fixed" top="0px" left="0" minWidth="100%">
@@ -411,6 +411,7 @@ function DetailedQuiz() {
                   </Tooltip>
                   <Button
                     appearance="minimal"
+                    marginBottom="5%"
                     intent="none"
                     onClick={() => skipQuestion(question.id)}
                     marginRight={8}
@@ -423,6 +424,7 @@ function DetailedQuiz() {
                 <Button
                   appearance="minimal"
                   intent="none"
+                  marginBottom="5%"
                   onClick={() => comeBackToQuestion(question.id)}
                 >
                   Unskip
