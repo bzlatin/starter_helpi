@@ -20,7 +20,7 @@ interface ResultsProps {
 const Results: React.FC<ResultsProps> = () => {
   const [careerResult, setCareerResult] = useState<string>("");
   const [userFeedback, setUserFeedback] = useState<string>("");
-  const [loading, setLoading] = useState(true); // State to handle loading
+  const [loading, setLoading] = useState(false); // State to handle loading
 
   useEffect(() => {
     const updateResult = () => {
@@ -53,11 +53,11 @@ const Results: React.FC<ResultsProps> = () => {
   let navigate = useNavigate(); // Hook for navigation
 
   const handleNarrowResults = (): void => {
-    setIsLoading(true); // Set loading to true when starting to narrow results
+    setLoading(true); // Set loading to true when starting to narrow results
     toaster.notify("Refreshing results...");
     // Simulate fetching/narrowing results
     setTimeout(() => {
-      setIsLoading(false); // Set loading to false once results are narrowed
+      setLoading(false); // Set loading to false once results are narrowed
     }, 2000);
   };
 
