@@ -33,7 +33,6 @@ const DropdownMenu: React.FC = () => {
       <option value="/home">Home</option>
       <option value="/basicQuestionPage">Basic Quiz</option>
       <option value="/detailedQuestionPage">Detailed Quiz</option>
-      <option value="/resultsPage">Results</option>
     </SelectField>
   );
 };
