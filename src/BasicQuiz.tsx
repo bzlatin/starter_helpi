@@ -137,6 +137,7 @@ function BasicQuiz() {
   const saveResultsData = "MYRESULTSKEY";
   const saveAnswersData = "MYANSWERSSKEY";
   let resultData = "";
+  console.log(resultData);
 
   const prevKey = localStorage.getItem(saveResultsData);
   try {
