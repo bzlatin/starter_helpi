@@ -47,7 +47,7 @@ const choices: string[][] = [
   [
     "The planning and organization",
     "The creative process",
-    "The problem solving aspects",
+    "The problem-solving aspects",
     "The execution and details",
   ],
   ["True", "False"],
@@ -58,7 +58,7 @@ const choices: string[][] = [
     "Interpersonal and Service-Oriented",
   ],
   ["True", "False"],
-  ["Outdoors", "In an office", "From home", "In a different places, traveling"],
+  ["Outdoors", "In an office", "From home", "In different places, traveling"],
   ["True", "False"],
 ];
 
@@ -90,8 +90,8 @@ function BasicQuiz() {
   );
 
   let navigate = useNavigate();
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
   useEffect(() => {
     const answeredQuestions = answers.filter((ans) => ans.answer !== "").length;
     const totalQuestions = questions.length;
@@ -131,9 +131,11 @@ function BasicQuiz() {
     navigate("/home");
   };
   const goToResultsPage = () => {
-    navigate("/resultsPage"); // Use the navigate function
+    navigate("/resultsPage");
   };
+
   const saveResultsData = "MYRESULTSKEY";
+  const saveAnswersData = "MYANSWERSSKEY";
   let resultData = "";
   console.log(resultData);
 
@@ -163,10 +165,7 @@ function BasicQuiz() {
     if (progress === 100) {
       toaster.success(
         "All questions completed. Press 'Get Results' to generate response.",
-        {
-          duration: 4,
-          id: "question-done",
-        }
+        { duration: 4, id: "question-done" }
       );
     } else if (progress >= 50 && progress <= 70) {
       toaster.success("Halfway there... you got this!", {
@@ -181,7 +180,6 @@ function BasicQuiz() {
   }, [checkDone]);
 
   const checkQuestions = () => {
-    // Check if all questions have been answered
     const allAnswered = answers.every((q) => q.answer.trim() !== "");
     const savedKeyData = "MYKEY";
     const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
@@ -194,7 +192,6 @@ function BasicQuiz() {
     } else if (!apiKey) {
       toaster.danger("API Key is missing. Please provide a valid API Key.");
     } else {
-      console.log("All questions answered:", questions);
       localStorage.removeItem(saveResultsData);
       callChatGPTAPI(apiKey);
       goToResultsPage();
@@ -204,12 +201,11 @@ function BasicQuiz() {
   const callChatGPTAPI = async (apiKey: string) => {
     console.log("Calling API with Key:", apiKey);
     try {
-      // Compile the user's answers into a single string
       const userResponses = answers
         .map((q) => `${q.text}: ${q.answer}`)
         .join("\n");
+      localStorage.setItem(saveAnswersData, JSON.stringify(userResponses));
 
-      // Request to OpenAI API
       const response = await fetch(
         "https://api.openai.com/v1/chat/completions",
         {
@@ -224,7 +220,7 @@ function BasicQuiz() {
               {
                 role: "system",
                 content:
-                  "You are a bot that tells people what future career to have based on their responses to several questions. Give them a career and a reason for it without asking follow-up questions.",
+                  "You are a bot that tells people what future career to have based on their responses to several questions. Give them a career and a reason for it without asking follow-up questions. Format the response in the following way:\n\nCareer Suggestion: [Career Name]\n\nReasoning:\n[Detailed Reasoning]\n\nEnsure that the formatting is consistent and the response is easy to read.",
               },
               {
                 role: "user",
@@ -237,16 +233,13 @@ function BasicQuiz() {
 
       const data = await response.json();
 
-      // Output or use the suggested career
       if (data.choices && data.choices.length > 0) {
         console.log("Career suggestion:", data.choices[0].message.content);
-        // set data variable here
         localStorage.setItem(
           saveResultsData,
           JSON.stringify(data.choices[0].message.content)
         );
         window.dispatchEvent(new Event("storageUpdated"));
-        //goToResultsPage();
       } else {
         console.log("No career suggestion found.");
         toaster.warning(
@@ -352,11 +345,7 @@ function BasicQuiz() {
           appearance="primary"
           marginBottom="10%"
           marginTop="10px"
-          onClick={() => {
-            checkQuestions();
-            // function that calls API
-            // function to navigate to results page
-          }}
+          onClick={checkQuestions}
         >
           Get Results
         </Button>
@@ -364,4 +353,5 @@ function BasicQuiz() {
     </Pane>
   );
 }
+
 export default BasicQuiz;

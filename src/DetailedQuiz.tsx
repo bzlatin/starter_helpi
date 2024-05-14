@@ -26,13 +26,14 @@ interface Question {
 }
 
 function DetailedQuiz() {
-  let navigate = useNavigate(); // Hook for navigation
+  let navigate = useNavigate();
 
   const goToResultsPage = () => {
     navigate("/resultsPage");
   };
 
   const saveResultsData = "MYRESULTSKEY";
+  const saveAnswersData = "MYANSWERSSKEY";
   let resultData = "";
   console.log(resultData);
 
@@ -49,7 +50,7 @@ function DetailedQuiz() {
   }
 
   const goToHomePage = () => {
-    navigate("/home"); // Use the navigate function
+    navigate("/home");
   };
 
   const [questions, setQuestions] = useState<Question[]>([
@@ -140,9 +141,7 @@ function DetailedQuiz() {
   };
 
   const checkDone = useCallback(() => {
-    //Lets the user know when they are ready to submit
     if (progress === 100) {
-      //Progress 100 == All questions answered
       toaster.success(
         "All questions completed. Press 'Get Results' to generate response.",
         {
@@ -156,11 +155,11 @@ function DetailedQuiz() {
         id: "question-done",
       });
     }
-  }, [progress]); // Include 'progress' in the dependency array for useCallback
+  }, [progress]);
 
   useEffect(() => {
-    checkDone(); // Call checkDone whenever questions change
-  }, [checkDone, questions]); // Watch for changes in the questions array
+    checkDone();
+  }, [checkDone, questions]);
 
   const checkQuestions = () => {
     const allAnswered = questions.every((q) => q.answer.trim() !== "");
@@ -184,12 +183,12 @@ function DetailedQuiz() {
   const callChatGPTAPI = async (apiKey: string) => {
     console.log("Calling API with Key:", apiKey);
     try {
-      // Compile the user's answers into a single string
       const userResponses = questions
         .map((q) => `${q.text}: ${q.answer}`)
         .join("\n");
 
-      // Request to OpenAI API
+      localStorage.setItem(saveAnswersData, JSON.stringify(userResponses));
+
       const response = await fetch(
         "https://api.openai.com/v1/chat/completions",
         {
@@ -204,7 +203,7 @@ function DetailedQuiz() {
               {
                 role: "system",
                 content:
-                  "You are a bot that tells people what future career to have based on their responses to several questions. Give them a career and a reason for it without asking follow-up questions.",
+                  "You are a bot that tells people what future career to have based on their responses to several questions. Give them a career and a reason for it without asking follow-up questions. Format the response in the following way:\n\nCareer Suggestion: [Career Name]\n\nReasoning:\n[Detailed Reasoning]\n\nEnsure that the formatting is consistent and the response is easy to read.",
               },
               {
                 role: "user",
@@ -217,7 +216,6 @@ function DetailedQuiz() {
 
       const data = await response.json();
       console.log(data);
-      // Output or use the suggested career
       if (response.ok && data.choices && data.choices.length > 0) {
         localStorage.setItem(
           saveResultsData,
