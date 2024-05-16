@@ -171,12 +171,15 @@ function DetailedQuiz() {
         duration: 5,
         id: "question-warning",
       });
+      return false;
     } else if (!apiKey) {
       toaster.danger("API Key is missing. Please provide a valid API Key.");
+      return false;
     } else {
       // Clear the previous results data before setting new data
       localStorage.removeItem(saveResultsData);
       callChatGPTAPI(apiKey);
+      return true;
     }
   };
 
@@ -445,8 +448,9 @@ function DetailedQuiz() {
           marginBottom="10%"
           marginTop="10px"
           onClick={() => {
-            checkQuestions();
-            goToResultsPage();
+            if (checkQuestions()) {
+              goToResultsPage();
+            }
           }}
         >
           Get Results
