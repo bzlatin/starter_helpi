@@ -88,7 +88,7 @@ function BasicQuiz() {
       answer: "",
     }))
   );
-
+  
   let navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -126,6 +126,7 @@ function BasicQuiz() {
         return answer;
       });
       setAnswers(newAnswers);
+      
     };
 
   const goToHomePage = () => {
@@ -352,7 +353,7 @@ function BasicQuiz() {
           <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
             Back
           </Button>
-          <Button size="medium" marginTop="15px" marginLeft={16} onClick={handleSkip}>
+          <Button size="medium" marginLeft={16} onClick={handleSkip}>
             Skip
           </Button>
           <Button
