@@ -303,7 +303,7 @@ function BasicQuiz() {
           color={"coral"}
           textShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         >
-          Basic Question Page
+          Basic Quiz
         </Heading>
         <Pane
           width="100%"

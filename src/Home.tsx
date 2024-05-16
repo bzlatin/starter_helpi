@@ -109,7 +109,7 @@ function Home() {
               Basic Questions
             </Heading>
             <Button appearance="primary" onClick={goToBasicQuestionPage}>
-              Go to Basic Questions
+              Get Started
             </Button>
             <Pane maxWidth="75%" fontSize="12px" marginTop={12}>
               <p>
@@ -138,7 +138,7 @@ function Home() {
               Detailed Questions
             </Heading>
             <Button appearance="primary" onClick={goToDetailedQuestionPage}>
-              Go to Detailed Questions
+              Get Started
             </Button>
             <Pane maxWidth="75%" fontSize="12px" marginTop={12}>
               <p>

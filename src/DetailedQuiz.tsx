@@ -353,7 +353,7 @@ function DetailedQuiz() {
           color={"coral"}
           textShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
         >
-          Detailed Question Page
+          Detailed Quiz
         </Heading>
         {questions.map((question) => (
           <Pane

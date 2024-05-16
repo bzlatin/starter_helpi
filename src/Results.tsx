@@ -198,7 +198,7 @@ const Results: React.FC<ResultsProps> = () => {
       </Pane>
 
       <Pane
-        marginTop="5%"
+        marginTop="1%"
         width="90%"
         maxWidth="600px"
         display="flex"
@@ -210,7 +210,7 @@ const Results: React.FC<ResultsProps> = () => {
         boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
         padding="2%"
       >
-        <Heading size={600} marginBottom="20px">
+        <Heading color={"coral"} size={800} marginBottom="20px">
           Your Career Results
         </Heading>
         <Text size={500} marginBottom="20px" style={{ whiteSpace: "pre-wrap" }}>
@@ -225,7 +225,7 @@ const Results: React.FC<ResultsProps> = () => {
           }
           marginBottom="20px"
         />
-        <Button onClick={handleNarrowResults} width="100%">
+        <Button color={"coral"} onClick={handleNarrowResults} width="100%">
           Refresh My Results
         </Button>
       </Pane>
