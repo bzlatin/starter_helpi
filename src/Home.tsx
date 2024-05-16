@@ -103,9 +103,9 @@ function Home() {
             borderRadius={3}
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             marginRight={12}
-            marginTop={120}
+            marginTop={100}
           >
-            <Heading size={500} marginBottom={12}>
+            <Heading size={900} marginBottom={12}>
               Basic Questions
             </Heading>
             <Button appearance="primary" onClick={goToBasicQuestionPage}>
@@ -132,9 +132,9 @@ function Home() {
             borderRadius={3}
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             marginLeft={12}
-            marginTop={120}
+            marginTop={100}
           >
-            <Heading size={500} marginBottom={12}>
+            <Heading size={900} marginBottom={12}>
               Detailed Questions
             </Heading>
             <Button appearance="primary" onClick={goToDetailedQuestionPage}>

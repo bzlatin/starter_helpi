@@ -345,8 +345,16 @@ function DetailedQuiz() {
         justifyContent="center"
         boxSizing="border-box"
       >
-        <h1>Detailed Question Page</h1>
-
+        <Heading
+          marginTop={20}
+          marginBottom={40}
+          fontSize={"2rem"}
+          fontWeight={600}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          Detailed Question Page
+        </Heading>
         {questions.map((question) => (
           <Pane
             key={question.id}
