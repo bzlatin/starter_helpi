@@ -194,7 +194,7 @@ File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #
 All files            |    6.76 |     0.92 |    5.12 |    6.95 |                   
  src                 |    4.44 |        0 |       4 |    4.58 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
-  BasicQuiz.tsx      |    2.17 |        0 |       0 |    2.24 | 68-336            
+  BasicQuiz.tsx      |    2.17 |        0 |       0 |    2.24 | 68-337            
   DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 29-449            
   DropdownMenu.tsx   |      80 |      100 |      50 |      80 | 10                
   Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 11,14             
@@ -207,5 +207,5 @@ All files            |    6.76 |     0.92 |    5.12 |    6.95 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.875 s
+Time:        3.938 s
 Ran all test suites.
