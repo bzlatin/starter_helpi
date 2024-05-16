@@ -57,7 +57,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (337 ms)
+  ✕ renders learn react link (356 ms)
 
   ● renders learn react link
 
@@ -147,19 +147,28 @@ FAIL src/App.test.tsx
             [36m<div[39m
               [33mclass[39m=[32m"ub-bg_1fsyoqx  ub-w_100prcnt ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pt_70px ub-box-szg_border-box"[39m
             [36m>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"ub-mt_50px ub-mb_0px ub-color_coral ub-fnt-fam_b77syt ub-f-wght_100 ub-fnt-sze_3rem ub-ltr-spc_-0-05px ub-ln-ht_20px ub-txt-shdw_1wm09ac ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mLooking for a job?[0m
+              [36m</h2>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"ub-mt_45px ub-mb_0px ub-color_coral ub-fnt-fam_b77syt ub-f-wght_700 ub-fnt-sze_4rem ub-ltr-spc_-0-05px ub-ln-ht_20px ub-txt-shdw_1wm09ac ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mThe Career Helper[0m
+              [36m</h2>[39m
+              [36m<h2[39m
+                [33mclass[39m=[32m"ub-mt_50px ub-mb_0px ub-color_coral ub-fnt-fam_b77syt ub-f-wght_100 ub-fnt-sze_3rem ub-ltr-spc_-0-05px ub-ln-ht_20px ub-txt-shdw_1wm09ac ub-box-szg_border-box"[39m
+              [36m>[39m
+                [0mStart here[0m
+              [36m</h2>[39m
               [36m<div[39m
                 [33mclass[39m=[32m"ub-w_100prcnt ub-max-w_1024px ub-dspl_flex ub-just-cnt_space-between ub-box-szg_border-box"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-mr_12px ub-box-szg_border-box"[39m
+                  [33mclass[39m=[32m"ub-bg_awzisn ub-bs_2bryko  ub-dspl_flex ub-flx-drct_column ub-algn-itms_center ub-just-cnt_center ub-pb_20px ub-pl_20px ub-pr_20px ub-pt_20px ub-bblr_3px ub-bbrr_3px ub-btlr_3px ub-btrr_3px ub-mr_12px ub-mt_100px ub-box-szg_border-box"[39m
                 [36m>[39m
-                  [36m<h2[39m
-                    [33mclass[39m=[32m"ub-mt_0px ub-mb_12px ub-color_101840 ub-fnt-fam_b77syt ub-f-wght_600 ub-fnt-sze_16px ub-ltr-spc_-0-05px ub-ln-ht_20px ub-box-szg_border-box"[39m
-                  [36m>[39m
-                    [0mBasic Questions[0m
-                  [36m</h2>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"ub-pst_relative ub-f-wght_500 ub-dspl_inline-flex ub-algn-itms_center ub-flx-wrap_nowrap ub-just-cnt_center ub-txt-deco_none ub-ver-algn_middle ub-b-btm_1px-solid-transparent ub-b-lft_1px-solid-transparent ub-b-rgt_1px-solid-transparent ub-b-top_1px-solid-transparent ub-otln_iu2jf4 ub-usr-slct_none ub-crsr_pointer ub-wht-spc_nowrap ub-fnt-fam_b77syt ub-bblr_4px ub-bbrr_4px ub-btlr_4px ub-btrr_4px ub-color_white ub-tstn_n1akt6 ub-h_32px ub-min-w_32px ub-fnt-sze_12px ub-ln-ht_32px ub-pl_16px ub-pr_16px ub-bg-clr_3366FF ub-b-btm-clr_3366FF ub-b-lft-clr_3366FF ub-b-rgt-clr_33...
+                  [36m<h2...
 
        5 | test('renders learn react link', () => {
        6 |   render(<App />);
@@ -185,8 +194,8 @@ File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #
 All files            |     6.9 |     0.94 |    5.26 |    7.11 |                   
  src                 |    4.54 |        0 |     4.1 |    4.68 |                   
   App.tsx            |     100 |      100 |     100 |     100 |                   
-  BasicQuiz.tsx      |    2.32 |        0 |       0 |     2.4 | 68-315            
-  DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 29-441            
+  BasicQuiz.tsx      |    2.32 |        0 |       0 |     2.4 | 68-325            
+  DetailedQuiz.tsx   |       0 |        0 |       0 |       0 | 29-449            
   DropdownMenu.tsx   |      80 |      100 |      50 |      80 | 10                
   Home.tsx           |   66.66 |      100 |   33.33 |   66.66 | 11,14             
   Results.tsx        |    1.96 |        0 |       0 |    1.96 | 19-224            
@@ -198,5 +207,5 @@ All files            |     6.9 |     0.94 |    5.26 |    7.11 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.952 s
+Time:        3.945 s
 Ran all test suites.
