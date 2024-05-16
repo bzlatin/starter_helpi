@@ -58,6 +58,34 @@ function Home() {
         background="#F9FAFC
 "
       >
+        <Heading
+          marginTop={50}
+          fontSize={"3rem"}
+          fontWeight={100}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.22)"
+        >
+          Looking for a job?
+        </Heading>
+        <Heading
+          marginTop={45}
+          fontSize={"4rem"}
+          fontWeight={700}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.22)"
+        >
+          The Career Helper
+        </Heading>
+        <Heading
+          marginTop={50}
+          fontSize={"3rem"}
+          fontWeight={100}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.22)"
+        >
+          Start here
+        </Heading>
+
         <Pane
           width="100%"
           maxWidth="1024px"
@@ -75,12 +103,13 @@ function Home() {
             borderRadius={3}
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             marginRight={12}
+            marginTop={100}
           >
-            <Heading size={500} marginBottom={12}>
+            <Heading size={900} marginBottom={12}>
               Basic Questions
             </Heading>
             <Button appearance="primary" onClick={goToBasicQuestionPage}>
-              Go to Basic Questions
+              Get Started
             </Button>
             <Pane maxWidth="75%" fontSize="12px" marginTop={12}>
               <p>
@@ -103,12 +132,13 @@ function Home() {
             borderRadius={3}
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             marginLeft={12}
+            marginTop={100}
           >
-            <Heading size={500} marginBottom={12}>
+            <Heading size={900} marginBottom={12}>
               Detailed Questions
             </Heading>
             <Button appearance="primary" onClick={goToDetailedQuestionPage}>
-              Go to Detailed Questions
+              Get Started
             </Button>
             <Pane maxWidth="75%" fontSize="12px" marginTop={12}>
               <p>

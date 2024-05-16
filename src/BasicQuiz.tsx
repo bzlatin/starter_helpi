@@ -103,6 +103,7 @@ function BasicQuiz() {
     if (!answers[currentQuestionIndex].answer) {
       toaster.warning("You must answer the question before proceeding.", {
         duration: 5,
+        id: "next",
       });
     } else if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -294,7 +295,16 @@ function BasicQuiz() {
         justifyContent="center"
         boxSizing="border-box"
       >
-        <h1>Basic Question Page</h1>
+        <Heading
+          marginTop={20}
+          marginBottom={40}
+          fontSize={"2rem"}
+          fontWeight={600}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.1)"
+        >
+          Basic Quiz
+        </Heading>
         <Pane
           width="100%"
           display="flex"
