@@ -58,6 +58,34 @@ function Home() {
         background="#F9FAFC
 "
       >
+        <Heading
+          marginTop={50}
+          fontSize={"3rem"}
+          fontWeight={100}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.22)"
+        >
+          Looking for a job?
+        </Heading>
+        <Heading
+          marginTop={45}
+          fontSize={"4rem"}
+          fontWeight={700}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.22)"
+        >
+          The Career Helper
+        </Heading>
+        <Heading
+          marginTop={50}
+          fontSize={"3rem"}
+          fontWeight={100}
+          color={"coral"}
+          textShadow="0 2px 4px rgba(0, 0, 0, 0.22)"
+        >
+          Start here
+        </Heading>
+
         <Pane
           width="100%"
           maxWidth="1024px"
@@ -75,6 +103,7 @@ function Home() {
             borderRadius={3}
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             marginRight={12}
+            marginTop={120}
           >
             <Heading size={500} marginBottom={12}>
               Basic Questions
@@ -103,6 +132,7 @@ function Home() {
             borderRadius={3}
             boxShadow="0 2px 4px rgba(0, 0, 0, 0.05)"
             marginLeft={12}
+            marginTop={120}
           >
             <Heading size={500} marginBottom={12}>
               Detailed Questions
