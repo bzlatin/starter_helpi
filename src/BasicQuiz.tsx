@@ -199,6 +199,17 @@ function BasicQuiz() {
     }
   };
 
+  const handleSkip = () => {
+    const newAnswers: Answer[] = answers.map((answer, idx) => {
+      if (idx === currentQuestionIndex) {
+        return { ...answer, answer: "NA" };
+      }
+      return answer;
+    });
+    setAnswers(newAnswers);
+  };
+
+
   const callChatGPTAPI = async (apiKey: string) => {
     console.log("Calling API with Key:", apiKey);
     try {
@@ -341,7 +352,9 @@ function BasicQuiz() {
           <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
             Back
           </Button>
-
+          <Button size="medium" marginTop="15px" marginLeft={16} onClick={handleSkip}>
+            Skip
+          </Button>
           <Button
             onClick={handleNext}
             appearance="primary"
@@ -350,6 +363,7 @@ function BasicQuiz() {
           >
             Next
           </Button>
+          
         </Pane>
         <Button
           appearance="primary"
