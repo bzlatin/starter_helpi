@@ -80,15 +80,11 @@ function LinearProgressWithLabel(
 }
 
 function BasicQuiz() {
-  const [progress, setProgress] = React.useState(0);
+  const [progress, setProgress] = useState(0);
   const [answers, setAnswers] = useState(() =>
-    questions.map((q, index) => ({
-      id: index + 1,
-      text: q.text,
-      answer: "",
-    }))
+    questions.map((q, index) => ({ id: index + 1, text: q.text, answer: "" }))
   );
-  
+
   let navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -112,7 +108,16 @@ function BasicQuiz() {
 
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setAnswers((prevAnswers) => {
+        const newAnswers = prevAnswers.map((answer, idx) => {
+          if (idx === currentQuestionIndex - 1) {
+            return { ...answer, answer: "" };
+          }
+          return answer;
+        });
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+        return newAnswers;
+      });
     }
   };
 
@@ -126,7 +131,6 @@ function BasicQuiz() {
         return answer;
       });
       setAnswers(newAnswers);
-      
     };
 
   const goToHomePage = () => {
@@ -181,8 +185,9 @@ function BasicQuiz() {
     checkDone();
   }, [checkDone]);
 
-  const checkQuestions = () => {
-    const allAnswered = answers.every((q) => q.answer.trim() !== "");
+  const checkQuestions = (updatedAnswers: Answer[] = answers) => {
+    const allAnswered = updatedAnswers.every((q) => q.answer.trim() !== "");
+    console.log(answers, "??");
     const savedKeyData = "MYKEY";
     const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
 
@@ -201,15 +206,23 @@ function BasicQuiz() {
   };
 
   const handleSkip = () => {
-    const newAnswers: Answer[] = answers.map((answer, idx) => {
-      if (idx === currentQuestionIndex) {
-        return { ...answer, answer: "NA" };
-      }
-      return answer;
-    });
-    setAnswers(newAnswers);
-  };
+    setAnswers((prevAnswers) => {
+      const newAnswers = prevAnswers.map((answer, idx) => {
+        if (idx === currentQuestionIndex) {
+          return { ...answer, answer: "N/A" };
+        }
+        return answer;
+      });
 
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        checkQuestions(newAnswers);
+      }
+
+      return newAnswers;
+    });
+  };
 
   const callChatGPTAPI = async (apiKey: string) => {
     console.log("Calling API with Key:", apiKey);
@@ -331,14 +344,14 @@ function BasicQuiz() {
           position="relative"
         >
           <Heading size={600} marginBottom={10}>
-            {questions[currentQuestionIndex].text}
+            {questions[currentQuestionIndex]?.text}
           </Heading>
-          {choices[currentQuestionIndex].map((choice, index) => (
+          {choices[currentQuestionIndex]?.map((choice, index) => (
             <Radio
               key={index}
               label={choice}
               value={choice}
-              checked={answers[currentQuestionIndex].answer === choice}
+              checked={answers[currentQuestionIndex]?.answer === choice}
               onChange={handleAnswerChange(index)}
             />
           ))}
@@ -364,13 +377,12 @@ function BasicQuiz() {
           >
             Next
           </Button>
-          
         </Pane>
         <Button
           appearance="primary"
           marginBottom="10%"
           marginTop="10px"
-          onClick={checkQuestions}
+          onClick={() => checkQuestions()}
         >
           Get Results
         </Button>
