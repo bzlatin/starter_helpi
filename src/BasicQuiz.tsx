@@ -80,24 +80,23 @@ function LinearProgressWithLabel(
 }
 
 function BasicQuiz() {
-  const [progress, setProgress] = React.useState(0);
+  const [progress, setProgress] = useState(0);
   const [answers, setAnswers] = useState(() =>
-    questions.map((q, index) => ({
-      id: index + 1,
-      text: q.text,
-      answer: "",
-    }))
+    questions.map((q, index) => ({ id: index + 1, text: q.text, answer: "" }))
   );
-  
+  const [skippedQuestions, setSkippedQuestions] = useState(new Set<number>());
+
   let navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   useEffect(() => {
     const answeredQuestions = answers.filter((ans) => ans.answer !== "").length;
+    const skippedQuestionsCount = skippedQuestions.size;
+    const totalAnswered = answeredQuestions + skippedQuestionsCount;
     const totalQuestions = questions.length;
-    const calculatedProgress = (answeredQuestions / totalQuestions) * 100;
+    const calculatedProgress = (totalAnswered / totalQuestions) * 100;
     setProgress(calculatedProgress);
-  }, [answers]);
+  }, [answers, skippedQuestions]);
 
   const handleNext = () => {
     if (!answers[currentQuestionIndex].answer) {
@@ -112,6 +111,20 @@ function BasicQuiz() {
 
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
+      if (skippedQuestions.has(currentQuestionIndex - 1)) {
+        setSkippedQuestions((prev) => {
+          const newSkipped = new Set(prev);
+          newSkipped.delete(currentQuestionIndex - 1);
+          return newSkipped;
+        });
+        const newAnswers = answers.map((answer, idx) => {
+          if (idx === currentQuestionIndex - 1) {
+            return { ...answer, answer: "" };
+          }
+          return answer;
+        });
+        setAnswers(newAnswers);
+      }
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
   };
@@ -126,7 +139,6 @@ function BasicQuiz() {
         return answer;
       });
       setAnswers(newAnswers);
-      
     };
 
   const goToHomePage = () => {
@@ -182,11 +194,13 @@ function BasicQuiz() {
   }, [checkDone]);
 
   const checkQuestions = () => {
-    const allAnswered = answers.every((q) => q.answer.trim() !== "");
+    const allAnsweredOrSkipped = answers.every(
+      (q, index) => q.answer.trim() !== "" || skippedQuestions.has(index)
+    );
     const savedKeyData = "MYKEY";
     const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
 
-    if (!allAnswered) {
+    if (!allAnsweredOrSkipped) {
       toaster.warning("Please answer all the questions before proceeding.", {
         duration: 5,
         id: "question-warning",
@@ -201,15 +215,18 @@ function BasicQuiz() {
   };
 
   const handleSkip = () => {
-    const newAnswers: Answer[] = answers.map((answer, idx) => {
-      if (idx === currentQuestionIndex) {
-        return { ...answer, answer: "NA" };
-      }
-      return answer;
+    setSkippedQuestions((prev) => {
+      const newSkipped = new Set(prev);
+      newSkipped.add(currentQuestionIndex);
+      return newSkipped;
     });
-    setAnswers(newAnswers);
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      handleClearAnswer();
+    } else {
+      checkQuestions();
+    }
   };
-
 
   const callChatGPTAPI = async (apiKey: string) => {
     console.log("Calling API with Key:", apiKey);
@@ -331,14 +348,14 @@ function BasicQuiz() {
           position="relative"
         >
           <Heading size={600} marginBottom={10}>
-            {questions[currentQuestionIndex].text}
+            {questions[currentQuestionIndex]?.text}
           </Heading>
-          {choices[currentQuestionIndex].map((choice, index) => (
+          {choices[currentQuestionIndex]?.map((choice, index) => (
             <Radio
               key={index}
               label={choice}
               value={choice}
-              checked={answers[currentQuestionIndex].answer === choice}
+              checked={answers[currentQuestionIndex]?.answer === choice}
               onChange={handleAnswerChange(index)}
             />
           ))}
@@ -364,7 +381,6 @@ function BasicQuiz() {
           >
             Next
           </Button>
-          
         </Pane>
         <Button
           appearance="primary"
