@@ -84,19 +84,16 @@ function BasicQuiz() {
   const [answers, setAnswers] = useState(() =>
     questions.map((q, index) => ({ id: index + 1, text: q.text, answer: "" }))
   );
-  const [skippedQuestions, setSkippedQuestions] = useState(new Set<number>());
 
   let navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   useEffect(() => {
     const answeredQuestions = answers.filter((ans) => ans.answer !== "").length;
-    const skippedQuestionsCount = skippedQuestions.size;
-    const totalAnswered = answeredQuestions + skippedQuestionsCount;
     const totalQuestions = questions.length;
-    const calculatedProgress = (totalAnswered / totalQuestions) * 100;
+    const calculatedProgress = (answeredQuestions / totalQuestions) * 100;
     setProgress(calculatedProgress);
-  }, [answers, skippedQuestions]);
+  }, [answers]);
 
   const handleNext = () => {
     if (!answers[currentQuestionIndex].answer) {
@@ -111,21 +108,16 @@ function BasicQuiz() {
 
   const handleBack = () => {
     if (currentQuestionIndex > 0) {
-      if (skippedQuestions.has(currentQuestionIndex - 1)) {
-        setSkippedQuestions((prev) => {
-          const newSkipped = new Set(prev);
-          newSkipped.delete(currentQuestionIndex - 1);
-          return newSkipped;
-        });
-        const newAnswers = answers.map((answer, idx) => {
+      setAnswers((prevAnswers) => {
+        const newAnswers = prevAnswers.map((answer, idx) => {
           if (idx === currentQuestionIndex - 1) {
             return { ...answer, answer: "" };
           }
           return answer;
         });
-        setAnswers(newAnswers);
-      }
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+        return newAnswers;
+      });
     }
   };
 
@@ -193,14 +185,13 @@ function BasicQuiz() {
     checkDone();
   }, [checkDone]);
 
-  const checkQuestions = () => {
-    const allAnsweredOrSkipped = answers.every(
-      (q, index) => q.answer.trim() !== "" || skippedQuestions.has(index)
-    );
+  const checkQuestions = (updatedAnswers: Answer[] = answers) => {
+    const allAnswered = updatedAnswers.every((q) => q.answer.trim() !== "");
+    console.log(answers, "??");
     const savedKeyData = "MYKEY";
     const apiKey = JSON.parse(localStorage.getItem(savedKeyData) || "null");
 
-    if (!allAnsweredOrSkipped) {
+    if (!allAnswered) {
       toaster.warning("Please answer all the questions before proceeding.", {
         duration: 5,
         id: "question-warning",
@@ -215,17 +206,22 @@ function BasicQuiz() {
   };
 
   const handleSkip = () => {
-    setSkippedQuestions((prev) => {
-      const newSkipped = new Set(prev);
-      newSkipped.add(currentQuestionIndex);
-      return newSkipped;
+    setAnswers((prevAnswers) => {
+      const newAnswers = prevAnswers.map((answer, idx) => {
+        if (idx === currentQuestionIndex) {
+          return { ...answer, answer: "N/A" };
+        }
+        return answer;
+      });
+
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      } else {
+        checkQuestions(newAnswers);
+      }
+
+      return newAnswers;
     });
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      handleClearAnswer();
-    } else {
-      checkQuestions();
-    }
   };
 
   const callChatGPTAPI = async (apiKey: string) => {
@@ -386,7 +382,7 @@ function BasicQuiz() {
           appearance="primary"
           marginBottom="10%"
           marginTop="10px"
-          onClick={checkQuestions}
+          onClick={() => checkQuestions()}
         >
           Get Results
         </Button>
