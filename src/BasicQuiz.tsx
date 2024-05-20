@@ -85,7 +85,6 @@ function BasicQuiz() {
     questions.map((q, index) => ({ id: index + 1, text: q.text, answer: "" }))
   );
 
-  const [skipPressed, setSkipPressed] = useState(false);
   let navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -104,7 +103,6 @@ function BasicQuiz() {
       });
     } else if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSkipPressed(false);
     }
   };
 
@@ -133,7 +131,6 @@ function BasicQuiz() {
         return answer;
       });
       setAnswers(newAnswers);
-      setSkipPressed(false);
     };
 
   const goToHomePage = () => {
@@ -225,9 +222,6 @@ function BasicQuiz() {
 
       return newAnswers;
     });
-
-    setAnswers(newAnswers);
-    setSkipPressed(true)
   };
 
   const callChatGPTAPI = async (apiKey: string) => {
@@ -372,7 +366,7 @@ function BasicQuiz() {
           <Button onClick={handleBack} disabled={currentQuestionIndex === 0}>
             Back
           </Button>
-          <Button size="medium" marginLeft={16} onClick={handleSkip} disabled={skipPressed}>
+          <Button size="medium" marginLeft={16} onClick={handleSkip}>
             Skip
           </Button>
           <Button
